@@ -31,6 +31,16 @@ In this section, you and I will develop an old version of twitter post.
 
 1. Develop the following application, [twitter tweets](https://www.30daysofreact.com/day-28/twitter-clone). The application has all the CRUD operations. 
 
+- Check: `node 28_project/applied-labs/r19-t021/check.mjs`
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 27](../27_Ref/27_ref.md) | [Day 29>>]()
+
+
+## Added activity: deployment base paths (R19-T021)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t021](./applied-labs/r19-t021/README.md)
+- Inputs: the app served beneath `/course/`; open `/about` and refresh; open `/countries`.
+- Expected result: assets and known routes load under `/course/`, and a page refresh preserves the route.
