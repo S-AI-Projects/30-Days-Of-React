@@ -1,0 +1,78 @@
+{
+  "task": "R19-T021",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.0",
+    "chromium": "158.0.8127.18"
+  },
+  "steps": [
+    {
+      "name": "Home loads under /course/",
+      "input": "GET /course/",
+      "expected": "heading \"Home\"",
+      "actual": "Home",
+      "pass": true
+    },
+    {
+      "name": "Logo asset loads from /course/logo.svg",
+      "input": "img src + HTTP request",
+      "expected": "src \"/course/logo.svg\", HTTP 200 svg",
+      "actual": "src \"/course/logo.svg\", HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "Nav links keep the base path",
+      "input": "read nav link hrefs",
+      "expected": "/course/, /course/about, /course/countries",
+      "actual": [
+        "/course/",
+        "/course/about",
+        "/course/countries"
+      ],
+      "pass": true
+    },
+    {
+      "name": "Clicking About navigates under /course/",
+      "input": "click \"About\" link",
+      "expected": "URL /course/about, heading \"About\"",
+      "actual": "/course/about, heading \"About\"",
+      "pass": true
+    },
+    {
+      "name": "Page refresh preserves the route",
+      "input": "reload on /course/about",
+      "expected": "still /course/about, heading \"About\"",
+      "actual": "/course/about, heading \"About\"",
+      "pass": true
+    },
+    {
+      "name": "Countries route loads local data",
+      "input": "GET /course/countries",
+      "expected": "Finland, India, Japan",
+      "actual": [
+        "Finland",
+        "India",
+        "Japan"
+      ],
+      "pass": true
+    },
+    {
+      "name": "Unknown route shows Not found",
+      "input": "GET /course/missing",
+      "expected": "heading \"Not found\"",
+      "actual": "Not found",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "all pages above",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}
