@@ -1,0 +1,48 @@
+# Work Evidence: Applied Lab R19-T004
+
+## Task Information
+- Task ID: R19-T004
+- Issue: https://github.com/S-AI-Projects/30-Days-Of-React/issues/9
+- Student: Hardik Aggarwal
+- Branch: student/e26b07f0663/R19-T004
+- Date: 2026-11-14
+
+## Tool Versions
+- Node.js: v26.13.0
+- npm: 11.20.0
+- Playwright: ^1.49.0
+- Chromium: v1254 (Chrome for Testing 158.0.8127.18)
+- React: ^18.3.1
+- ReactDOM: ^18.3.1
+
+## Automated Test Command
+```bash
+node 23_Fetching_Data_Using_Hooks/applied-labs/r19-t004/check.mjs
+```
+
+## Execution Log
+```
+--- Running Playwright Check for R19-T004 (Fetch Cancellation & Invariant) ---
+[PASS] Ephemeral local test server listening on http://127.0.0.1:57864
+[PASS] Initial load for Key A resolved correctly
+[PASS] Key C error state properly captured and rendered
+[PASS] Reset invariant verified: error cleared and loading reactivated on key change
+[PASS] Key B resolved data cleanly
+[INFO] Triggering race condition: Slow Key A immediately followed by Fast Key B
+[PASS] Fast Key B rendered data at ~50ms
+[PASS] Stale response invariant verified: Late response for Key A was safely discarded
+[PASS] UI screenshot captured at work/R19-T004/screenshot.png
+[PASS] Zero console errors or unhandled page exceptions detected
+✅ ALL CONTRACT ASSERTIONS PASSED
+```
+
+## State Invariants Verified
+1. **Initial Resolution**: Key A (300ms) loads and renders `Resolved payload for A`.
+2. **Error State Capture**: Selecting Key C displays `Network error: failed to fetch key C`.
+3. **Reset Invariant**: Switching to Key B immediately clears the error state and reactivates loading state.
+4. **Stale Response Discard (Decisive Invariant)**:
+   - Initiating slow request Key A (300ms), followed immediately by fast request Key B (50ms).
+   - Key B resolves first at ~50ms.
+   - After 350ms, late response from Key A arrives and is safely discarded without corrupting Key B's view.
+5. **Console Invariant**: Zero console errors or unhandled page errors detected.
+6. **Artifact**: Verification screenshot saved to `work/R19-T004/screenshot.png`.
