@@ -1,0 +1,21 @@
+Node: v26.13.0
+npm: 11.20.0
+Playwright: 1.65.0
+
+Command: node 02_Day_Introduction_to_React/applied-labs/r19-t007/check.mjs
+
+Terminal output:
+Server listening on http://127.0.0.1:58731
+  ✓ PASS: total equals 15 (actual: 15)
+  ✓ PASS: three records remain visible (actual: 3)
+  ✓ PASS: source array is unchanged while computing the filtered total
+  ✓ PASS: immutability status reports true (actual: Original records unchanged: true)
+  ✓ PASS: zero console errors (got 0)
+  ✓ PASS: zero unhandled page errors (got 0)
+📸 Screenshot saved → /Users/hard/SNAI_internal/work/R19-T007/screenshot.png
+Console errors: 0
+Page errors: 0
+
+--------------------------------------------------
+
+✅ All assertions passed. Exit 0.

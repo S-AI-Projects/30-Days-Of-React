@@ -1552,6 +1552,16 @@ Now, you have a very good understanding of how to create JSX elements and also h
 
 ### Exercises
 
+### Added Activity: Applied Lab R19-T007 — Filtered Total without Mutating Records
+
+This applied lab demonstrates a pure, immutable calculation pattern for deriving a total from a list of paid/unpaid records. The source array remains unchanged while the UI calculates the sum of only the recorded paid items, which should display `15` for `10 + 5 + 20(unpaid)`.
+
+**Location:** `02_Day_Introduction_to_React/applied-labs/r19-t007/`
+
+```bash
+node 02_Day_Introduction_to_React/applied-labs/r19-t007/check.mjs
+```
+
 #### Exercises: What is React?
 
 1. What is React?
