@@ -139,6 +139,33 @@ ReactDOM.render(<App />, rootElement
 
 1. Develop the following [application](https://www.30daysofreact.com/day-27/hexadecimal-colors). The application generates 27 hexadecimal colors by default. If the generate button get clicked it will generate another new 27 hexadecimal colors.
 
+### Added Activity: Applied Lab R19-T005 — Ref Focus Management Deterministic Fixture Lab
+
+**Location:** `27_Ref/applied-labs/r19-t005/`
+
+**Description:**  
+This lab demonstrates deterministic ref-based focus management. A `useRef` holds references to both a trigger button and a dialog input; `useLayoutEffect` moves focus into the input when the dialog opens, and `requestAnimationFrame` restores focus to the trigger when it closes. The ref objects are never stored in React state, so ordinary typing never causes ref-driven re-renders.
+
+The automated Playwright check (`check.mjs`) runs the full assertion suite **twice** on independent page navigations and asserts that both runs produce identical outcomes, proving the fixture is fully deterministic.
+
+**Inputs:**
+- Click **Open Dialog** → dialog panel appears.
+- Type freely in the labelled input field.
+- Click **Close Dialog** → panel disappears.
+
+**Expected Results:**
+- Focus is on `#dialog-input` immediately after open.
+- Typing does not increment the render counter.
+- Focus is on `#open-btn` immediately after close.
+- Both isolated Playwright runs agree on every assertion.
+- Zero console errors; zero unhandled page errors.
+
+**Run the check:**
+```bash
+node 27_Ref/applied-labs/r19-t005/check.mjs
+```
+
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 25](../25_Custom_Hooks/25_custom_hooks.md) | [Day 27>>]()
