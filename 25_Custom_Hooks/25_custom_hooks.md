@@ -223,6 +223,12 @@ Note: Continue building the countries application
 1 Build the following application using [countries API](https://restcountries.eu/rest/v2/all).
 [DEMO](https://www.30daysofreact.com/day-23/countries-data)
 
+### Added Activity: Applied Lab R19-T001 — `useToggle` State Isolation
+- **Lab Location:** [applied-labs/r19-t001](./applied-labs/r19-t001/)
+- **Description:** Applied demonstration of custom hook state abstraction and isolation. Implements a `useToggle` hook with a stable callback interface, consumed by two independent panels.
+- **Inputs:** Initial boolean flag (`initialValue = false`), user toggle triggers, explicit set calls, and reset actions.
+- **Expected Result:** Toggling Panel A updates only Panel A's status (`OFF` -> `ON`) while Panel B remains in its current state (`OFF`). Explicit `setTrue`, `setFalse`, and `reset` calls modify only the targeted panel. No state leakage occurs between hook consumers.
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 24](../24_projects/24_projects.md) | [Day 26>>](../26_Context/26_context.md)

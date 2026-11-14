@@ -1,0 +1,60 @@
+# Work Evidence: Applied Lab R19-T001
+
+## Task Information
+- Task ID: R19-T001
+- Issue: https://github.com/S-AI-Projects/30-Days-Of-React/issues/1
+- Student: Hardik Aggarwal
+- Branch: student/e26b07f0663/R19-T001
+- Date: 2026-11-10
+
+## Tool Versions
+- Node.js: v26.13.0
+- npm: 11.20.0
+- Playwright: ^1.49.0
+- Chromium: v1254 (Chrome for Testing 158.0.8127.18)
+- React: ^18.3.1
+- ReactDOM: ^18.3.1
+
+## Automated Test Command
+```bash
+node 25_Custom_Hooks/applied-labs/r19-t001/check.mjs
+```
+
+## Execution Log
+```
+--- Running Playwright Check for R19-T001 (useToggle) ---
+[PASS] Ephemeral local test server listening on http://127.0.0.1:49942
+[PASS] Initial states verified: Panel A = OFF, Panel B = OFF
+[PASS] Panel A toggled to ON; Panel B remains OFF (isolation confirmed)
+[PASS] Panel B toggled to ON; Panel A remains ON
+[PASS] Panel A explicit setFalse verified; Panel B unchanged
+[PASS] Panel A explicit setTrue verified
+[PASS] Panel A reset verified
+[PASS] UI screenshot captured at work/R19-T001/screenshot.png
+[PASS] Zero console errors or unhandled page exceptions detected
+✅ ALL CONTRACT ASSERTIONS PASSED
+```
+
+## Contract Verification Summary
+1. Input: Initial state `initialValue = false` for both Panel A and Panel B.
+   - Expected: Panel A status = 'OFF', Panel B status = 'OFF'.
+   - Actual: MATCH.
+2. Input: Trigger `Toggle` button on Panel A.
+   - Expected: Panel A status changes to 'ON', Panel B status remains 'OFF'.
+   - Actual: MATCH.
+3. Input: Trigger `Toggle` button on Panel B.
+   - Expected: Panel B status changes to 'ON', Panel A status remains 'ON'.
+   - Actual: MATCH.
+4. Input: Trigger `Set False` on Panel A.
+   - Expected: Panel A status changes to 'OFF', Panel B status remains 'ON'.
+   - Actual: MATCH.
+5. Input: Trigger `Set True` on Panel A.
+   - Expected: Panel A status changes to 'ON'.
+   - Actual: MATCH.
+6. Input: Trigger `Reset` on Panel A.
+   - Expected: Panel A status resets to 'OFF'.
+   - Actual: MATCH.
+7. Invariant: Page console errors and uncaught exceptions.
+   - Expected: 0 errors.
+   - Actual: 0 errors detected.
+8. Artifact: Screenshot captured and saved to `work/R19-T001/screenshot.png`.
