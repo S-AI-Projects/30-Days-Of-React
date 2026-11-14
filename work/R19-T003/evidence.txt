@@ -1,0 +1,66 @@
+# Work Evidence: Applied Lab R19-T003
+
+## Task Information
+- Task ID: R19-T003
+- Issue: https://github.com/S-AI-Projects/30-Days-Of-React/issues/8
+- Student: Hardik Aggarwal
+- Branch: student/e26b07f0663/R19-T003
+- Date: 2026-11-14
+
+## Tool Versions
+- Node.js: v26.13.0
+- npm: 11.20.0
+- Playwright: ^1.49.0
+- Chromium: v1254 (Chrome for Testing 158.0.8127.18)
+- React: ^18.3.1
+- ReactDOM: ^18.3.1
+
+## Automated Test Command
+```bash
+node 17_React_Router/applied-labs/r19-t003/check.mjs
+```
+
+## Execution Log
+```
+--- Running Playwright Check for R19-T003 (Route Behavior & Reference Comparison) ---
+[PASS] Ephemeral local test server listening on http://127.0.0.1:57716
+[PASS] Home route (/) matches reference table expectation
+[PASS] Known ID route (/item/1) displays detail view matching reference table
+[PASS] Browser Back restores prior view (Home) successfully
+[PASS] Unknown ID route (/item/999) displays Not Found matching reference table
+[PASS] Arbitrary unknown route (/unknown) displays Not Found matching reference table
+[PASS] UI screenshot captured at work/R19-T003/screenshot.png
+[PASS] Zero console errors or unhandled page exceptions detected
+✅ ALL CONTRACT ASSERTIONS PASSED
+```
+
+## Route Reference Comparison Table
+| Route Path | Expected View | Expected Heading | Expected Content Summary | Test Result |
+| :--- | :---: | :--- | :--- | :---: |
+| `/` | `home` | Course Topics | Select a course topic to view details. | **MATCH** |
+| `/item/1` | `detail` | React Basics | Core components and props fundamentals. | **MATCH** |
+| `/item/2` | `detail` | State Management | Interactive hooks and state updates. | **MATCH** |
+| `/item/3` | `detail` | Routing Patterns | Declarative routing and navigation history. | **MATCH** |
+| `/item/999` | `not-found` | Not Found | Topic with ID "999" was not found. | **MATCH** |
+| `/unknown` | `not-found` | Not Found | The requested route does not exist. | **MATCH** |
+
+## Contract Verification Summary
+1. Home Route Navigation (`/`):
+   - Expected: Displays `view-home` with heading "Course Topics".
+   - Actual: MATCH.
+2. Known ID Route Navigation (`/item/1`):
+   - Expected: Displays `view-detail` with title "React Basics" and description "Core components and props fundamentals.".
+   - Actual: MATCH.
+3. Browser Back History Restoration:
+   - Expected: Invoking `page.goBack()` restores `/` and `view-home`.
+   - Actual: MATCH.
+4. Unknown ID Route (`/item/999`):
+   - Expected: Displays `view-not-found` with heading "Not Found" and explanation for ID 999.
+   - Actual: MATCH.
+5. Arbitrary Unknown Route (`/unknown`):
+   - Expected: Displays `view-not-found` with heading "Not Found".
+   - Actual: MATCH.
+6. Console Invariant:
+   - Expected: 0 errors.
+   - Actual: 0 errors detected.
+7. Artifact: Screenshot captured and saved to `work/R19-T003/screenshot.png`.
