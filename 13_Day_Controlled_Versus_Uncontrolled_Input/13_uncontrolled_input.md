@@ -159,6 +159,31 @@ Most of the time we use controlled input instead of uncontrolled input. In case 
 
 # Exercises
 
+### Added Activity: Applied Lab R19-T010 — Lifecycle Request Cleanup Regression Lab
+
+**Location:** `13_Day_Controlled_Versus_Uncontrolled_Input/applied-labs/r19-t010/`
+
+**Description:**  
+This applied lab demonstrates safe asynchronous request cancellation and lifecycle cleanup within React functional components. It tests and prevents out-of-order race conditions where a slow prior request could overwrite newer data, ensures unmounting in-flight requests causes zero state updates, and verifies regression test sensitivity using a temporary 1-line mutant of the decisive `isSubscribed` cleanup condition.
+
+**Inputs:**
+- Click **Query "alpha" (Slow)** → initiates simulated 220ms network request.
+- Click **Query "beta" (Fast)** → initiates simulated 40ms network request.
+- Click **Unmount Fetcher** → detaches component while network requests are pending.
+- Click **Enable Mutant** → simulates code without the decisive cleanup guard.
+
+**Expected Results:**
+- Newer parameter requests take precedence; stale slow requests do not overwrite newer state.
+- Unmounting does not throw unhandled exceptions or state update errors.
+- Focused mutant test detects omission of the cleanup guard.
+- Zero console errors and zero unhandled page errors.
+
+**Run the check:**
+```bash
+node 13_Day_Controlled_Versus_Uncontrolled_Input/applied-labs/r19-t010/check.mjs
+```
+
+
 ## Exercises: Level 1
 
 1. What is a controlled input?
