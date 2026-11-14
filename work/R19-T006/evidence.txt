@@ -1,0 +1,25 @@
+Node: v26.13.0
+npm: 11.20.0
+Playwright: 1.65.1
+
+Command: node 09_Day_Conditional_Rendering/applied-labs/r19-t006/check.mjs
+
+Terminal output:
+Server listening on http://127.0.0.1:58609
+  ✓ PASS: initial state renders the loading view
+  ✓ PASS: empty button shows the empty state
+  ✓ PASS: success button renders both item names
+  ✓ PASS: success view renders exactly 2 items
+  ✓ PASS: error button shows the error view
+  ✓ PASS: error view exposes a retry button
+  ✓ PASS: retry action returns to the success state
+  ✓ PASS: retry returns to the success view
+  ✓ PASS: zero console errors (got 0)
+  ✓ PASS: zero page errors (got 0)
+📸 Screenshot saved → /Users/hard/SNAI_internal/work/R19-T006/screenshot.png
+Console errors: 0
+Page errors: 0
+
+--------------------------------------------------
+
+✅ All assertions passed. Exit 0.

@@ -762,6 +762,16 @@ Now it is time to express your thoughts about the Author and 30DaysOfReact. You 
 
 ## Exercises
 
+### Added Activity: Applied Lab R19-T006 — Conditional Rendering Explicit State Lab
+
+This applied lab refactors a conditional rendering example into explicit state-driven views. The component renders one of four states using a dedicated `DataStateView` helper: loading, empty, success, and error. The check verifies that each branch is reachable through button-driven state changes, that success renders the expected item list, and that the error-state retry action returns to the success state without console or page errors.
+
+**Location:** `09_Day_Conditional_Rendering/applied-labs/r19-t006/`
+
+```bash
+node 09_Day_Conditional_Rendering/applied-labs/r19-t006/check.mjs
+```
+
 ### Exercises: Level 1
 
 1. What is conditional rendering?
