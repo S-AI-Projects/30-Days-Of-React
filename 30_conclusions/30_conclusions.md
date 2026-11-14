@@ -26,6 +26,15 @@ You have been learning and coding for the last 30 days and you made it to this d
 ## Testimony
 Now it is time to express your thoughts about the Author and 30DaysOfReact. You can leave your testimonial on this [link](https://www.asabeneh.com/testimonials)
 
+### Added Activity: Applied Lab R19-T008 — Task Board Failure and Recovery Lab
+
+This applied lab demonstrates a small task board with add, complete, and filter actions. The user can attempt an empty task, see the validation error, and recover by entering a valid task on the next submission without any console or page errors.
+
+**Location:** `30_conclusions/applied-labs/r19-t008/`
+
+```bash
+node 30_conclusions/applied-labs/r19-t008/check.mjs
+```
 
 # Exercises
 

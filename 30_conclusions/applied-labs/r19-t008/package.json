@@ -1,0 +1,16 @@
+{
+  "name": "r19-t008-task-board-lab",
+  "version": "1.0.0",
+  "description": "Day 30 Applied Lab R19-T008 — task board failure and recovery lab",
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

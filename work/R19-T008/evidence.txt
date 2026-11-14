@@ -1,0 +1,81 @@
+R19-T008 — Day 30: Capstone Integration — Failure-and-Recovery Lab
+Evidence File
+=============================================================================
+
+Tool Versions
+-------------
+Node.js   : v26.13.0
+npm       : 11.20.0
+Playwright: 1.65.0 (Chromium v1254)
+
+Automated Test Command
+----------------------
+node 30_conclusions/applied-labs/r19-t008/check.mjs
+
+Full Terminal Execution Transcript
+------------------------------------
+Server listening on http://127.0.0.1:58950
+  ✓ PASS: initial board renders 2 tasks (actual: 2)
+  ✓ PASS: blank task submission is rejected
+  ✓ PASS: rejected blank submission does not add a task
+  ✓ PASS: valid task adds one new item (actual: 3)
+  ✓ PASS: new valid task is appended to the board
+  ✓ PASS: task completion keeps the board stable
+  ✓ PASS: active filter shows 1 active item (actual: 1)
+  ✓ PASS: completed filter shows completed items (actual: 2)
+  ✓ PASS: completed filter exposes completed tasks
+  ✓ PASS: zero console errors (got 0)
+  ✓ PASS: zero unhandled page errors (got 0)
+📸 Screenshot saved → /Users/hard/SNAI_internal/work/R19-T008/screenshot.png
+Console errors: 0
+Page errors: 0
+
+--------------------------------------------------
+
+✅ All assertions passed. Exit 0.
+
+Expected vs Actual Verification Points
+----------------------------------------
+1. Initial board renders 2 fixture tasks
+   Expected : 2 tasks visible
+   Actual   : 2 ✓
+
+2. Blank task submission is rejected
+   Expected : error message contains "Task cannot be blank."
+   Actual   : shown ✓
+
+3. Rejected blank does NOT add a task
+   Expected : task count still 2 after blank submit
+   Actual   : 2 ✓
+
+4. Valid task "Review PR" is added
+   Expected : task count becomes 3
+   Actual   : 3 ✓
+
+5. New task text is correct
+   Expected : "Review PR"
+   Actual   : "Review PR" ✓
+
+6. Completing task-1 keeps board stable
+   Expected : board still shows 3 tasks (all filter)
+   Actual   : 3 ✓
+
+7. Active filter shows exactly 1 active item
+   Expected : 1
+   Actual   : 1 ✓
+
+8. Completed filter shows completed items
+   Expected : >= 1 completed item
+   Actual   : 2 ✓
+
+9. "Ship demo" is visible in completed filter
+   Expected : present
+   Actual   : present ✓
+
+10. Zero console errors
+    Expected : 0
+    Actual   : 0 ✓
+
+11. Zero unhandled page errors
+    Expected : 0
+    Actual   : 0 ✓
