@@ -1731,6 +1731,13 @@ Now, you know about React router. Build your portfolio with React and implement 
 
 coming
 
+### Added Activity: Applied Lab R19-T003 — Route Behavior & Reference Comparison
+- **Lab Location:** [applied-labs/r19-t003](./applied-labs/r19-t003/)
+- **Description:** Implements local home, detail, and not-found routes with accessible link components. Navigating to a known item ID displays its specific detail view; unknown IDs or invalid routes render an accessible 404 Not Found view; browser Back cleanly restores the previous view.
+- **Reference Table Comparison:** All route transitions are compared against an independent reference truth table (`ROUTE_REFERENCE_TABLE`) mapping paths (`/`, `/item/:id`, `/unknown`) to expected view types, headings, and description content.
+- **Inputs:** Navigation clicks on accessible links, direct path requests, and browser Back (`page.goBack()`) history transitions.
+- **Expected Result:** Known ID paths render matching detail headings/descriptions; unknown paths render Not Found; browser Back restores the previous route view without errors.
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 16](../16_Higher_Order_Component/16_higher_order_component.md) | [Day 18 >>](../18_projects/18_projects.md)
