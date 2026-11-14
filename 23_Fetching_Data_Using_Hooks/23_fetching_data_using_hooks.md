@@ -94,6 +94,16 @@ ReactDOM.render(<App />, rootElement)
 
 # Exercises
 
+### Added Activity: Applied Lab R19-T004 — Fetch Hook Cancellation & State Invariant Lab
+- **Lab Location:** [applied-labs/r19-t004](./applied-labs/r19-t004/)
+- **Description:** Implements `useCancellableFetch`, a custom hook managing async data subscriptions with explicit stale-response discarding and lifecycle cancellation. Ensures race conditions between slow and fast queries never leak obsolete data into the UI.
+- **State Invariants:**
+  1. Switching query keys immediately resets `loading` to `true` and clears any existing `error`.
+  2. Late responses from superseded keys are safely ignored (`activeKeyRef.current === key`).
+  3. Rendered data strictly matches the active key.
+- **Inputs:** Fast, slow, and error-producing query keys (`Key A` = 300ms, `Key B` = 50ms, `Key C` = error).
+- **Expected Result:** When Key A is followed rapidly by Key B, Key B resolves and displays first. When Key A subsequently resolves, its stale response is discarded without overwriting Key B.
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 22](../22_Form_Using_Hooks/22_form_using_hooks.md) | [Day 24>>](../24_projects/24_projects.md)

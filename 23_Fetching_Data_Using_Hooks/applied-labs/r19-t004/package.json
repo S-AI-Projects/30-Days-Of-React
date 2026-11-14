@@ -1,0 +1,17 @@
+{
+  "name": "lab-r19-t004-fetch-cancellation-invariant",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Applied Lab R19-T004: Fetch hook cancellation and stale response handling",
+  "scripts": {
+    "test": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
