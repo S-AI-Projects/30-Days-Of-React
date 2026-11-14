@@ -1,0 +1,133 @@
+{
+  "task": "R19-T022",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.0",
+    "chromium": "158.0.8127.18"
+  },
+  "steps": [
+    {
+      "name": "Page renders",
+      "input": "open /",
+      "expected": "heading \"Rating props lab\"",
+      "actual": "Rating props lab",
+      "pass": true
+    },
+    {
+      "name": "Contract: value=3, max=5",
+      "input": "value=3, max=5",
+      "expected": "3/5 (ok)",
+      "actual": "3/5 (ok)",
+      "pass": true
+    },
+    {
+      "name": "Contract: value=4 (default max 5)",
+      "input": "value=4 (default max 5)",
+      "expected": "4/5 (ok)",
+      "actual": "4/5 (ok)",
+      "pass": true
+    },
+    {
+      "name": "Empty input: no value",
+      "input": "no value",
+      "expected": "Not rated (empty)",
+      "actual": "Not rated (empty)",
+      "pass": true
+    },
+    {
+      "name": "Empty input: value=null",
+      "input": "value=null",
+      "expected": "Not rated (empty)",
+      "actual": "Not rated (empty)",
+      "pass": true
+    },
+    {
+      "name": "Empty input: value=\"\"",
+      "input": "value=\"\"",
+      "expected": "Not rated (empty)",
+      "actual": "Not rated (empty)",
+      "pass": true
+    },
+    {
+      "name": "Boundary (0 <= value <= max, inclusive): value=0, max=5",
+      "input": "value=0, max=5",
+      "expected": "0/5 (ok)",
+      "actual": "0/5 (ok)",
+      "pass": true
+    },
+    {
+      "name": "Boundary (0 <= value <= max, inclusive): value=5, max=5",
+      "input": "value=5, max=5",
+      "expected": "5/5 (ok)",
+      "actual": "5/5 (ok)",
+      "pass": true
+    },
+    {
+      "name": "Boundary (0 <= value <= max, inclusive): value=1, max=1",
+      "input": "value=1, max=1",
+      "expected": "1/1 (ok)",
+      "actual": "1/1 (ok)",
+      "pass": true
+    },
+    {
+      "name": "Boundary (0 <= value <= max, inclusive): value=5.1, max=5",
+      "input": "value=5.1, max=5",
+      "expected": "Out of range (out-of-range)",
+      "actual": "Out of range (out-of-range)",
+      "pass": true
+    },
+    {
+      "name": "Boundary (0 <= value <= max, inclusive): value=6, max=5",
+      "input": "value=6, max=5",
+      "expected": "Out of range (out-of-range)",
+      "actual": "Out of range (out-of-range)",
+      "pass": true
+    },
+    {
+      "name": "Boundary (0 <= value <= max, inclusive): value=-1, max=5",
+      "input": "value=-1, max=5",
+      "expected": "Out of range (out-of-range)",
+      "actual": "Out of range (out-of-range)",
+      "pass": true
+    },
+    {
+      "name": "Invalid input: value=NaN",
+      "input": "value=NaN",
+      "expected": "Invalid value (invalid-value)",
+      "actual": "Invalid value (invalid-value)",
+      "pass": true
+    },
+    {
+      "name": "Invalid input: value=\"3\"",
+      "input": "value=\"3\"",
+      "expected": "Invalid value (invalid-value)",
+      "actual": "Invalid value (invalid-value)",
+      "pass": true
+    },
+    {
+      "name": "Invalid input: value=3, max=0",
+      "input": "value=3, max=0",
+      "expected": "Invalid max (invalid-max)",
+      "actual": "Invalid max (invalid-max)",
+      "pass": true
+    },
+    {
+      "name": "Invalid input: value=1, max=2.5",
+      "input": "value=1, max=2.5",
+      "expected": "Invalid max (invalid-max)",
+      "actual": "Invalid max (invalid-max)",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "whole page",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}

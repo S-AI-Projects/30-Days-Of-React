@@ -1094,6 +1094,16 @@ We will cover propTypes in detail in other sections.
 
 ![User Card](../images/user_card_design_jsx.png)
 
+## Added activity: rating props boundary (R19-T022)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t022](./applied-labs/r19-t022/README.md)
+- Inputs: `value` and `max` props, such as `value=3, max=5`, a missing value, values at and just beyond the limits, and an invalid `max`.
+- Expected result: `value=3, max=5` shows `3/5`, a missing value shows `Not rated`, and invalid bounds show an explicit message.
+- Boundary condition: a rating is valid when `max` is a whole number of at least 1 and `0 <= value <= max`. Both ends are inclusive, so `0/5` and `5/5` are valid, while `-1` and `5.1` show `Out of range`.
+- Check: `node 05_Day_Props/applied-labs/r19-t022/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 4](../04_Day_Component/04_components.md) | [Day 6 >>](../06_Day_Map_List_Keys/06_map_list_keys.md)
