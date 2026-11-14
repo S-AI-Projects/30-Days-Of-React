@@ -9,9 +9,14 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
-import { chromium } from 'playwright';
+import { createRequire } from 'node:module';
 
+// Resolve playwright from the repo root node_modules regardless of CWD
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(__dirname, '../../..');
+const require = createRequire(path.join(repoRoot, 'package.json'));
+const { chromium } = require('playwright');
+
 const SCREENSHOT_PATH = path.resolve(__dirname, '../../../work/R19-T008/screenshot.png');
 
 const HTML = `<!DOCTYPE html>
