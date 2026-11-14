@@ -1,0 +1,17 @@
+{
+  "name": "lab-r19-t002-ref-focus-management",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Applied Lab R19-T002: Ref focus management and boundary behavior",
+  "scripts": {
+    "test": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

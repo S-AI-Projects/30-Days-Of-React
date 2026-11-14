@@ -139,6 +139,13 @@ ReactDOM.render(<App />, rootElement
 
 1. Develop the following [application](https://www.30daysofreact.com/day-27/hexadecimal-colors). The application generates 27 hexadecimal colors by default. If the generate button get clicked it will generate another new 27 hexadecimal colors.
 
+### Added Activity: Applied Lab R19-T002 — Ref Focus Management & Boundary Lab
+- **Lab Location:** [applied-labs/r19-t002](./applied-labs/r19-t002/)
+- **Description:** Demonstrates DOM ref focus transitions in an accessible dialog workflow. Uses `useRef` to programmatically focus a labelled input on open, and restores focus to the invoking trigger button on dismissal. Uncontrolled text entry guarantees zero re-renders.
+- **Boundary Condition:** The submission handler validates against empty and whitespace-only entries (`trimmed.length === 0`). When this boundary condition is breached, the dialog stays open, displays an inline validation alert (`Input cannot be empty. Please provide valid text.`), and re-focuses the input element via ref so the user can immediately correct the input.
+- **Inputs:** Trigger click events, modal close requests, typing into the uncontrolled input field, and form submissions (both invalid empty inputs and valid strings).
+- **Expected Result:** Dialog open moves focus to `#feedback-input`. Normal typing increments 0 re-renders. Empty submission triggers boundary error without closing dialog and retains input focus. Valid submission commits text, closes dialog, and restores focus to `#trigger-btn`.
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 25](../25_Custom_Hooks/25_custom_hooks.md) | [Day 27>>]()

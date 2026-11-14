@@ -1,0 +1,64 @@
+# Work Evidence: Applied Lab R19-T002
+
+## Task Information
+- Task ID: R19-T002
+- Issue: https://github.com/S-AI-Projects/30-Days-Of-React/issues/7
+- Student: Hardik Aggarwal
+- Branch: student/e26b07f0663/R19-T002
+- Date: 2026-11-14
+
+## Tool Versions
+- Node.js: v26.13.0
+- npm: 11.20.0
+- Playwright: ^1.49.0
+- Chromium: v1254 (Chrome for Testing 158.0.8127.18)
+- React: ^18.3.1
+- ReactDOM: ^18.3.1
+
+## Automated Test Command
+```bash
+node 27_Ref/applied-labs/r19-t002/check.mjs
+```
+
+## Execution Log
+```
+--- Running Playwright Check for R19-T002 (Ref Focus & Boundary) ---
+[PASS] Ephemeral local test server listening on http://127.0.0.1:57540
+[PASS] Initial state verified: dialog panel is closed
+[PASS] Opening dialog moved focus to labelled input
+[PASS] Typing caused zero re-renders (render count remained 2)
+[PASS] Boundary condition verified: empty input rejected, error displayed, focus retained on input
+[PASS] Whitespace-only input boundary verified
+[PASS] UI screenshot captured at work/R19-T002/screenshot.png
+[PASS] Closing dialog restored focus to trigger button
+[PASS] Valid submission closed dialog, recorded value, and restored focus to trigger
+[PASS] Zero console errors or unhandled page exceptions detected
+✅ ALL CONTRACT ASSERTIONS PASSED
+```
+
+## Contract Verification Summary
+1. Initial Render: Dialog panel is closed; trigger button is visible.
+   - Expected: Dialog count = 0.
+   - Actual: MATCH.
+2. Focus on Open: Trigger button clicked.
+   - Expected: Dialog opens and browser focus transfers to `#feedback-input`.
+   - Actual: MATCH (`document.activeElement === inputRef.current`).
+3. Typing Isolation Invariant: Text typed into uncontrolled input.
+   - Expected: Zero extraneous re-renders (`renderCountBefore === renderCountAfter`).
+   - Actual: MATCH (render count remained 2).
+4. Boundary Condition (Empty Input): Empty input submitted.
+   - Expected: Validation error `Input cannot be empty. Please provide valid text.` displayed; dialog stays open; focus retained on input.
+   - Actual: MATCH.
+5. Boundary Condition (Whitespace Only): Input `     ` submitted.
+   - Expected: Validation error remains visible; dialog stays open.
+   - Actual: MATCH.
+6. Focus Restoration on Close: Close button clicked.
+   - Expected: Dialog dismissed; browser focus restores to `#trigger-btn`.
+   - Actual: MATCH (`document.activeElement === triggerRef.current`).
+7. Valid Submission Recovery: Valid feedback submitted.
+   - Expected: Dialog dismissed; value persisted; focus restored to trigger.
+   - Actual: MATCH.
+8. Console Invariant: Page error and console error tracking.
+   - Expected: 0 errors.
+   - Actual: 0 errors detected.
+9. UI Artifact: Screenshot captured and saved to `work/R19-T002/screenshot.png`.
