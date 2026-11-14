@@ -484,6 +484,29 @@ ReactDOM.render(<HexaColor />, rootElement)
 
 # Exercises: Components
 
+### Added Activity: Applied Lab R19-T009 — Component Reuse Input-Scale Experiment
+
+**Location:** `04_Day_Components/applied-labs/r19-t009/`
+
+**Description:**  
+This applied lab implements a reusable `StatusBadge` component capable of presenting `pending`, `success`, `error`, and fallback states for unrecognized values. The experiment tests bounded input scaling across 5, 20, and 50 rendered items, verifying badge text, status styling, and operational render counts without imposing brittle execution time thresholds.
+
+**Inputs:**
+- Click **Scale: 5** → renders 5 status badges with initial state.
+- Click **Scale: 20** → dynamically expands the fixture board to 20 badges.
+- Click **Scale: 50** → expands to 50 badges.
+
+**Expected Results:**
+- Reusable badge handles pending, success, error, and explicit unknown fallback gracefully.
+- Badge and operation count metrics accurately reflect DOM size and render count.
+- Zero console errors and zero unhandled page errors.
+
+**Run the check:**
+```bash
+node 04_Day_Components/applied-labs/r19-t009/check.mjs
+```
+
+
 ## Exercises: Level 1
 
 1. What is the difference between a regular function and an arrow function?

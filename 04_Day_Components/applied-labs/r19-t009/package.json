@@ -1,0 +1,16 @@
+{
+  "name": "r19-t009-component-reuse-scale",
+  "version": "1.0.0",
+  "description": "Day 4 Applied Lab R19-T009 — component reuse input-scale experiment",
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
