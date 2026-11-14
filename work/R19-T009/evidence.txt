@@ -1,0 +1,72 @@
+R19-T009 — Day 4: Component Reuse — Input-Scale Experiment
+Evidence File
+=============================================================================
+
+Tool Versions
+-------------
+Node.js   : v26.13.0
+npm       : 11.20.0
+Playwright: 1.65.0 (Chromium v1254)
+
+Automated Test Command
+----------------------
+node 04_Day_Components/applied-labs/r19-t009/check.mjs
+
+Full Terminal Execution Transcript
+------------------------------------
+Server listening on http://127.0.0.1:59070
+  ✓ PASS: scale 5 renders exactly 5 badges (actual: 5)
+  ✓ PASS: initial operation count is 1 (actual: 1)
+  ✓ PASS: contains pending badge
+  ✓ PASS: contains success badge
+  ✓ PASS: contains error badge
+  ✓ PASS: contains unknown badge
+  ✓ PASS: contains custom fallback badge
+  ✓ PASS: unknown status receives fallback treatment with rendered text
+  ✓ PASS: scale 20 renders exactly 20 badges (actual: 20)
+  ✓ PASS: operation count is 2 after scaling to 20 (actual: 2)
+  ✓ PASS: scale 50 renders exactly 50 badges (actual: 50)
+  ✓ PASS: operation count is 3 after scaling to 50 (actual: 3)
+  ✓ PASS: zero console errors (got 0)
+  ✓ PASS: zero unhandled page errors (got 0)
+📸 Screenshot saved → /Users/hard/SNAI_internal/work/R19-T009/screenshot.png
+Console errors: 0
+Page errors: 0
+
+--------------------------------------------------
+
+✅ All assertions passed. Exit 0.
+
+Expected vs Actual Verification Points
+----------------------------------------
+1. Initial Scale: 5 badges rendered
+   Expected : 5 badges
+   Actual   : 5 ✓
+
+2. Initial operation count
+   Expected : 1
+   Actual   : 1 ✓
+
+3. Badge status coverage
+   Expected : pending, success, error, unknown, and custom fallback present
+   Actual   : all present with distinct styling and visible text ✓
+
+4. Explicit fallback for unknown status
+   Expected : Fallback styling & text applied without breaking layout
+   Actual   : fallback applied with visible text ✓
+
+5. Scale: 20 badges rendered
+   Expected : 20 badges, operation count = 2
+   Actual   : 20 badges, operation count = 2 ✓
+
+6. Scale: 50 badges rendered
+   Expected : 50 badges, operation count = 3
+   Actual   : 50 badges, operation count = 3 ✓
+
+7. Zero console errors
+   Expected : 0
+   Actual   : 0 ✓
+
+8. Zero unhandled page errors
+   Expected : 0
+   Actual   : 0 ✓
