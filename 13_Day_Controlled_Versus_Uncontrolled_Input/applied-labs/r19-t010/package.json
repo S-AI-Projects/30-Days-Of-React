@@ -1,0 +1,16 @@
+{
+  "name": "r19-t010-lifecycle-request-cleanup",
+  "version": "1.0.0",
+  "description": "Day 13 Applied Lab R19-T010 — lifecycle request cleanup regression-focused lab",
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

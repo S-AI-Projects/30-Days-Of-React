@@ -1,0 +1,61 @@
+R19-T010 — Day 13: Lifecycle Request Cleanup — Regression-Focused Lab
+Evidence File
+=============================================================================
+
+Tool Versions
+-------------
+Node.js   : v26.13.0
+npm       : 11.20.0
+Playwright: 1.65.0 (Chromium v1254)
+
+Automated Test Command
+----------------------
+node 13_Day_Controlled_Versus_Uncontrolled_Input/applied-labs/r19-t010/check.mjs
+
+Full Terminal Execution Transcript
+------------------------------------
+Server listening on http://127.0.0.1:59127
+  ✓ PASS: initial load resolves to ALPHA (actual: Result: Profile data for ALPHA)
+  ✓ PASS: fast request BETA resolves quickly
+  ✓ PASS: cleanup prevented stale ALPHA from overwriting BETA (actual: Result: Profile data for BETA)
+  ✓ PASS: component successfully unmounted
+  ✓ PASS: zero console errors after unmount (got 0)
+  ✓ PASS: zero unhandled page errors after unmount (got 0)
+  ✓ PASS: mutant confirmed: omitting cleanup guard allows stale ALPHA to overwrite newer BETA (result: Result: Profile data for ALPHA)
+📸 Screenshot saved → /Users/hard/SNAI_internal/work/R19-T010/screenshot.png
+Console errors: 0
+Page errors: 0
+
+--------------------------------------------------
+
+✅ All assertions passed. Exit 0.
+
+Expected vs Actual Verification Points
+----------------------------------------
+1. Initial load (alpha)
+   Expected : resolves to "Profile data for ALPHA"
+   Actual   : "Profile data for ALPHA" ✓
+
+2. Fast request (beta)
+   Expected : resolves quickly to "Profile data for BETA"
+   Actual   : "Profile data for BETA" ✓
+
+3. Race condition prevention (decisive cleanup invariant)
+   Expected : slow ALPHA completing later does NOT overwrite newer BETA
+   Actual   : state remains "Profile data for BETA" ✓
+
+4. Component unmount during in-flight request
+   Expected : unmount cleanly without exceptions
+   Actual   : unmounted cleanly, 0 errors ✓
+
+5. Zero console errors after unmount
+   Expected : 0
+   Actual   : 0 ✓
+
+6. Zero unhandled page errors after unmount
+   Expected : 0
+   Actual   : 0 ✓
+
+7. Mutant sensitivity test
+   Expected : without cleanup guard, stale ALPHA overwrites BETA (detecting regression)
+   Actual   : mutant caught and confirmed ✓
