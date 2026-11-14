@@ -1,0 +1,16 @@
+{
+  "name": "r19-t006-conditional-state-lab",
+  "version": "1.0.0",
+  "description": "Day 09 Applied Lab R19-T006 — conditional rendering explicit state lab",
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
