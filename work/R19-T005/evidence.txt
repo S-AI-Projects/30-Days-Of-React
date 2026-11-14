@@ -1,0 +1,78 @@
+R19-T005 — Day 27: Ref Focus Management — Deterministic Fixture Lab
+Evidence File
+=============================================================================
+
+Tool Versions
+-------------
+Node.js   : v26.13.0
+npm       : 11.20.0
+Playwright: 1.65.0 (Chromium v1254)
+
+Automated Test Command
+----------------------
+node 27_Ref/applied-labs/r19-t005/check.mjs
+
+Full Terminal Execution Transcript
+-----------------------------------
+Server listening on http://127.0.0.1:58151
+
+── Run Run-1 ──
+  ✓ PASS: Run-1: trigger button #open-btn is in the DOM
+  ✓ PASS: Run-1: focus is on #dialog-input after open
+  ✓ PASS: Run-1: typing does NOT trigger ref-driven re-renders (count stays at 2)
+  ✓ PASS: Run-1: focus restored to #open-btn after close
+  ✓ PASS: Run-1: render count incremented by 2 (or 4 in StrictMode) for open+close (got +2)
+  ✓ PASS: Run-1: zero console errors (got 0)
+  ✓ PASS: Run-1: zero unhandled page errors (got 0)
+  📸 Screenshot saved → /Users/hard/SNAI_internal/work/R19-T005/screenshot.png
+
+── Run Run-2 ──
+  ✓ PASS: Run-2: trigger button #open-btn is in the DOM
+  ✓ PASS: Run-2: focus is on #dialog-input after open
+  ✓ PASS: Run-2: typing does NOT trigger ref-driven re-renders (count stays at 2)
+  ✓ PASS: Run-2: focus restored to #open-btn after close
+  ✓ PASS: Run-2: render count incremented by 2 (or 4 in StrictMode) for open+close (got +2)
+  ✓ PASS: Run-2: zero console errors (got 0)
+  ✓ PASS: Run-2: zero unhandled page errors (got 0)
+
+── Determinism check ──
+  ✓ PASS: Run-1 and Run-2 agree on "focusedId" ("dialog-input")
+  ✓ PASS: Run-1 and Run-2 agree on "focusedIdAfterClose" ("open-btn")
+  ✓ PASS: Run-1 and Run-2 agree on "renderDelta" (2)
+  ✓ PASS: Run-1 and Run-2 agree on "consoleErrors" (0)
+  ✓ PASS: Run-1 and Run-2 agree on "pageErrors" (0)
+  ✓ PASS: Run-1 and Run-2 agree on "typingRendered" (true)
+
+──────────────────────────────────────────────────
+
+✅ All assertions passed on both runs. Exit 0.
+
+Expected vs Actual Verification Points
+----------------------------------------
+1. Focus on #dialog-input after open
+   Expected : document.activeElement.id === "dialog-input"
+   Actual   : "dialog-input" ✓
+
+2. No re-renders on typing
+   Expected : render counter unchanged after fill
+   Actual   : count stayed at 2 (no increment) ✓
+
+3. Focus restored to #open-btn after close
+   Expected : document.activeElement.id === "open-btn"
+   Actual   : "open-btn" ✓
+
+4. Render delta for open+close = 2
+   Expected : 2 state updates (one for setIsOpen(true), one for setIsOpen(false))
+   Actual   : +2 ✓
+
+5. Determinism: Run-1 === Run-2 on all 6 measured values
+   Expected : all 6 keys agree
+   Actual   : all 6 agree ✓
+
+6. Zero console errors (both runs)
+   Expected : 0
+   Actual   : 0 ✓
+
+7. Zero unhandled page errors (both runs)
+   Expected : 0
+   Actual   : 0 ✓

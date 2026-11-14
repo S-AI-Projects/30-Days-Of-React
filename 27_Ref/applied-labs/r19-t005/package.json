@@ -1,0 +1,16 @@
+{
+  "name": "r19-t005-ref-focus-deterministic",
+  "version": "1.0.0",
+  "description": "Day 27 Applied Lab R19-T005 — ref focus management deterministic fixture lab",
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
