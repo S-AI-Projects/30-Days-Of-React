@@ -518,3 +518,8 @@ ReactDOM.render(<HexaColor />, rootElement)
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 3](../30-Days-Of-React/03_Day_Setting_Up/03_setting_up.md) | [Day 5 >>](../05_Day_Props/05_props.md)
+
+
+## Added activities
+
+- [Status badge — reusable component with an explicit unknown-status fallback](applied-labs/r19-t032/README.md) (added activity, R19-T032): the same `StatusBadge` component rendered with `pending`, `success`, `error`, an unknown status, an empty status and no status. Expected result: the three known statuses show "Pending…", "Success" and "Error"; every other input shows the fallback "Unknown status". The boundary is exact, case-sensitive matching against `pending`, `success`, `error` — anything outside that set is unknown.
