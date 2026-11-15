@@ -40,3 +40,8 @@ Coming ...
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 27](../27_Ref/27_ref.md) | [Day 29>>]()
+
+
+## Added activities
+
+- [Selectable list — testable component contract](applied-labs/r19-t034/README.md) (added activity, R19-T034): a controlled `SelectableList` with three items (one disabled) plus an empty list. Expected result: after every operation — click, disabled click, keyboard selection, arrow-key focus, controlled update, controlled clear — the readout, the `aria-selected` marks and the parent state agree, and the disabled item is never selected.
