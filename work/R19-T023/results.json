@@ -1,0 +1,151 @@
+{
+  "task": "R19-T023",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "expectedTable": [
+    {
+      "action": "click Increment",
+      "expected": 1
+    },
+    {
+      "action": "press +",
+      "expected": 2
+    },
+    {
+      "action": "press a (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press Escape (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press ArrowUp (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press = (unshifted + key, irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press - (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "hold + (auto-repeat counts once)",
+      "expected": 3
+    },
+    {
+      "action": "click Increment",
+      "expected": 4
+    },
+    {
+      "action": "press +",
+      "expected": 5
+    },
+    {
+      "action": "Enter on the focused button (a click)",
+      "expected": 6
+    }
+  ],
+  "steps": [
+    {
+      "name": "Page renders with count 0",
+      "input": "open /",
+      "expected": "heading and count \"0\"",
+      "actual": "0",
+      "pass": true
+    },
+    {
+      "name": "Step 1: click Increment",
+      "input": "click Increment",
+      "expected": "count 1 (reference model: 1)",
+      "actual": "count 1",
+      "pass": true
+    },
+    {
+      "name": "Step 2: press +",
+      "input": "press +",
+      "expected": "count 2 (reference model: 2)",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Step 3: press a (irrelevant)",
+      "input": "press a (irrelevant)",
+      "expected": "count 2 (reference model: 2)",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Step 4: press Escape (irrelevant)",
+      "input": "press Escape (irrelevant)",
+      "expected": "count 2 (reference model: 2)",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Step 5: press ArrowUp (irrelevant)",
+      "input": "press ArrowUp (irrelevant)",
+      "expected": "count 2 (reference model: 2)",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Step 6: press = (unshifted + key, irrelevant)",
+      "input": "press = (unshifted + key, irrelevant)",
+      "expected": "count 2 (reference model: 2)",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Step 7: press - (irrelevant)",
+      "input": "press - (irrelevant)",
+      "expected": "count 2 (reference model: 2)",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Step 8: hold + (auto-repeat counts once)",
+      "input": "hold + (auto-repeat counts once)",
+      "expected": "count 3 (reference model: 3)",
+      "actual": "count 3",
+      "pass": true
+    },
+    {
+      "name": "Step 9: click Increment",
+      "input": "click Increment",
+      "expected": "count 4 (reference model: 4)",
+      "actual": "count 4",
+      "pass": true
+    },
+    {
+      "name": "Step 10: press +",
+      "input": "press +",
+      "expected": "count 5 (reference model: 5)",
+      "actual": "count 5",
+      "pass": true
+    },
+    {
+      "name": "Step 11: Enter on the focused button (a click)",
+      "input": "Enter on the focused button (a click)",
+      "expected": "count 6 (reference model: 6)",
+      "actual": "count 6",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "whole run",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}

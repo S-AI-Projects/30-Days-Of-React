@@ -618,6 +618,16 @@ Well done. Time to do some exercises for your brain and muscles.
 
 Coming
 
+## Added activity: button and keyboard shortcut (R19-T023)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t023](./applied-labs/r19-t023/README.md)
+- Inputs: a click on the Increment button, the `+` key, other keys such as `a`, `Escape`, `=` and `-`, a held `+` key, and Enter on the focused button.
+- Expected result: a click and `+` each add one to the count, irrelevant keys leave it unchanged, and a held key counts once.
+- Reference comparison: the check compares the page against a hand-written expected-result table and a small independent reference model.
+- Check: `node 10_React_Project_Folder_Structure/applied-labs/r19-t023/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 9](../09_Day_Conditional_Rendering/09_conditional_rendering.md) | [Day 11 >>](../11_Day_Events/11_events.md)
