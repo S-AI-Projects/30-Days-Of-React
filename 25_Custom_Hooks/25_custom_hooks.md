@@ -226,3 +226,8 @@ Note: Continue building the countries application
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 24](../24_projects/24_projects.md) | [Day 26>>](../26_Context/26_context.md)
+
+
+## Added activities
+
+- [Toggle panels — custom-hook reuse with a deterministic fixture](applied-labs/r19-t035/README.md) (added activity, R19-T035): one `useToggle` hook (`[value, toggle, setValue, reset]`) used by two independent panels. Expected result: toggling panel A leaves B unchanged and vice versa, set and reset behave explicitly, and the same operation sequence run twice in two isolated contexts produces identical states matching the fixture in `fixture.mjs`.
