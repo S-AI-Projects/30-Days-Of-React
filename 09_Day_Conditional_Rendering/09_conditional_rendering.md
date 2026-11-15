@@ -780,3 +780,8 @@ Now it is time to express your thoughts about the Author and 30DaysOfReact. You 
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 8](../08_Day_States/08_states.md) | [Day 10 >>](../10_React_Project_Folder_Structure/10_react_project_folder_structure.md)
+
+
+## Added activities
+
+- [Result views — conditional rendering with an independent reference table](applied-labs/r19-t033/README.md) (added activity, R19-T033): the same `ResultView` component rendered with `loading`, `empty`, `success`, `error` and an unknown state. Expected result: each state renders exactly one view — "Loading…", "No results found.", a three-item result list, "Something went wrong.", or "Unknown view." — matching the expected-result table in `expected.mjs`.
