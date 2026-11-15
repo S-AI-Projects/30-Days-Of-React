@@ -28,3 +28,7 @@
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 23](../23_Fetching_Data_Using_Hooks/23_fetching_data_using_hooks.md) | [Day 25>>](../25_Custom_Hooks/25_custom_hooks.md)
+
+## Added activities
+
+- [Hook composition — form state and derived validation](applied-labs/r19-t031/README.md): a small profile form (name + email). Validity is derived from the field values, so editing a field updates it and reset clears it. Run it with `node 24_projects/applied-labs/r19-t031/check.mjs` from the repository root.
