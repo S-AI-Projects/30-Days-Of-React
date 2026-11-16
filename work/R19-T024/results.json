@@ -1,0 +1,221 @@
+{
+  "task": "R19-T024",
+  "invariant": "a note is dirty if and only if its draft differs from its saved text",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "expectedTable": [
+    {
+      "operation": "initial state",
+      "dirty": [],
+      "selected": "groceries",
+      "editor": "milk, eggs"
+    },
+    {
+      "operation": "edit Groceries",
+      "dirty": [
+        "groceries"
+      ],
+      "selected": "groceries",
+      "editor": "milk, eggs, tea"
+    },
+    {
+      "operation": "select Ideas (selection changes no marker)",
+      "dirty": [
+        "groceries"
+      ],
+      "selected": "ideas",
+      "editor": "build a note editor"
+    },
+    {
+      "operation": "edit Ideas",
+      "dirty": [
+        "groceries",
+        "ideas"
+      ],
+      "selected": "ideas",
+      "editor": "build a note editor v2"
+    },
+    {
+      "operation": "save Ideas (clears only Ideas)",
+      "dirty": [
+        "groceries"
+      ],
+      "selected": "ideas",
+      "editor": "build a note editor v2"
+    },
+    {
+      "operation": "select Groceries (draft is kept)",
+      "dirty": [
+        "groceries"
+      ],
+      "selected": "groceries",
+      "editor": "milk, eggs, tea"
+    },
+    {
+      "operation": "edit Groceries back to its saved text",
+      "dirty": [],
+      "selected": "groceries",
+      "editor": "milk, eggs"
+    },
+    {
+      "operation": "edit Groceries to new text",
+      "dirty": [
+        "groceries"
+      ],
+      "selected": "groceries",
+      "editor": "milk"
+    },
+    {
+      "operation": "save Groceries",
+      "dirty": [],
+      "selected": "groceries",
+      "editor": "milk"
+    },
+    {
+      "operation": "save a clean note (no change)",
+      "dirty": [],
+      "selected": "groceries",
+      "editor": "milk"
+    },
+    {
+      "operation": "select To do",
+      "dirty": [],
+      "selected": "todo",
+      "editor": "write the check"
+    },
+    {
+      "operation": "edit To do to an empty draft",
+      "dirty": [
+        "todo"
+      ],
+      "selected": "todo",
+      "editor": ""
+    },
+    {
+      "operation": "save the empty To do note",
+      "dirty": [],
+      "selected": "todo",
+      "editor": ""
+    },
+    {
+      "operation": "select Groceries (saved text persisted)",
+      "dirty": [],
+      "selected": "groceries",
+      "editor": "milk"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Step 1: initial state",
+      "input": "initial state",
+      "expected": "dirty: [none]; selected: groceries; editor: \"milk, eggs\"",
+      "actual": "dirty: [none]; editor: \"milk, eggs\"",
+      "pass": true
+    },
+    {
+      "name": "Step 2: edit Groceries",
+      "input": "edit Groceries",
+      "expected": "dirty: [groceries]; selected: groceries; editor: \"milk, eggs, tea\"",
+      "actual": "dirty: [groceries]; editor: \"milk, eggs, tea\"",
+      "pass": true
+    },
+    {
+      "name": "Step 3: select Ideas (selection changes no marker)",
+      "input": "select Ideas (selection changes no marker)",
+      "expected": "dirty: [groceries]; selected: ideas; editor: \"build a note editor\"",
+      "actual": "dirty: [groceries]; editor: \"build a note editor\"",
+      "pass": true
+    },
+    {
+      "name": "Step 4: edit Ideas",
+      "input": "edit Ideas",
+      "expected": "dirty: [groceries, ideas]; selected: ideas; editor: \"build a note editor v2\"",
+      "actual": "dirty: [groceries, ideas]; editor: \"build a note editor v2\"",
+      "pass": true
+    },
+    {
+      "name": "Step 5: save Ideas (clears only Ideas)",
+      "input": "save Ideas (clears only Ideas)",
+      "expected": "dirty: [groceries]; selected: ideas; editor: \"build a note editor v2\"",
+      "actual": "dirty: [groceries]; editor: \"build a note editor v2\"",
+      "pass": true
+    },
+    {
+      "name": "Step 6: select Groceries (draft is kept)",
+      "input": "select Groceries (draft is kept)",
+      "expected": "dirty: [groceries]; selected: groceries; editor: \"milk, eggs, tea\"",
+      "actual": "dirty: [groceries]; editor: \"milk, eggs, tea\"",
+      "pass": true
+    },
+    {
+      "name": "Step 7: edit Groceries back to its saved text",
+      "input": "edit Groceries back to its saved text",
+      "expected": "dirty: [none]; selected: groceries; editor: \"milk, eggs\"",
+      "actual": "dirty: [none]; editor: \"milk, eggs\"",
+      "pass": true
+    },
+    {
+      "name": "Step 8: edit Groceries to new text",
+      "input": "edit Groceries to new text",
+      "expected": "dirty: [groceries]; selected: groceries; editor: \"milk\"",
+      "actual": "dirty: [groceries]; editor: \"milk\"",
+      "pass": true
+    },
+    {
+      "name": "Step 9: save Groceries",
+      "input": "save Groceries",
+      "expected": "dirty: [none]; selected: groceries; editor: \"milk\"",
+      "actual": "dirty: [none]; editor: \"milk\"",
+      "pass": true
+    },
+    {
+      "name": "Step 10: save a clean note (no change)",
+      "input": "save a clean note (no change)",
+      "expected": "dirty: [none]; selected: groceries; editor: \"milk\"",
+      "actual": "dirty: [none]; editor: \"milk\"",
+      "pass": true
+    },
+    {
+      "name": "Step 11: select To do",
+      "input": "select To do",
+      "expected": "dirty: [none]; selected: todo; editor: \"write the check\"",
+      "actual": "dirty: [none]; editor: \"write the check\"",
+      "pass": true
+    },
+    {
+      "name": "Step 12: edit To do to an empty draft",
+      "input": "edit To do to an empty draft",
+      "expected": "dirty: [todo]; selected: todo; editor: \"\"",
+      "actual": "dirty: [todo]; editor: \"\"",
+      "pass": true
+    },
+    {
+      "name": "Step 13: save the empty To do note",
+      "input": "save the empty To do note",
+      "expected": "dirty: [none]; selected: todo; editor: \"\"",
+      "actual": "dirty: [none]; editor: \"\"",
+      "pass": true
+    },
+    {
+      "name": "Step 14: select Groceries (saved text persisted)",
+      "input": "select Groceries (saved text persisted)",
+      "expected": "dirty: [none]; selected: groceries; editor: \"milk\"",
+      "actual": "dirty: [none]; editor: \"milk\"",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "whole run",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}

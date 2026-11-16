@@ -441,6 +441,16 @@ As you have seen, there is no much difference between fetch and axios. But I rec
 2. Which country has the highest number of cat breeds?
 3. Arrange countries in ascending order based on the number of cat breeds they have?
 
+## Added activity: note editor dirty state (R19-T024)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t024](./applied-labs/r19-t024/README.md)
+- Inputs: a sequence of edits, saves and note selections, including editing back to the saved text, saving a clean note and an empty draft.
+- Expected result: editing a note marks it dirty, saving clears the marker, and other notes stay unchanged.
+- Invariant: a note is dirty if and only if its draft differs from its saved text. The check verifies it after every operation against a hand-written table and an independent reference model.
+- Check: `node 18_Fetch_And_Axios/applied-labs/r19-t024/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 17](../17_React_Router/17_react_router.md) | [Day 19>>]()
