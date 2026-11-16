@@ -237,3 +237,8 @@ Coming
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 10](../10_React_Project_Folder_Structure/10_react_project_folder_structure.md) | [Day 12 >>](../12_Day_Forms/12_forms.md)
+
+
+## Added activities
+
+- [Contact form — controlled validation with one normalized payload](applied-labs/r19-t037/README.md) (added activity, R19-T037): a labelled name/email form with inline validation. Expected result: blank name or invalid email blocks submit (the button is disabled), and valid data produces one normalized payload — name trimmed, email trimmed and lowercased. The README traces the worked explanation from input through intermediate state to output.
