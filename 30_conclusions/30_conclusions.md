@@ -32,3 +32,8 @@ Now it is time to express your thoughts about the Author and 30DaysOfReact. You 
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 29](../29_explore/29_explore.md)
+
+
+## Added activities
+
+- [Tasks — capstone task board with a regression-focused test](applied-labs/r19-t040/README.md) (added activity, R19-T040): a fixture-backed board with add, complete and filter actions plus accessible feedback. Expected result: add `Buy milk` and `Read chapter 3`, complete the first, filter Completed — exactly one task remains, `Buy milk`; blank tasks are rejected with `Task title is required.`
