@@ -226,3 +226,8 @@ Note: Continue building the countries application
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 24](../24_projects/24_projects.md) | [Day 26>>](../26_Context/26_context.md)
+
+
+## Added activities
+
+- [Toggle panels — custom-hook reuse with failure and recovery](applied-labs/r19-t038/README.md) (added activity, R19-T038): the same `useToggle` hook (`[value, toggle, setValue, reset]`) used by two independent panels. Expected result: toggling panel A leaves B unchanged and vice versa, and a typed word that is not `on` or `off` shows an error without changing the panel — the next valid word recovers, with no restart of the example.
