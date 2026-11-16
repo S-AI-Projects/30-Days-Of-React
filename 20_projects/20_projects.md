@@ -36,3 +36,8 @@ Your result should look like this [demo](https://www.30daysofreact.com/day-20/ca
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 19](../19_projects/19_projects.md) | [Day 21>>]()
+
+
+## Added activities
+
+- [Cat gallery — pagination, retry and stale-response guard](applied-labs/r19-t036/README.md) (added activity, R19-T036): a fixture-backed cat gallery. Expected result: changing page replaces the records, a failed page 3 shows an error and retries successfully, and a slow page 1 response clicked just before page 2 never overwrites page 2. The page loading is extracted into `loadCatPage(page)` in `catPageLoader.js`.
