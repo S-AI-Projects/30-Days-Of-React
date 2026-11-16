@@ -449,3 +449,8 @@ Try to also learn how to use the package _classnames_ and _validator_.
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 14](../14_Day_Component_Life_Cycles/14_component_life_cycles.md) | [Day 16 >>]()
+
+
+## Added activities
+
+- [Badges — third-party boundary with an input-scale experiment](applied-labs/r19-t039/README.md) (added activity, R19-T039): a third-party display component wrapped behind `AppBadge` with the explicit `adaptBadgeProps` adapter. Expected result: known input renders its label, an empty label falls back to `No label`, the stub receives the exact adapted props, and lists of 1, 10 and 100 items render correctly with 1, 10 and 100 adapter calls — counts, not timings.
