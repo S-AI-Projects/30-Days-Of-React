@@ -33,6 +33,17 @@ Congratulations for making it to this far. Now, you have a solid understanding o
 Use the following two APIs, [all cats](https://api.thecatapi.com/v1/breeds) and [a single cat][https://api.thecatapi.com/v1/images/search?breed_id=abys]. In the single cat API, you can get url property which is the image of the cat.
 Your result should look like this [demo](https://www.30daysofreact.com/day-19/cats).
 
+## Added activity: cat-gallery filtering — reference comparison lab (R19-T041)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t041](./applied-labs/r19-t041/README.md)
+- Inputs: local cat fixture containing Nile (Egypt), Sakura (Japan), and Cairo (Egypt); origin filter values `""`, `"Egypt"`, `"Japan"`, `"Brazil"`, and clear.
+- Expected result: all 3 cats initially; exactly Nile and Cairo for Egypt; Sakura for Japan; empty-state message for Brazil; all 3 cats restored when filter is cleared.
+- Reference comparison: verified against an independent expected-result table and reference filter model.
+- Check: `node 19_projects/applied-labs/r19-t041/check.mjs`
+
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 18](../18_Fetch_And_Axios/18_fetch_axios.md) | [Day 20>>]()

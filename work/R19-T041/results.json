@@ -1,0 +1,216 @@
+{
+  "taskId": "R19-T041",
+  "timestamp": "2026-11-17T07:51:12.429Z",
+  "passed": true,
+  "command": "node 19_projects/applied-labs/r19-t041/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "vitePluginReact": "4.3.4",
+    "playwright": "1.49.1",
+    "chromium": "157.0.8103.79"
+  },
+  "fixture": [
+    {
+      "id": 1,
+      "name": "Nile",
+      "origin": "Egypt",
+      "temperament": "Alert, Agile, Intelligent",
+      "description": "A graceful spotted cat native to Egypt."
+    },
+    {
+      "id": 2,
+      "name": "Sakura",
+      "origin": "Japan",
+      "temperament": "Playful, Loving, Intelligent",
+      "description": "An iconic Japanese Bobtail with expressive features."
+    },
+    {
+      "id": 3,
+      "name": "Cairo",
+      "origin": "Egypt",
+      "temperament": "Curious, Loyal, Lively",
+      "description": "An affectionate Egyptian cat known for high agility."
+    }
+  ],
+  "expectedScenarios": [
+    {
+      "step": 1,
+      "name": "Initial state: all cats displayed",
+      "filterInput": "",
+      "expectedCount": 3,
+      "expectedCats": [
+        "Nile",
+        "Sakura",
+        "Cairo"
+      ],
+      "expectEmptyState": false,
+      "description": "Initial page load with no filter must show all 3 fixture cats."
+    },
+    {
+      "step": 2,
+      "name": "Filter by Egypt: Nile and Cairo",
+      "filterInput": "Egypt",
+      "expectedCount": 2,
+      "expectedCats": [
+        "Nile",
+        "Cairo"
+      ],
+      "expectEmptyState": false,
+      "description": "Filtering by Egypt must display exactly Nile and Cairo."
+    },
+    {
+      "step": 3,
+      "name": "Filter by Japan: Sakura",
+      "filterInput": "Japan",
+      "expectedCount": 1,
+      "expectedCats": [
+        "Sakura"
+      ],
+      "expectEmptyState": false,
+      "description": "Filtering by Japan must display exactly Sakura."
+    },
+    {
+      "step": 4,
+      "name": "Filter by Brazil: empty state",
+      "filterInput": "Brazil",
+      "expectedCount": 0,
+      "expectedCats": [],
+      "expectEmptyState": true,
+      "emptyMessage": "No cats found for origin \"Brazil\".",
+      "description": "Filtering by Brazil (not in fixture) must display the empty-state message."
+    },
+    {
+      "step": 5,
+      "name": "Clear filter: restore all cats",
+      "filterInput": "",
+      "expectedCount": 3,
+      "expectedCats": [
+        "Nile",
+        "Sakura",
+        "Cairo"
+      ],
+      "expectEmptyState": false,
+      "description": "Clearing the filter must restore all 3 fixture cats."
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Initial state: all cats displayed",
+      "filterInput": "",
+      "expected": {
+        "count": 3,
+        "cats": [
+          "Nile",
+          "Sakura",
+          "Cairo"
+        ],
+        "emptyState": false
+      },
+      "actual": {
+        "count": 3,
+        "cats": [
+          "Nile",
+          "Sakura",
+          "Cairo"
+        ],
+        "emptyState": false,
+        "emptyText": ""
+      },
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Filter by Egypt: Nile and Cairo",
+      "filterInput": "Egypt",
+      "expected": {
+        "count": 2,
+        "cats": [
+          "Nile",
+          "Cairo"
+        ],
+        "emptyState": false
+      },
+      "actual": {
+        "count": 2,
+        "cats": [
+          "Nile",
+          "Cairo"
+        ],
+        "emptyState": false,
+        "emptyText": ""
+      },
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Filter by Japan: Sakura",
+      "filterInput": "Japan",
+      "expected": {
+        "count": 1,
+        "cats": [
+          "Sakura"
+        ],
+        "emptyState": false
+      },
+      "actual": {
+        "count": 1,
+        "cats": [
+          "Sakura"
+        ],
+        "emptyState": false,
+        "emptyText": ""
+      },
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Filter by Brazil: empty state",
+      "filterInput": "Brazil",
+      "expected": {
+        "count": 0,
+        "cats": [],
+        "emptyState": true
+      },
+      "actual": {
+        "count": 0,
+        "cats": [],
+        "emptyState": true,
+        "emptyText": "No cats found for origin \"Brazil\".Try filtering by Egypt or Japan, or clear the filter."
+      },
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Clear filter: restore all cats",
+      "filterInput": "",
+      "expected": {
+        "count": 3,
+        "cats": [
+          "Nile",
+          "Sakura",
+          "Cairo"
+        ],
+        "emptyState": false
+      },
+      "actual": {
+        "count": 3,
+        "cats": [
+          "Nile",
+          "Sakura",
+          "Cairo"
+        ],
+        "emptyState": false,
+        "emptyText": ""
+      },
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}
