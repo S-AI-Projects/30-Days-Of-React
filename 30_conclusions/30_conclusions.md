@@ -29,6 +29,26 @@ Now it is time to express your thoughts about the Author and 30DaysOfReact. You 
 
 # Exercises
 
+## Added activity: fixture-backed task board with add, complete and filter actions (R19-T050)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t050](./applied-labs/r19-t050/README.md)
+- Topic & Context: Capstone synthesis of core React concepts: pure component architecture, controlled inputs, immutable list updates, filter derivations, and accessible live feedback regions.
+- Contract: Build a fixture-backed task board with add, complete, and filter actions plus accessible feedback. Add two tasks, complete one, filter completed: exactly one remains; invalid blank tasks are rejected.
+- Contribution Focus: Implement the required behavior from the explicit contract; show the smallest useful complete example.
+- Inputs & Actions:
+  - Initial fixture: default empty fixture (`DEFAULT_TASKS_FIXTURE`) or custom initial tasks prop.
+  - User submissions: task title inputs via controlled form.
+  - Interaction actions: Add task (`addTask`), Complete / toggle task (`handleToggleTask`), Filter selection (`handleFilterChange`: 'all' | 'active' | 'completed'), and Reset to fixture (`handleReset`).
+- Expected Result:
+  - Adding two tasks and completing one partitions the collection into 1 completed and 1 active task.
+  - Selecting "Completed" filter displays exactly one remaining task.
+  - Submitting blank or whitespace-only task titles rejects addition without modifying the task list, triggers `aria-invalid="true"`, and announces the error through an accessible alert live region (`role="alert"`).
+  - All valid actions provide polite screen-reader announcements (`role="status"`).
+  - Clean execution with zero console errors, zero page errors, and zero external network calls.
+- Check: `node 30_conclusions/applied-labs/r19-t050/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 29](../29_explore/29_explore.md)
