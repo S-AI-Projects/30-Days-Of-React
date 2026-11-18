@@ -618,6 +618,18 @@ Well done. Time to do some exercises for your brain and muscles.
 
 Coming
 
+## Added activity: button and keyboard shortcut state transition lab (R19-T042)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t042](./applied-labs/r19-t042/README.md)
+- Topic & Structure: Demonstrates Day 10 React project folder structure, component modularity (`components/CounterDisplay.jsx`, `components/IncrementButton.jsx`, `components/BoundaryStatus.jsx`, `components/ShortcutGuide.jsx`, `components/ManualInput.jsx`), named/default exports, and React Fragments.
+- Exact Boundary Condition: The state counter is strictly bounded to the interval `[0, 10]` (`MIN_COUNT = 0`, `MAX_COUNT = 10`). At `count === 10` (the exact boundary condition), further button clicks and documented shortcut keypresses are blocked from exceeding 10. The Increment button is disabled, and an explicit boundary alert announces that the maximum limit has been reached. A reset button restores count to 0.
+- Invalid & Empty-Input Behavior: Only the documented shortcut key (`ArrowUp`) triggers the increment transition. Irrelevant keys (`ArrowDown`, `a`, `x`, `Enter`, `Escape`, `Tab`, `Shift`, `Space`) and empty key events leave state completely unchanged. Submitting an empty string `""` or invalid inputs (`"abc"`, `"-5"`, `"99"`) in the manual input sandbox leaves state unchanged and renders clear validation error messages. Keystrokes inside input fields are isolated to prevent inadvertent shortcut firing while typing.
+- Inputs: Increment button click, documented shortcut key `ArrowUp`, irrelevant keys (`ArrowDown`, `a`, `x`, `Enter`, `Escape`, `Tab`, `Shift`, ` `), empty string `""`, invalid inputs (`"abc"`, `"-5"`, `"99"`), valid input (`"8"`), and Reset click.
+- Expected result: Count increments by exactly 1 on click or `ArrowUp`; irrelevant keys leave count unchanged; empty/invalid inputs are rejected without modifying state; increments clamp at boundary 10; Reset restores count to 0.
+- Check: `node 10_React_Project_Folder_Structure/applied-labs/r19-t042/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 9](../09_Day_Conditional_Rendering/09_conditional_rendering.md) | [Day 11 >>](../11_Day_Events/11_events.md)
