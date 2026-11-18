@@ -614,6 +614,17 @@ Coming
 
 Coming
 
+## Added activity: injected fetch adapter with loading/error/retry states (R19-T049)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t049](./applied-labs/r19-t049/README.md)
+- Topic & Life Cycle: Demonstrates React component lifecycle methods (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) with injected fetch adapters for deterministic data fetching without live API calls.
+- Contribution Focus: Defines the decisive condition for HTTP 200 evaluation (`response.ok && response.status === 200`), establishes a focused test that verifies correct state transitions, and validates that a temporary one-line mutant (`!response.ok`) fails the test.
+- Fixtures & Inputs: Local country records fixture; 200 OK adapter, rejected request adapter (`Network error`), and retry success adapter (fails on attempt 1, succeeds on attempt 2).
+- Expected Result: 200 fixture renders 3 countries in success state; rejected request renders error state with retry button; retry button click recovers to success state with 200 data; no live network calls; zero console/page errors.
+- Check: `node 14_Day_Component_Life_Cycles/applied-labs/r19-t049/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 13](../13_Day_Controlled_Versus_Uncontrolled_Input/13_uncontrolled_input.md) | [Day 15 >>](../15_Third_Party_Packages/15_third_party_packages.md)
