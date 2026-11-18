@@ -766,6 +766,17 @@ The boilerplate code can be found [here](../03/../03_Day_Setting_Up/30-days-of-r
 
 ![User Card](../images/user_card_design_jsx.png)
 
+## Added activity: product card with safe text and extracted responsibility (R19-T044)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t044](./applied-labs/r19-t044/README.md)
+- Topic & Structure: Demonstrates Day 3 React app setup, JSX structure with style objects, injecting dynamic data (`{}` syntax), importing media with meaningful alternative text, and safe text interpolation preventing XSS.
+- Contribution Focus: Start from a working baseline version, capture its behavioral contract, and extract one clearly named responsibility (`ProductDescription`) without changing the component or DOM contract.
+- Inputs: Local product fixture with image `{ src, alt: "Ergonomic split mechanical keyboard featuring custom PBT keycaps and vibrant RGB backlighting" }`, label `"Hardware & Peripherals"`, and untrusted user-supplied description `"<script>alert(1)</script>"`.
+- Expected result: Image renders with useful, descriptive alternative text; label renders visibly; user-supplied description `<script>alert(1)</script>` appears strictly as text (a DOM `Text` node with escaped HTML entities in `innerHTML`), triggering 0 browser dialog alerts and executing 0 scripts; extracted `ProductDescription` responsibility preserves 100% contract equivalence with the baseline.
+- Check: `node 03_Day_Setting_Up/applied-labs/r19-t044/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 2](../02_Day_Introduction_to_React/02_introduction_to_react.md) | [Day 4 >>](../04_Day_Components/04_components.md)

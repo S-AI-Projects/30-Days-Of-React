@@ -1,0 +1,175 @@
+{
+  "taskId": "R19-T044",
+  "timestamp": "2026-11-18T16:32:03.437Z",
+  "passed": true,
+  "command": "node 03_Day_Setting_Up/applied-labs/r19-t044/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "vitePluginReact": "4.3.4",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "inputProduct": {
+    "id": "prod-react-mechanical-keyboard",
+    "title": "Mechanical Ergonomic Keyboard",
+    "label": "Hardware & Peripherals",
+    "image": {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ...>",
+      "alt": "Ergonomic split mechanical keyboard featuring custom PBT keycaps and vibrant RGB backlighting"
+    },
+    "description": "<script>alert(1)</script>",
+    "price": "$149.00"
+  },
+  "scenarios": [
+    {
+      "step": 1,
+      "name": "Page Title & Mount Verification",
+      "action": "Mount",
+      "expected": "Includes \"Product Card with Safe Text & Extracted Responsibility\""
+    },
+    {
+      "step": 2,
+      "name": "Product Image & Useful Alt Text Invariant",
+      "action": "Inspect <img> alt",
+      "expected": "Non-empty, descriptive alt text (> 20 chars, describes keyboard)"
+    },
+    {
+      "step": 3,
+      "name": "Product Label Contract",
+      "action": "Inspect label element",
+      "expected": "\"Hardware & Peripherals\""
+    },
+    {
+      "step": 4,
+      "name": "Safe Text Injection Contract (<script> as text)",
+      "action": "Inspect description textContent and innerHTML",
+      "expected": "textContent === \"<script>alert(1)</script>\", innerHTML escaped, 0 dialogs"
+    },
+    {
+      "step": 5,
+      "name": "Extracted Responsibility Verification (ProductDescription)",
+      "action": "Inspect component delegation and responsibility tag",
+      "expected": "data-responsibility=\"user-supplied-text-presentation\""
+    },
+    {
+      "step": 6,
+      "name": "Baseline vs Refactored Contract Invariance",
+      "action": "Compare baseline vs refactored side-by-side",
+      "expected": "Exact identical image, label, and description contracts"
+    },
+    {
+      "step": 7,
+      "name": "Dynamic XSS Injection Payload (<img onerror>) as Text",
+      "action": "Apply \"<img src=\\\"x\\\" onerror=\\\"alert(1)\\\"/>\"",
+      "expected": "Rendered as safe text node; 0 alerts triggered"
+    },
+    {
+      "step": 8,
+      "name": "Normal Description Update",
+      "action": "Apply normal description text",
+      "expected": "Renders updated descriptive copy"
+    },
+    {
+      "step": 9,
+      "name": "Reset Invariant & Contract Restoration",
+      "action": "Click Reset",
+      "expected": "Restores initial <script>alert(1)</script> and refactored view"
+    },
+    {
+      "step": 10,
+      "name": "Absence of Console, Page, and Dialog Errors",
+      "action": "Verify error logs",
+      "expected": "0 console errors, 0 page errors, 0 dialog alerts"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Page Title & Mount Verification",
+      "action": "Mount",
+      "expected": "Includes \"Product Card with Safe Text & Extracted Responsibility\"",
+      "actual": "Day 3 Applied Lab: Product Card with Safe Text & Extracted Responsibility (R19-T044)",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Product Image & Useful Alt Text Invariant",
+      "action": "Inspect <img> alt",
+      "expected": "Non-empty, descriptive alt text describing the product (> 20 chars)",
+      "actual": "alt=\"Ergonomic split mechanical keyboard featuring custom PBT keycaps and vibrant RGB backlighting\" (93 chars)",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Product Label Contract",
+      "action": "Inspect label element",
+      "expected": "Hardware & Peripherals",
+      "actual": "Hardware & Peripherals",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Safe Text Injection Contract (<script> as text)",
+      "action": "Inspect description textContent and innerHTML",
+      "expected": "textContent === \"<script>alert(1)</script>\", innerHTML escaped, 0 dialogs",
+      "actual": "textContent=\"<script>alert(1)</script>\", innerHTML=\"&lt;script&gt;alert(1)&lt;/script&gt;\", dialogCount=0",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Extracted Responsibility Verification (ProductDescription)",
+      "action": "Inspect component delegation and responsibility tag",
+      "expected": "data-responsibility=\"user-supplied-text-presentation\", data-responsibility-extracted=\"ProductDescription\"",
+      "actual": "responsibility=\"user-supplied-text-presentation\", cardDeclared=\"ProductDescription\"",
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Baseline vs Refactored Contract Invariance",
+      "action": "Compare baseline vs refactored side-by-side",
+      "expected": "Exact identical image, label, and description contracts between baseline and refactored",
+      "actual": "alt=\"Ergonomic split mechanical keyboard featuring custom PBT keycaps and vibrant RGB backlighting\", label=\"Hardware & Peripherals\", desc=\"<script>alert(1)</script>\" (100% matched)",
+      "passed": true
+    },
+    {
+      "step": 7,
+      "scenario": "Dynamic XSS Injection Payload (<img onerror>) as Text",
+      "action": "Apply \"<img src=\\\"x\\\" onerror=\\\"alert(1)\\\"/>\"",
+      "expected": "Rendered as safe text node; 0 alerts triggered",
+      "actual": "textContent=\"<img src=\"x\" onerror=\"alert(1)\"/>\", dialogCount=0",
+      "passed": true
+    },
+    {
+      "step": 8,
+      "scenario": "Normal Description Update",
+      "action": "Apply normal description text",
+      "expected": "High-durability tactile switches with custom sound dampening.",
+      "actual": "High-durability tactile switches with custom sound dampening.",
+      "passed": true
+    },
+    {
+      "step": 9,
+      "scenario": "Reset Invariant & Contract Restoration",
+      "action": "Click Reset",
+      "expected": "Restores initial <script>alert(1)</script> and refactored view",
+      "actual": "desc=\"<script>alert(1)</script>\", view=\"refactored\"",
+      "passed": true
+    },
+    {
+      "step": 10,
+      "scenario": "Absence of Console, Page, and Dialog Errors",
+      "action": "Verify error logs",
+      "expected": "0 console errors, 0 page errors, 0 dialog alerts, 0 request failures",
+      "actual": "consoleErrors=0, pageErrors=0, dialogs=0, requestFailures=0",
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "dialogEvents": [],
+  "requestFailures": []
+}
