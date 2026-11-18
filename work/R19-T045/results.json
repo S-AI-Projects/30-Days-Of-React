@@ -1,0 +1,192 @@
+{
+  "taskId": "R19-T045",
+  "timestamp": "2026-11-18T16:35:17.288Z",
+  "passed": true,
+  "command": "node 14_Day_Component_Life_Cycles/applied-labs/r19-t045/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "vitePluginReact": "4.3.4",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "fixtures": {
+    "fixture200": [
+      {
+        "id": "FIN",
+        "name": "Finland",
+        "capital": "Helsinki",
+        "population": 5540720,
+        "flag": "🇫🇮"
+      },
+      {
+        "id": "SWE",
+        "name": "Sweden",
+        "capital": "Stockholm",
+        "population": 10353442,
+        "flag": "🇸🇪"
+      },
+      {
+        "id": "NOR",
+        "name": "Norway",
+        "capital": "Oslo",
+        "population": 5379475,
+        "flag": "🇳🇴"
+      }
+    ],
+    "fixtureRejected": "Simulated Network Error: Failed to reach endpoint (503 Service Unavailable)",
+    "fixtureRetry": {
+      "initialError": "Simulated Gateway Failure: Temporary timeout (504 Gateway Timeout)",
+      "retryData": [
+        {
+          "id": "DNK",
+          "name": "Denmark",
+          "capital": "Copenhagen",
+          "population": 5831404,
+          "flag": "🇩🇰"
+        },
+        {
+          "id": "ISL",
+          "name": "Iceland",
+          "capital": "Reykjavik",
+          "population": 366425,
+          "flag": "🇮🇸"
+        }
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "step": 1,
+      "name": "Scenario 200: Initial mount resolves 200 OK with 3 records",
+      "scenario": "200",
+      "action": "Mount",
+      "expectedStatus": "success",
+      "expectedAttempts": 1,
+      "expectedCount": 3,
+      "expectedLastStatus": 200
+    },
+    {
+      "step": 2,
+      "name": "Scenario Rejected: Triggers HTTP 503 error state and enables retry button",
+      "scenario": "rejected",
+      "action": "Switch to Rejected",
+      "expectedStatus": "error",
+      "expectedAttempts": 1,
+      "expectedCount": 0,
+      "expectedLastStatus": 503
+    },
+    {
+      "step": 3,
+      "name": "Scenario Retry (Attempt 1): Fails with temporary HTTP 504 timeout",
+      "scenario": "retry-success",
+      "action": "Switch to Retry-Success",
+      "expectedStatus": "error",
+      "expectedAttempts": 1,
+      "expectedCount": 0,
+      "expectedLastStatus": 504
+    },
+    {
+      "step": 4,
+      "name": "Scenario Retry (Attempt 2): Clicking retry succeeds with 200 OK and 2 records",
+      "scenario": "retry-success",
+      "action": "Click Retry",
+      "expectedStatus": "success",
+      "expectedAttempts": 2,
+      "expectedCount": 2,
+      "expectedLastStatus": 200
+    },
+    {
+      "step": 5,
+      "name": "Reset: Restores 200 OK default state with 3 records and 1 attempt",
+      "scenario": "200",
+      "action": "Reset",
+      "expectedStatus": "success",
+      "expectedAttempts": 1,
+      "expectedCount": 3,
+      "expectedLastStatus": 200
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "Mount (200 OK)",
+      "expectedStatus": "success",
+      "actualStatus": "success",
+      "expectedAttempts": 1,
+      "actualAttempts": 1,
+      "expectedCount": 3,
+      "actualCount": 3,
+      "expectedStatusCode": 200,
+      "actualStatusCode": 200,
+      "passed": true
+    },
+    {
+      "step": 2,
+      "action": "Switch to Rejected (503)",
+      "expectedStatus": "error",
+      "actualStatus": "error",
+      "expectedAttempts": 1,
+      "actualAttempts": 1,
+      "expectedCount": 0,
+      "actualCount": 0,
+      "expectedStatusCode": 503,
+      "actualStatusCode": 503,
+      "passed": true
+    },
+    {
+      "step": 3,
+      "action": "Switch to Retry-Success (Attempt 1)",
+      "expectedStatus": "error",
+      "actualStatus": "error",
+      "expectedAttempts": 1,
+      "actualAttempts": 1,
+      "expectedCount": 0,
+      "actualCount": 0,
+      "expectedStatusCode": 504,
+      "actualStatusCode": 504,
+      "passed": true
+    },
+    {
+      "step": 4,
+      "action": "Click Retry (Attempt 2)",
+      "expectedStatus": "success",
+      "actualStatus": "success",
+      "expectedAttempts": 2,
+      "actualAttempts": 2,
+      "expectedCount": 2,
+      "actualCount": 2,
+      "expectedStatusCode": 200,
+      "actualStatusCode": 200,
+      "passed": true
+    },
+    {
+      "step": 5,
+      "action": "Reset",
+      "expectedStatus": "success",
+      "actualStatus": "success",
+      "expectedAttempts": 1,
+      "actualAttempts": 1,
+      "expectedCount": 3,
+      "actualCount": 3,
+      "expectedStatusCode": 200,
+      "actualStatusCode": 200,
+      "passed": true
+    }
+  ],
+  "isolatedRunsAgreement": {
+    "run1Snapshots": 5,
+    "run2Snapshots": 5,
+    "runsAgree": true
+  },
+  "networkIntegrity": {
+    "externalRequestsCount": 0,
+    "zeroLiveCallsVerified": true
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}

@@ -614,6 +614,21 @@ Coming
 
 Coming
 
+## Added activity: injected fetch adapter life cycle lab (R19-T045)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t045](./applied-labs/r19-t045/README.md)
+- Topic & Life Cycle Structure: Demonstrates Day 14 component mounting life cycles (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) using an injected fetch adapter with loading, error, and retry states instead of unisolated live network calls.
+- Contribution Focus: Injects network adapter (`fetchAdapter`), time clock/delay adapter (`timeAdapter`), and audit storage; uses repeatable local fixtures covering 200 OK, rejected request, and retry success; verifies that two isolated test runs produce identical states and results without live API calls.
+- Inputs: Repeatable local fixtures for 200 OK (3 countries: Finland, Sweden, Norway), rejected request (HTTP 503 error), and retry sequence (HTTP 504 on attempt 1, HTTP 200 with Denmark & Iceland on attempt 2); injected clock and zero-latency time adapter.
+- Expected result:
+  - 200 OK scenario: Mounts -> loading state -> success state with 3 items rendered and attempts count = 1.
+  - Rejected scenario: Mounts -> loading state -> error state with HTTP 503 error message and retry button rendered.
+  - Retry success scenario: Mounts -> attempt 1 fails with HTTP 504 -> error view -> clicking retry triggers attempt 2 -> success state with 2 items rendered and attempts count = 2.
+  - Two isolated runs produce identical traces and zero live network requests.
+- Check: `node 14_Day_Component_Life_Cycles/applied-labs/r19-t045/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 13](../13_Day_Controlled_Versus_Uncontrolled_Input/13_uncontrolled_input.md) | [Day 15 >>](../15_Third_Party_Packages/15_third_party_packages.md)
