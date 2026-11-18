@@ -1,0 +1,120 @@
+{
+  "taskId": "R19-T050",
+  "timestamp": "2026-11-18T17:13:11.847Z",
+  "passed": true,
+  "failureReason": null,
+  "command": "node 30_conclusions/applied-labs/r19-t050/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "playwright": "1.49.1",
+    "playwrightTest": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "contract": {
+    "goal": "Build a fixture-backed task board with add, complete and filter actions plus accessible feedback. Add two tasks, complete one, filter completed: exactly one remains; invalid blank tasks are rejected.",
+    "contributionFocus": "Implement the required behavior from the explicit contract; show the smallest useful complete example.",
+    "requirementsMet": {
+      "addTwoTasksCompleteOneFilterCompletedExactlyOneRemains": true,
+      "invalidBlankTasksRejectedWithAccessibleFeedback": true,
+      "accessibleLiveFeedbackRegions": true,
+      "smallestUsefulCompleteExample": true
+    }
+  },
+  "scenarios": [
+    {
+      "step": 1,
+      "name": "Initial Mount & Fixture Verification",
+      "action": "Mount fresh component with default fixture",
+      "expected": "total=0, active=0, completed=0, aria-invalid=false, role=status",
+      "actual": "total=0, active=0, completed=0, aria-invalid=false, role=status",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "name": "Add First Task",
+      "action": "Submit task: \"Synthesize React fundamentals\"",
+      "expected": "total=1, active=1, completed=0, feedback=\"Task \"Synthesize React fundamentals\" added.\"",
+      "actual": "total=1, feedback=\"Task \"Synthesize React fundamentals\" added.\"",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "name": "Add Second Task (Two tasks added)",
+      "action": "Submit task: \"Deliver final capstone project\"",
+      "expected": "total=2, active=2, completed=0, feedback=\"Task \"Deliver final capstone project\" added.\"",
+      "actual": "total=2, feedback=\"Task \"Deliver final capstone project\" added.\"",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "name": "Complete One Task",
+      "action": "Toggle complete on first task \"Synthesize React fundamentals\"",
+      "expected": "total=2, active=1, completed=1, feedback=\"Task \"Synthesize React fundamentals\" marked as completed.\"",
+      "actual": "active=1, completed=1, feedback=\"Task \"Synthesize React fundamentals\" marked as completed.\"",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "name": "Filter Completed (Contract: Exactly One Remains)",
+      "action": "Click filter \"Completed\"",
+      "expected": "exactly 1 visible task remaining (\"Synthesize React fundamentals\")",
+      "actual": "visibleCount=1, itemCount=1, title=\"Synthesize React fundamentals\"",
+      "passed": true
+    },
+    {
+      "step": 6,
+      "name": "Filter Active",
+      "action": "Click filter \"Active\"",
+      "expected": "exactly 1 visible active task (\"Deliver final capstone project\")",
+      "actual": "visibleCount=1, title=\"Deliver final capstone project\"",
+      "passed": true
+    },
+    {
+      "step": 7,
+      "name": "Filter All",
+      "action": "Click filter \"All\"",
+      "expected": "visibleCount=2, all items present",
+      "actual": "visibleCount=2, 2 task items in list",
+      "passed": true
+    },
+    {
+      "step": 8,
+      "name": "Rejection of Invalid Blank Task (Empty String \"\")",
+      "action": "Attempt to submit empty string",
+      "expected": "rejected, total=2, aria-invalid=true, role=alert, feedback=\"Error: Task title cannot be blank.\"",
+      "actual": "total=2, aria-invalid=true, role=alert, feedback=\"Error: Task title cannot be blank.\"",
+      "passed": true
+    },
+    {
+      "step": 9,
+      "name": "Rejection of Invalid Blank Task (Whitespace Only \"   \")",
+      "action": "Attempt to submit whitespace string",
+      "expected": "rejected, total=2, aria-invalid=true, role=alert",
+      "actual": "total=2, aria-invalid=true, feedback=\"Error: Task title cannot be blank.\"",
+      "passed": true
+    },
+    {
+      "step": 10,
+      "name": "Contribution Focus: Contract Recovery & Reset to Fixture",
+      "action": "Valid submission resets error; Reset button restores initial fixture",
+      "expected": "total=0, aria-invalid=false, feedback=\"Task board reset to initial fixture.\"",
+      "actual": "total=0, aria-invalid=false, reset verified",
+      "passed": true
+    },
+    {
+      "step": 11,
+      "name": "Runtime Health & Zero Error Audit",
+      "action": "Inspect console messages, page errors, and network request failures",
+      "expected": "0 console errors, 0 page errors, 0 request failures",
+      "actual": "consoleErrors=0, pageErrors=0, requestFailures=0",
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}
