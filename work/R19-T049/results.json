@@ -1,0 +1,140 @@
+{
+  "taskId": "R19-T049",
+  "timestamp": "2026-11-18T16:32:36.003Z",
+  "passed": true,
+  "failureReason": null,
+  "command": "node 14_Day_Component_Life_Cycles/applied-labs/r19-t049/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "vitePluginReact": "4.3.4",
+    "playwright": "1.49.1",
+    "playwrightTest": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "inputFixtures": {
+    "countries": [
+      {
+        "id": 1,
+        "name": "Finland",
+        "capital": "Helsinki",
+        "population": 5540720,
+        "flag": "🇫🇮"
+      },
+      {
+        "id": 2,
+        "name": "Sweden",
+        "capital": "Stockholm",
+        "population": 10353442,
+        "flag": "🇸🇪"
+      },
+      {
+        "id": 3,
+        "name": "Norway",
+        "capital": "Oslo",
+        "population": 5421241,
+        "flag": "🇳🇴"
+      }
+    ],
+    "scenarios": [
+      "200 Success Adapter",
+      "Rejected Request Adapter",
+      "Retry Success Adapter"
+    ]
+  },
+  "scenarios": [
+    {
+      "step": 1,
+      "name": "200 OK Adapter: Mount component, transition from loading to success, display 3 countries",
+      "action": "Mount with 200 Adapter",
+      "expected": "status: success, count: 3, error: null"
+    },
+    {
+      "step": 2,
+      "name": "Rejected Request Adapter: Mount component, catch error, transition to error state with retry button",
+      "action": "Select Rejected Request Scenario",
+      "expected": "status: error, error visible, retry button enabled"
+    },
+    {
+      "step": 3,
+      "name": "Retry Success Adapter: Attempt 1 fails, click retry, attempt 2 resolves 200 OK success",
+      "action": "Retry Recovery Scenario",
+      "expected": "attempt 1: error -> retry -> attempt 2: success (count 3)"
+    },
+    {
+      "step": 4,
+      "name": "Contribution Focus (Correct): Focused test verifies 200 OK passes decisive condition into success state",
+      "action": "Run Focused Test (Correct Code)",
+      "expected": "decisive condition = true, status: success"
+    },
+    {
+      "step": 5,
+      "name": "Contribution Focus (Mutant): Verify inverted mutant condition rejects 200 OK into error state",
+      "action": "Run Focused Mutant Test",
+      "expected": "mutant decisive condition = false, status: error"
+    },
+    {
+      "step": 6,
+      "name": "Test Isolation & Cleanliness: 0 live API calls, 0 console errors, 0 page errors",
+      "action": "Audit Requests & Console",
+      "expected": "0 live API calls, 0 console errors, 0 page errors"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "200 OK Adapter: Mount component, transition from loading to success, display 3 countries",
+      "action": "Mount with 200 Adapter",
+      "expected": "status: success, count: 3, error: null",
+      "actual": "status: success, count: 3, error: null",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Rejected Request Adapter: Mount component, catch error, transition to error state with retry button",
+      "action": "Select Rejected Request Scenario",
+      "expected": "status: error, error visible, retry button enabled",
+      "actual": "status: error, message: \"Network error: Request failed to connect\", retry button visible",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Retry Success Adapter: Attempt 1 fails, click retry, attempt 2 resolves 200 OK success",
+      "action": "Retry Recovery Scenario",
+      "expected": "attempt 1: error -> retry -> attempt 2: success (count 3)",
+      "actual": "attempt 1: error (\"timeout on attempt 1\") -> clicked retry -> attempt 2: success (count: 3)",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Contribution Focus (Correct): Focused test verifies 200 OK passes decisive condition into success state",
+      "action": "Run Focused Test (Correct Code)",
+      "expected": "decisive condition = true, status: success",
+      "actual": "decisive condition = true, status: success, count: 3",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Contribution Focus (Mutant): Verify inverted mutant condition rejects 200 OK into error state",
+      "action": "Run Focused Mutant Test",
+      "expected": "mutant decisive condition = false, status: error",
+      "actual": "mutant decisive condition = false, status: error, message: \"HTTP Error 200: OK\"",
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Test Isolation & Cleanliness: 0 live API calls, 0 console errors, 0 page errors",
+      "action": "Audit Requests & Console",
+      "expected": "0 live API calls, 0 console errors, 0 page errors",
+      "actual": "live API calls: 0, console errors: 0, page errors: 0",
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "externalApiCalls": []
+}
