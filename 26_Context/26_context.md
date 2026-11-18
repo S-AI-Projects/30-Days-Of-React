@@ -34,5 +34,17 @@ It seems the react documentation has pretty good information about context, you 
 
 # Exercises
 
+## Added activity: Theme context with nested consumers and subtree isolation (R19-T047)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t047](./applied-labs/r19-t047/README.md)
+- Topic & Structure: Demonstrates Day 26 `createContext` and `useContext` propagation across component hierarchies without prop-drilling, multi-consumer synchronization, isolated subtrees maintaining independent context states, and resilience to empty/error states.
+- Contract: Toggling changes all consumers (direct and deeply nested) inside the provider; an independently provided subtree keeps its own state.
+- Contribution Focus: Demonstrate the stated error or empty state, then a successful recovery on the next valid input without restarting the example.
+- Inputs: Actions `Toggle Main Theme`, `Toggle Independent Theme`, empty theme input submission `""` (or `Trigger Empty State`), invalid theme input `'cyberpunk-neon-invalid'`, and recovery input `'solarized'` (and `'ocean'`).
+- Expected result: Toggling main provider switches all main consumers between `light` and `dark` while independent subtree retains its own theme (`dark`); toggling independent subtree switches its consumers between `dark` and `light` while main consumers remain unaffected; submitting empty or invalid inputs triggers the stated error banner and empty state view; submitting the next valid input immediately clears error states and updates consumers in-place without restarting the application.
+- Check: `node 26_Context/applied-labs/r19-t047/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 [<< Day 25](../25_Custom_Hooks/25_custom_hooks.md) | [Day 27>>](../27_Ref/27_ref.md)
