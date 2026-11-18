@@ -1,0 +1,139 @@
+{
+  "taskId": "R19-T046",
+  "timestamp": "2026-11-18T16:33:31.733Z",
+  "passed": true,
+  "failureReason": null,
+  "command": "node 03_Day_Setting_Up/applied-labs/r19-t046/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "inputContract": {
+    "label": "Ergonomic Mechanical Keyboard Pro",
+    "imageAlt": "Ergonomic mechanical keyboard with custom RGB backlighting and tactile switches",
+    "description": "<script>alert(1)</script>"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Published example executable test: traceDataFlow model returns valid trace",
+      "action": "server.ssrLoadModule(\"./example.jsx\") & traceDataFlow()",
+      "expected": {
+        "childType": "string",
+        "scriptElements": 0,
+        "text": "<script>alert(1)</script>"
+      },
+      "actual": {
+        "childType": "string",
+        "scriptElements": 0,
+        "text": "<script>alert(1)</script>"
+      },
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Product card mounts with correct product label",
+      "action": "Mount & check [data-testid=\"product-label\"]",
+      "expected": "Ergonomic Mechanical Keyboard Pro",
+      "actual": "Ergonomic Mechanical Keyboard Pro",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Product card image contains useful alternative text",
+      "action": "Inspect [data-testid=\"product-image\"] alt attribute",
+      "expected": "Ergonomic mechanical keyboard with custom RGB backlighting and tactile switches",
+      "actual": "Ergonomic mechanical keyboard with custom RGB backlighting and tactile switches",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Description <script>alert(1)</script> appears strictly as text with zero script execution",
+      "action": "Inspect textContent, innerHTML, script elements, and dialog events",
+      "expected": {
+        "text": "<script>alert(1)</script>",
+        "scriptTags": 0,
+        "dialogs": 0,
+        "childNodeType": 3
+      },
+      "actual": {
+        "text": "<script>alert(1)</script>",
+        "scriptTags": 0,
+        "dialogs": 0,
+        "childNodeType": 3
+      },
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Worked explanation traces data flow from input through intermediate state to output",
+      "action": "Verify [data-testid=\"explanation-input\"], [data-testid=\"explanation-intermediate\"], and [data-testid=\"explanation-output\"]",
+      "expected": {
+        "inputAlt": "Ergonomic mechanical keyboard with custom RGB backlighting and tactile switches",
+        "inputDesc": "<script>alert(1)</script>",
+        "childType": "string",
+        "bypass": "TRUE (Safe)",
+        "outputText": "<script>alert(1)</script>",
+        "scriptCount": "0"
+      },
+      "actual": {
+        "inputAlt": "Ergonomic mechanical keyboard with custom RGB backlighting and tactile switches",
+        "inputDesc": "<script>alert(1)</script>",
+        "childType": "string",
+        "bypass": "TRUE (Safe)",
+        "outputText": "<script>alert(1)</script>",
+        "scriptCount": "0"
+      },
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Alternate XSS payload (<img src=x onerror=...>) renders safely as text without execution",
+      "action": "Click [data-testid=\"payload-img-btn\"] and assert DOM text safety",
+      "expected": {
+        "text": "<img src=x onerror=alert(\"hacked\") />",
+        "injectedImgs": 0,
+        "dialogs": 0
+      },
+      "actual": {
+        "text": "<img src=x onerror=alert(\"hacked\") />",
+        "injectedImgs": 0,
+        "dialogs": 0
+      },
+      "passed": true
+    },
+    {
+      "step": 7,
+      "scenario": "Reset button restores original payload <script>alert(1)</script> cleanly",
+      "action": "Click [data-testid=\"reset-btn\"]",
+      "expected": "<script>alert(1)</script>",
+      "actual": "<script>alert(1)</script>",
+      "passed": true
+    },
+    {
+      "step": 8,
+      "scenario": "Console and page error audit: Zero console errors, page errors, or network failures",
+      "action": "Inspect captured error logs",
+      "expected": {
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestFailures": 0
+      },
+      "actual": {
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestFailures": 0
+      },
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "triggeredDialogs": []
+}
