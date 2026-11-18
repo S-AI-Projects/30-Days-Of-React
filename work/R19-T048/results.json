@@ -1,0 +1,172 @@
+{
+  "taskId": "R19-T048",
+  "timestamp": "2026-11-18T16:42:57.294Z",
+  "passed": true,
+  "command": "node 21_Introducing_Hooks/applied-labs/r19-t048/check.mjs",
+  "exitCode": 0,
+  "contract": {
+    "queuedDoubleIncrement": "+2 via useState functional updates",
+    "resetRestoresInitialProp": "restores initialCount"
+  },
+  "contributionFocus": {
+    "description": "Check three bounded input sizes or repeated interaction counts; assert correctness and report operation counts or render/listener counts rather than imposing a speed threshold.",
+    "boundedSizes": [
+      {
+        "name": "Small",
+        "n": 5,
+        "expectedDelta": 10,
+        "updates": 10
+      },
+      {
+        "name": "Medium",
+        "n": 25,
+        "expectedDelta": 50,
+        "updates": 50
+      },
+      {
+        "name": "Large",
+        "n": 100,
+        "expectedDelta": 200,
+        "updates": 200
+      }
+    ]
+  },
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Initial mount state",
+      "action": "Mount",
+      "expected": "count=10, initial=10",
+      "actual": "count=10, initial=10",
+      "metrics": {
+        "renders": 2,
+        "ops": 0,
+        "listeners": 0,
+        "updaters": 0
+      },
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Queued double increment (+2)",
+      "action": "Click Queued +2",
+      "expected": "count=12 (+2 from 10)",
+      "actual": "count=12",
+      "metrics": {
+        "renders": 3,
+        "ops": 1,
+        "listeners": 1,
+        "updaters": 2
+      },
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Reset restores initial prop",
+      "action": "Click Reset",
+      "expected": "count=10",
+      "actual": "count=10",
+      "metrics": {
+        "renders": 4,
+        "ops": 2,
+        "listeners": 2,
+        "updaters": 2
+      },
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Bounded Size 1 (Small: N=5 double increments, delta=+10)",
+      "action": "Batch Small + Reset",
+      "expected": "count=20 then reset to 10",
+      "actual": "count=20 then reset to 10",
+      "metrics": {
+        "renders": 6,
+        "ops": 4,
+        "listeners": 4,
+        "updaters": 12
+      },
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Bounded Size 2 (Medium: N=25 double increments, delta=+50)",
+      "action": "Batch Medium + Reset",
+      "expected": "count=60 then reset to 10",
+      "actual": "count=60 then reset to 10",
+      "metrics": {
+        "renders": 8,
+        "ops": 6,
+        "listeners": 6,
+        "updaters": 62
+      },
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Bounded Size 3 (Large: N=100 double increments, delta=+200)",
+      "action": "Batch Large + Reset",
+      "expected": "count=210 then reset to 10",
+      "actual": "count=210 then reset to 10",
+      "metrics": {
+        "renders": 10,
+        "ops": 8,
+        "listeners": 8,
+        "updaters": 262
+      },
+      "passed": true
+    },
+    {
+      "step": 7,
+      "scenario": "Sequential repeated UI clicks (3x double + 1x single + reset)",
+      "action": "Sequential Clicks + Reset",
+      "expected": "count=17 then reset to 10",
+      "actual": "count reached 17 then reset to 10",
+      "metrics": {
+        "renders": 15,
+        "ops": 13,
+        "listeners": 13,
+        "updaters": 269
+      },
+      "passed": true
+    },
+    {
+      "step": 8,
+      "scenario": "Reconfigurable Initial Prop Contract (initialCount = 42)",
+      "action": "Change Prop -> Queued +2 -> Reset",
+      "expected": "count=44 then reset to 42",
+      "actual": "count=42 (restored to 42)",
+      "metrics": {
+        "renders": 20,
+        "ops": 15,
+        "listeners": 15,
+        "updaters": 271
+      },
+      "passed": true
+    },
+    {
+      "step": 9,
+      "scenario": "Console & Page Error Cleanliness",
+      "action": "Assert 0 errors",
+      "expected": "consoleErrors=0, pageErrors=0, requestFailures=0",
+      "actual": "consoleErrors=0, pageErrors=0, requestFailures=0",
+      "metrics": {
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestFailures": 0
+      },
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}

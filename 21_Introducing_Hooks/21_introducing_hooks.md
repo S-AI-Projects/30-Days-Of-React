@@ -403,5 +403,17 @@ ReactDOM.render(<App />, rootElement)
 
 Convert everything you wrote to React hooks.
 
+## Added activity: useState functional updates and reset counter (R19-T048)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t048](./applied-labs/r19-t048/README.md)
+- Topic & Structure: Demonstrates Day 21 `useState` hook state management, distinguishing queued functional updates `setCount(prev => prev + 1)` from direct stale closures, and restoring initial state via a reset action.
+- Contract: Two queued increments produce +2; reset restores the initial prop value.
+- Contribution Focus: Check three bounded input sizes or repeated interaction counts (Small $N=5$, Medium $N=25$, Large $N=100$); assert exact mathematical correctness and report render, operation, and listener counts rather than imposing a speed threshold.
+- Inputs: Initial prop `initialCount = 10` (or reconfigurable); actions `Queued +2`, `+1 Single`, `Reset`, and bounded interaction batches ($N=5, 25, 100$).
+- Expected result: Two queued increments advance count by +2; reset restores count to initial prop value (10); bounded runs of $N$ double increments produce $+2N$ (5 double $\to 20$, 25 double $\to 60$, 100 double $\to 210$); all resets return to initial prop value; operation and render metrics are reported.
+- Check: `node 21_Introducing_Hooks/applied-labs/r19-t048/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 [<< Day 20](../20_projects/20_projects.md) | [Day 22>>]()
