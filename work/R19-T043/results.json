@@ -1,0 +1,179 @@
+{
+  "taskId": "R19-T043",
+  "timestamp": "2026-11-18T16:20:18.920Z",
+  "passed": true,
+  "command": "node 02_Day_Introduction_to_React/applied-labs/r19-t043/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "vitePluginReact": "4.3.4",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "inputRecords": [
+    {
+      "id": 1,
+      "label": "Hosting & Server Maintenance",
+      "amount": 10,
+      "paid": true
+    },
+    {
+      "id": 2,
+      "label": "Domain Registration Renewal",
+      "amount": 5,
+      "paid": true
+    },
+    {
+      "id": 3,
+      "label": "Cloud Storage Expansion",
+      "amount": 20,
+      "paid": false
+    }
+  ],
+  "scenarios": [
+    {
+      "step": 1,
+      "name": "Initial state: Paid amounts 10 and 5 plus unpaid 20 display total 15",
+      "action": "Mount",
+      "filter": "paid",
+      "expectedTotal": 15,
+      "expectedCount": 2,
+      "totalRecords": 3
+    },
+    {
+      "step": 2,
+      "name": "Immutability check: Input array length and records remain unaltered",
+      "action": "Verify input records",
+      "filter": "paid",
+      "expectedTotal": 15,
+      "expectedCount": 2,
+      "totalRecords": 3
+    },
+    {
+      "step": 3,
+      "name": "Invariant across Op 1: Switch filter to \"Unpaid\" displays 20",
+      "action": "Filter: Unpaid",
+      "filter": "unpaid",
+      "expectedTotal": 20,
+      "expectedCount": 1,
+      "totalRecords": 3
+    },
+    {
+      "step": 4,
+      "name": "Invariant across Op 2: Switch filter to \"All\" displays 35 (10 + 5 + 20)",
+      "action": "Filter: All",
+      "filter": "all",
+      "expectedTotal": 35,
+      "expectedCount": 3,
+      "totalRecords": 3
+    },
+    {
+      "step": 5,
+      "name": "Invariant across Op 3: Switch filter back to \"Paid\" restores 15",
+      "action": "Filter: Paid",
+      "filter": "paid",
+      "expectedTotal": 15,
+      "expectedCount": 2,
+      "totalRecords": 3
+    },
+    {
+      "step": 6,
+      "name": "Invariant across Op 4: Add new paid record ($30) immutably displays 45",
+      "action": "Add Record ($30, paid)",
+      "filter": "paid",
+      "expectedTotal": 45,
+      "expectedCount": 3,
+      "totalRecords": 4
+    },
+    {
+      "step": 7,
+      "name": "Invariant across Op 5: Toggle record 3 ($20) to paid immutably displays 65",
+      "action": "Toggle Record 3 Paid",
+      "filter": "paid",
+      "expectedTotal": 65,
+      "expectedCount": 4,
+      "totalRecords": 4
+    },
+    {
+      "step": 8,
+      "name": "Invariant across Op 6: Reset restores initial state and displays 15",
+      "action": "Reset",
+      "filter": "paid",
+      "expectedTotal": 15,
+      "expectedCount": 2,
+      "totalRecords": 3
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Initial state: Paid amounts 10 and 5 plus unpaid 20 display total 15",
+      "action": "Mount",
+      "expected": 15,
+      "actual": 15,
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Immutability check: Input array length and records remain unaltered",
+      "action": "Verify input records",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Invariant across Op 1: Switch filter to \"Unpaid\" displays 20",
+      "action": "Filter: Unpaid",
+      "expected": 20,
+      "actual": 20,
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Invariant across Op 2: Switch filter to \"All\" displays 35 (10 + 5 + 20)",
+      "action": "Filter: All",
+      "expected": 35,
+      "actual": 35,
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Invariant across Op 3: Switch filter back to \"Paid\" restores 15",
+      "action": "Filter: Paid",
+      "expected": 15,
+      "actual": 15,
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Invariant across Op 4: Add new paid record ($30) immutably displays 45",
+      "action": "Add Record ($30, paid)",
+      "expected": 45,
+      "actual": 45,
+      "passed": true
+    },
+    {
+      "step": 7,
+      "scenario": "Invariant across Op 5: Toggle record 3 ($20) to paid immutably displays 65",
+      "action": "Toggle Record 3 Paid",
+      "expected": 65,
+      "actual": 65,
+      "passed": true
+    },
+    {
+      "step": 8,
+      "scenario": "Invariant across Op 6: Reset restores initial state and displays 15",
+      "action": "Reset",
+      "expected": 15,
+      "actual": 15,
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}

@@ -1599,6 +1599,17 @@ Now, you have a very good understanding of how to create JSX elements and also h
 
 1. Practice how to make JSX element and injecting dynamic data(string, number, boolean, array, object)
 
+## Added activity: derive filtered total from props without mutation (R19-T043)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t043](./applied-labs/r19-t043/README.md)
+- Topic & Structure: Demonstrates Day 2 pure dynamic data injection into JSX (`{}` syntax), computing derived values from props without mutating source records, and verifying mathematical invariants across operations.
+- Invariant & Non-Mutation Focus: For any records collection $R$ and filter state $S$, output total $T = \sum_{r \in R, r.\text{paid}=S} r.\text{amount}$ while the input prop array $R$ remains strictly unmutated ($R_t \equiv R_0$).
+- Inputs: Supplied local records with paid amounts 10 and 5 plus unpaid 20; filter modes `'paid'`, `'unpaid'`, `'all'`; immutable record addition ($30); immutable paid status toggle; reset.
+- Expected result: Initial derived total displays 15; unpaid displays 20; all displays 35; adding $30 paid yields 45; toggling unpaid $20 to paid yields 65; input array remains unmutated throughout.
+- Check: `node 02_Day_Introduction_to_React/applied-labs/r19-t043/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 1](../01_Day_JavaScript_Refresher/01_javascript_refresher.md) | [Day 3 >>](../03_Day_Setting_Up/03_setting_up.md)
