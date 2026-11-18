@@ -1,0 +1,248 @@
+{
+  "taskId": "R19-T042",
+  "timestamp": "2026-11-18T16:09:03.410Z",
+  "passed": true,
+  "command": "node 10_React_Project_Folder_Structure/applied-labs/r19-t042/check.mjs",
+  "exitCode": 0,
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "vitePluginReact": "4.3.4",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "scenarios": [
+    {
+      "step": 1,
+      "name": "Initial state: count is 0, normal boundary status, button enabled",
+      "input": "Mount",
+      "expectedCount": 0,
+      "expectedStatus": "min-boundary"
+    },
+    {
+      "step": 2,
+      "name": "Single button click increments count to 1",
+      "input": "Click increment button",
+      "expectedCount": 1,
+      "expectedStatus": "within-boundary"
+    },
+    {
+      "step": 3,
+      "name": "Single documented shortcut key (ArrowUp) increments count to 2",
+      "input": "Key: ArrowUp",
+      "expectedCount": 2,
+      "expectedStatus": "within-boundary"
+    },
+    {
+      "step": 4,
+      "name": "Irrelevant keys leave state unchanged at 2",
+      "input": "Keys: ArrowDown, a, x, Enter, Escape, Tab, Shift, Space",
+      "expectedCount": 2,
+      "expectedStatus": "within-boundary"
+    },
+    {
+      "step": 5,
+      "name": "Alternating button click and ArrowUp increment cleanly to 6",
+      "input": "Click, ArrowUp, Click, ArrowUp",
+      "expectedCount": 6,
+      "expectedStatus": "within-boundary"
+    },
+    {
+      "step": 6,
+      "name": "Input field typing isolation: typing inside input does not trigger shortcut",
+      "input": "Type \"ArrowUp\" in manual input",
+      "expectedCount": 6,
+      "expectedStatus": "within-boundary"
+    },
+    {
+      "step": 7,
+      "name": "Empty-input handling: submitting empty input is rejected and leaves state at 6",
+      "input": "Submit \"\" (empty string)",
+      "expectedCount": 6,
+      "expectedStatus": "empty-input-error"
+    },
+    {
+      "step": 8,
+      "name": "Invalid-input handling: submitting non-numeric \"abc\" is rejected and leaves state at 6",
+      "input": "Submit \"abc\"",
+      "expectedCount": 6,
+      "expectedStatus": "invalid-input-error"
+    },
+    {
+      "step": 9,
+      "name": "Invalid-input handling: submitting negative \"-5\" is rejected and leaves state at 6",
+      "input": "Submit \"-5\"",
+      "expectedCount": 6,
+      "expectedStatus": "invalid-input-error"
+    },
+    {
+      "step": 10,
+      "name": "Invalid-input handling: submitting out-of-boundary \"99\" is rejected and leaves state at 6",
+      "input": "Submit \"99\"",
+      "expectedCount": 6,
+      "expectedStatus": "invalid-input-error"
+    },
+    {
+      "step": 11,
+      "name": "Valid manual input within boundary sets count to 8 and clears error",
+      "input": "Submit \"8\"",
+      "expectedCount": 8,
+      "expectedStatus": "within-boundary"
+    },
+    {
+      "step": 12,
+      "name": "Increment to 9 via button, then to boundary 10 via ArrowUp",
+      "input": "Click, ArrowUp",
+      "expectedCount": 10,
+      "expectedStatus": "max-boundary-reached"
+    },
+    {
+      "step": 13,
+      "name": "Exact boundary condition: at count 10, button is disabled and further ArrowUp keys do not exceed 10",
+      "input": "3x ArrowUp + button click at max boundary",
+      "expectedCount": 10,
+      "expectedStatus": "max-boundary-clamped"
+    },
+    {
+      "step": 14,
+      "name": "Reset button restores count to 0 and clears boundary alert",
+      "input": "Click reset button",
+      "expectedCount": 0,
+      "expectedStatus": "min-boundary"
+    },
+    {
+      "step": 15,
+      "name": "Post-reset increment: button click increments count to 1",
+      "input": "Click increment button",
+      "expectedCount": 1,
+      "expectedStatus": "within-boundary"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Initial state: count is 0, normal boundary status, button enabled",
+      "input": "Mount",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Single button click increments count to 1",
+      "input": "Click increment button",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Single documented shortcut key (ArrowUp) increments count to 2",
+      "input": "Key: ArrowUp",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Irrelevant keys leave state unchanged at 2",
+      "input": "Keys: ArrowDown, a, x, Enter, Escape, Tab, Shift, Space",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Alternating button click and ArrowUp increment cleanly to 6",
+      "input": "Click, ArrowUp, Click, ArrowUp",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Input field typing isolation: typing inside input does not trigger shortcut",
+      "input": "Type \"ArrowUp\" in manual input",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "step": 7,
+      "scenario": "Empty-input handling: submitting empty input is rejected and leaves state at 6",
+      "input": "Submit \"\" (empty string)",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "step": 8,
+      "scenario": "Invalid-input handling: submitting non-numeric \"abc\" is rejected and leaves state at 6",
+      "input": "Submit \"abc\"",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "step": 9,
+      "scenario": "Invalid-input handling: submitting negative \"-5\" is rejected and leaves state at 6",
+      "input": "Submit \"-5\"",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "step": 10,
+      "scenario": "Invalid-input handling: submitting out-of-boundary \"99\" is rejected and leaves state at 6",
+      "input": "Submit \"99\"",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "step": 11,
+      "scenario": "Valid manual input within boundary sets count to 8 and clears error",
+      "input": "Submit \"8\"",
+      "expected": 8,
+      "actual": 8,
+      "passed": true
+    },
+    {
+      "step": 12,
+      "scenario": "Increment to 9 via button, then to boundary 10 via ArrowUp",
+      "input": "Click, ArrowUp",
+      "expected": 10,
+      "actual": 10,
+      "passed": true
+    },
+    {
+      "step": 13,
+      "scenario": "Exact boundary condition: at count 10, button is disabled and further ArrowUp keys do not exceed 10",
+      "input": "3x ArrowUp + button click at max boundary",
+      "expected": 10,
+      "actual": 10,
+      "passed": true
+    },
+    {
+      "step": 14,
+      "scenario": "Reset button restores count to 0 and clears boundary alert",
+      "input": "Click reset button",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "step": 15,
+      "scenario": "Post-reset increment: button click increments count to 1",
+      "input": "Click increment button",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}
