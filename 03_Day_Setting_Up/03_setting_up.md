@@ -766,6 +766,17 @@ The boilerplate code can be found [here](../03/../03_Day_Setting_Up/30-days-of-r
 
 ![User Card](../images/user_card_design_jsx.png)
 
+## Added activity: product card with safe text and worked explanation (R19-T046)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t046](./applied-labs/r19-t046/README.md)
+- Topic & Structure: Demonstrates Day 3 setting up React application structure, JSX styling, importing local media objects with useful alternative text, and safe data injection.
+- Contribution Focus: Worked explanation tracing data flow from input through intermediate state to output, and making the published example executable by automated tests.
+- Inputs: Product card properties with label (`"Ergonomic Mechanical Keyboard Pro"`), local media object with useful alternative text (`"Ergonomic mechanical keyboard with custom RGB backlighting and tactile switches"`), and untrusted user-supplied description (`"<script>alert(1)</script>"`).
+- Expected result: Renders product card with accessible image alt text; description `<script>alert(1)</script>` appears strictly as text with zero script execution; worked explanation traces input to intermediate state to output.
+- Check: `node 03_Day_Setting_Up/applied-labs/r19-t046/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 2](../02_Day_Introduction_to_React/02_introduction_to_react.md) | [Day 4 >>](../04_Day_Components/04_components.md)
