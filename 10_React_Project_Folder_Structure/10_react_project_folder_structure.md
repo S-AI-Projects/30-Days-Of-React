@@ -621,3 +621,13 @@ Coming
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 9](../09_Day_Conditional_Rendering/09_conditional_rendering.md) | [Day 11 >>](../11_Day_Events/11_events.md)
+
+## Added activity: refactoring the button and shortcut example (R19-T026)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t026](./applied-labs/r19-t026/README.md)
+- Inputs: a click on the Increment button, the `+` key, other keys such as `a`, `Escape`, `=` and `-`, a held `+` key, and Enter on the focused button.
+- Expected result: a click and `+` each add one to the count, irrelevant keys leave it unchanged, and a held key counts once, identically before and after the refactor.
+- Refactor: the inline keyboard handling is extracted into one named hook, `useKeyboardShortcut(key, onTrigger)`, without changing the contract.
+- Check: `node 10_React_Project_Folder_Structure/applied-labs/r19-t026/check.mjs`
