@@ -94,6 +94,16 @@ ReactDOM.render(<App />, rootElement)
 
 # Exercises
 
+## Added activity: hook with an injected data source (R19-T025)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t025](./applied-labs/r19-t025/README.md)
+- Inputs: a sequence of key changes, with requests released or failed by hand, including a late response for a previous key.
+- Expected result: a late response or error for a previous key is ignored, and loading and error states reset for a new key.
+- Reproducibility: the data source is injected, so there is no real network and no timers. The check plays the whole sequence twice in isolated browser contexts and requires identical results.
+- Check: `node 23_Fetching_Data_Using_Hooks/applied-labs/r19-t025/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 22](../22_Form_Using_Hooks/22_form_using_hooks.md) | [Day 24>>](../24_projects/24_projects.md)
