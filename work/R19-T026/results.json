@@ -1,0 +1,282 @@
+{
+  "task": "R19-T026",
+  "refactor": "extracted useKeyboardShortcut(key, onTrigger) from the inline keydown handling",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "expectedTable": [
+    {
+      "action": "initial state",
+      "expected": 0
+    },
+    {
+      "action": "click Increment",
+      "expected": 1
+    },
+    {
+      "action": "press +",
+      "expected": 2
+    },
+    {
+      "action": "press a (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press Escape (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press ArrowUp (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press = (unshifted + key, irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "press - (irrelevant)",
+      "expected": 2
+    },
+    {
+      "action": "hold + (auto-repeat counts once)",
+      "expected": 3
+    },
+    {
+      "action": "click Increment",
+      "expected": 4
+    },
+    {
+      "action": "press +",
+      "expected": 5
+    },
+    {
+      "action": "Enter on the focused button (a click)",
+      "expected": 6
+    }
+  ],
+  "baselineTranscript": [
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "refactoredTranscript": [
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "steps": [
+    {
+      "name": "Baseline: initial state",
+      "input": "initial state",
+      "expected": "count 0",
+      "actual": "count 0",
+      "pass": true
+    },
+    {
+      "name": "Baseline: click Increment",
+      "input": "click Increment",
+      "expected": "count 1",
+      "actual": "count 1",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press +",
+      "input": "press +",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press a (irrelevant)",
+      "input": "press a (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press Escape (irrelevant)",
+      "input": "press Escape (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press ArrowUp (irrelevant)",
+      "input": "press ArrowUp (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press = (unshifted + key, irrelevant)",
+      "input": "press = (unshifted + key, irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press - (irrelevant)",
+      "input": "press - (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Baseline: hold + (auto-repeat counts once)",
+      "input": "hold + (auto-repeat counts once)",
+      "expected": "count 3",
+      "actual": "count 3",
+      "pass": true
+    },
+    {
+      "name": "Baseline: click Increment",
+      "input": "click Increment",
+      "expected": "count 4",
+      "actual": "count 4",
+      "pass": true
+    },
+    {
+      "name": "Baseline: press +",
+      "input": "press +",
+      "expected": "count 5",
+      "actual": "count 5",
+      "pass": true
+    },
+    {
+      "name": "Baseline: Enter on the focused button (a click)",
+      "input": "Enter on the focused button (a click)",
+      "expected": "count 6",
+      "actual": "count 6",
+      "pass": true
+    },
+    {
+      "name": "Refactored: initial state",
+      "input": "initial state",
+      "expected": "count 0",
+      "actual": "count 0",
+      "pass": true
+    },
+    {
+      "name": "Refactored: click Increment",
+      "input": "click Increment",
+      "expected": "count 1",
+      "actual": "count 1",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press +",
+      "input": "press +",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press a (irrelevant)",
+      "input": "press a (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press Escape (irrelevant)",
+      "input": "press Escape (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press ArrowUp (irrelevant)",
+      "input": "press ArrowUp (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press = (unshifted + key, irrelevant)",
+      "input": "press = (unshifted + key, irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press - (irrelevant)",
+      "input": "press - (irrelevant)",
+      "expected": "count 2",
+      "actual": "count 2",
+      "pass": true
+    },
+    {
+      "name": "Refactored: hold + (auto-repeat counts once)",
+      "input": "hold + (auto-repeat counts once)",
+      "expected": "count 3",
+      "actual": "count 3",
+      "pass": true
+    },
+    {
+      "name": "Refactored: click Increment",
+      "input": "click Increment",
+      "expected": "count 4",
+      "actual": "count 4",
+      "pass": true
+    },
+    {
+      "name": "Refactored: press +",
+      "input": "press +",
+      "expected": "count 5",
+      "actual": "count 5",
+      "pass": true
+    },
+    {
+      "name": "Refactored: Enter on the focused button (a click)",
+      "input": "Enter on the focused button (a click)",
+      "expected": "count 6",
+      "actual": "count 6",
+      "pass": true
+    },
+    {
+      "name": "Refactor keeps the contract: transcript equals the captured baseline",
+      "input": "both transcripts",
+      "expected": "[0,1,2,2,2,2,2,2,3,4,5,6]",
+      "actual": "[0,1,2,2,2,2,2,2,3,4,5,6]",
+      "pass": true
+    },
+    {
+      "name": "The extracted responsibility is named and used by the component",
+      "input": "read baseline.jsx and example.jsx",
+      "expected": "baseline wires keydown inline; refactor delegates to useKeyboardShortcut",
+      "actual": "extracted",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "both runs",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}
