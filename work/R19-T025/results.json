@@ -1,0 +1,886 @@
+{
+  "task": "R19-T025",
+  "injected": "network (manual fixture source); no timers, no storage",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "expectedTable": [
+    {
+      "action": "initial state",
+      "expected": {
+        "status": "Idle",
+        "data": null,
+        "error": null,
+        "requests": []
+      }
+    },
+    {
+      "action": "select alpha (request #1 starts)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: pending"
+        ]
+      }
+    },
+    {
+      "action": "select beta while #1 is pending (#1 is aborted)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: pending (aborted)",
+          "#2 beta: pending"
+        ]
+      }
+    },
+    {
+      "action": "release #2 (beta response arrives)",
+      "expected": {
+        "status": "Success",
+        "data": "Beta data",
+        "error": null,
+        "requests": [
+          "#1 alpha: pending (aborted)",
+          "#2 beta: resolved"
+        ]
+      }
+    },
+    {
+      "action": "release #1 (late alpha response is ignored)",
+      "expected": {
+        "status": "Success",
+        "data": "Beta data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved"
+        ]
+      }
+    },
+    {
+      "action": "select gamma (loading resets, data clears)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: pending"
+        ]
+      }
+    },
+    {
+      "action": "fail #3 (gamma error is shown)",
+      "expected": {
+        "status": "Error",
+        "data": null,
+        "error": "Failed to load gamma",
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed"
+        ]
+      }
+    },
+    {
+      "action": "select alpha (error clears, loading resets)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: pending"
+        ]
+      }
+    },
+    {
+      "action": "release #4 (alpha response arrives)",
+      "expected": {
+        "status": "Success",
+        "data": "Alpha data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved"
+        ]
+      }
+    },
+    {
+      "action": "select alpha again (same key, no new request)",
+      "expected": {
+        "status": "Success",
+        "data": "Alpha data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved"
+        ]
+      }
+    },
+    {
+      "action": "select beta (request #5 starts)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: pending"
+        ]
+      }
+    },
+    {
+      "action": "select gamma while #5 is pending (#5 is aborted)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: pending (aborted)",
+          "#6 gamma: pending"
+        ]
+      }
+    },
+    {
+      "action": "fail #5 (late beta error is ignored)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: failed (aborted)",
+          "#6 gamma: pending"
+        ]
+      }
+    },
+    {
+      "action": "release #6 (gamma response arrives)",
+      "expected": {
+        "status": "Success",
+        "data": "Gamma data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: failed (aborted)",
+          "#6 gamma: resolved"
+        ]
+      }
+    }
+  ],
+  "run1": [
+    {
+      "status": "Idle",
+      "data": null,
+      "error": null,
+      "requests": []
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: pending"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: pending (aborted)",
+        "#2 beta: pending"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Beta data",
+      "error": null,
+      "requests": [
+        "#1 alpha: pending (aborted)",
+        "#2 beta: resolved"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Beta data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: pending"
+      ]
+    },
+    {
+      "status": "Error",
+      "data": null,
+      "error": "Failed to load gamma",
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: pending"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Alpha data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Alpha data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: pending"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: pending (aborted)",
+        "#6 gamma: pending"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: failed (aborted)",
+        "#6 gamma: pending"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Gamma data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: failed (aborted)",
+        "#6 gamma: resolved"
+      ]
+    }
+  ],
+  "run2": [
+    {
+      "status": "Idle",
+      "data": null,
+      "error": null,
+      "requests": []
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: pending"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: pending (aborted)",
+        "#2 beta: pending"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Beta data",
+      "error": null,
+      "requests": [
+        "#1 alpha: pending (aborted)",
+        "#2 beta: resolved"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Beta data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: pending"
+      ]
+    },
+    {
+      "status": "Error",
+      "data": null,
+      "error": "Failed to load gamma",
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: pending"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Alpha data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Alpha data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: pending"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: pending (aborted)",
+        "#6 gamma: pending"
+      ]
+    },
+    {
+      "status": "Loading",
+      "data": null,
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: failed (aborted)",
+        "#6 gamma: pending"
+      ]
+    },
+    {
+      "status": "Success",
+      "data": "Gamma data",
+      "error": null,
+      "requests": [
+        "#1 alpha: resolved (aborted)",
+        "#2 beta: resolved",
+        "#3 gamma: failed",
+        "#4 alpha: resolved",
+        "#5 beta: failed (aborted)",
+        "#6 gamma: resolved"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "name": "Step 0: initial state",
+      "input": "initial state",
+      "expected": {
+        "status": "Idle",
+        "data": null,
+        "error": null,
+        "requests": []
+      },
+      "actual": {
+        "status": "Idle",
+        "data": null,
+        "error": null,
+        "requests": []
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 1: select alpha (request #1 starts)",
+      "input": "select alpha (request #1 starts)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 2: select beta while #1 is pending (#1 is aborted)",
+      "input": "select beta while #1 is pending (#1 is aborted)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: pending (aborted)",
+          "#2 beta: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: pending (aborted)",
+          "#2 beta: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 3: release #2 (beta response arrives)",
+      "input": "release #2 (beta response arrives)",
+      "expected": {
+        "status": "Success",
+        "data": "Beta data",
+        "error": null,
+        "requests": [
+          "#1 alpha: pending (aborted)",
+          "#2 beta: resolved"
+        ]
+      },
+      "actual": {
+        "status": "Success",
+        "data": "Beta data",
+        "error": null,
+        "requests": [
+          "#1 alpha: pending (aborted)",
+          "#2 beta: resolved"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 4: release #1 (late alpha response is ignored)",
+      "input": "release #1 (late alpha response is ignored)",
+      "expected": {
+        "status": "Success",
+        "data": "Beta data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved"
+        ]
+      },
+      "actual": {
+        "status": "Success",
+        "data": "Beta data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 5: select gamma (loading resets, data clears)",
+      "input": "select gamma (loading resets, data clears)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 6: fail #3 (gamma error is shown)",
+      "input": "fail #3 (gamma error is shown)",
+      "expected": {
+        "status": "Error",
+        "data": null,
+        "error": "Failed to load gamma",
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed"
+        ]
+      },
+      "actual": {
+        "status": "Error",
+        "data": null,
+        "error": "Failed to load gamma",
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 7: select alpha (error clears, loading resets)",
+      "input": "select alpha (error clears, loading resets)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 8: release #4 (alpha response arrives)",
+      "input": "release #4 (alpha response arrives)",
+      "expected": {
+        "status": "Success",
+        "data": "Alpha data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved"
+        ]
+      },
+      "actual": {
+        "status": "Success",
+        "data": "Alpha data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 9: select alpha again (same key, no new request)",
+      "input": "select alpha again (same key, no new request)",
+      "expected": {
+        "status": "Success",
+        "data": "Alpha data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved"
+        ]
+      },
+      "actual": {
+        "status": "Success",
+        "data": "Alpha data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 10: select beta (request #5 starts)",
+      "input": "select beta (request #5 starts)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 11: select gamma while #5 is pending (#5 is aborted)",
+      "input": "select gamma while #5 is pending (#5 is aborted)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: pending (aborted)",
+          "#6 gamma: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: pending (aborted)",
+          "#6 gamma: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 12: fail #5 (late beta error is ignored)",
+      "input": "fail #5 (late beta error is ignored)",
+      "expected": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: failed (aborted)",
+          "#6 gamma: pending"
+        ]
+      },
+      "actual": {
+        "status": "Loading",
+        "data": null,
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: failed (aborted)",
+          "#6 gamma: pending"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 13: release #6 (gamma response arrives)",
+      "input": "release #6 (gamma response arrives)",
+      "expected": {
+        "status": "Success",
+        "data": "Gamma data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: failed (aborted)",
+          "#6 gamma: resolved"
+        ]
+      },
+      "actual": {
+        "status": "Success",
+        "data": "Gamma data",
+        "error": null,
+        "requests": [
+          "#1 alpha: resolved (aborted)",
+          "#2 beta: resolved",
+          "#3 gamma: failed",
+          "#4 alpha: resolved",
+          "#5 beta: failed (aborted)",
+          "#6 gamma: resolved"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Run 2 (fresh browser context) matches Run 1 at every step",
+      "input": "replay all 14 actions",
+      "expected": "same snapshot as Run 1 after each action",
+      "actual": "14 snapshots",
+      "pass": true
+    },
+    {
+      "name": "Two isolated runs agree",
+      "input": "compare both transcripts",
+      "expected": "identical",
+      "actual": "identical",
+      "pass": true
+    },
+    {
+      "name": "No requests leave localhost",
+      "input": "all requests in both runs",
+      "expected": "no external requests",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "both runs",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}
