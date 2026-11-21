@@ -1,0 +1,422 @@
+{
+  "task": "R19-T028",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "expectedTable": [
+    {
+      "action": "initial state (empty state, nothing submitted)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Waiting for input"
+      }
+    },
+    {
+      "action": "submit the blank form (failure: both fields blocked)",
+      "expected": {
+        "nameError": "Name is required",
+        "emailError": "Email is required",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "type a name (its error clears while typing)",
+      "expected": {
+        "nameError": "",
+        "emailError": "Email is required",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "type a malformed email (its error is re-checked)",
+      "expected": {
+        "nameError": "",
+        "emailError": "Enter a valid email address",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "submit with the malformed email (still blocked)",
+      "expected": {
+        "nameError": "",
+        "emailError": "Enter a valid email address",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "type a valid email (error clears)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "submit (recovery: one normalized payload, no restart)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 1,
+        "status": "Submitted"
+      }
+    },
+    {
+      "action": "blank the name (no error is shown before a submit)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 1,
+        "status": "Submitted"
+      }
+    },
+    {
+      "action": "submit with a blank name (blocked again, payload cleared)",
+      "expected": {
+        "nameError": "Name is required",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 1,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "type a valid name (error clears)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 1,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "type another valid email",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 1,
+        "status": "Blocked: fix the marked fields"
+      }
+    },
+    {
+      "action": "submit (second recovery: a new normalized payload)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Grace Hopper\",\"email\":\"grace@navy.mil\"}",
+        "submissions": 2,
+        "status": "Submitted"
+      }
+    },
+    {
+      "action": "press Enter in the email field (exactly one more submission)",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Grace Hopper\",\"email\":\"grace@navy.mil\"}",
+        "submissions": 3,
+        "status": "Submitted"
+      }
+    }
+  ],
+  "actual": [
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "No payload yet",
+      "submissions": 0,
+      "status": "Waiting for input"
+    },
+    {
+      "nameError": "Name is required",
+      "emailError": "Email is required",
+      "payload": "No payload yet",
+      "submissions": 0,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "Email is required",
+      "payload": "No payload yet",
+      "submissions": 0,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "Enter a valid email address",
+      "payload": "No payload yet",
+      "submissions": 0,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "Enter a valid email address",
+      "payload": "No payload yet",
+      "submissions": 0,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "No payload yet",
+      "submissions": 0,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+      "submissions": 1,
+      "status": "Submitted"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+      "submissions": 1,
+      "status": "Submitted"
+    },
+    {
+      "nameError": "Name is required",
+      "emailError": "",
+      "payload": "No payload yet",
+      "submissions": 1,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "No payload yet",
+      "submissions": 1,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "No payload yet",
+      "submissions": 1,
+      "status": "Blocked: fix the marked fields"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "{\"name\":\"Grace Hopper\",\"email\":\"grace@navy.mil\"}",
+      "submissions": 2,
+      "status": "Submitted"
+    },
+    {
+      "nameError": "",
+      "emailError": "",
+      "payload": "{\"name\":\"Grace Hopper\",\"email\":\"grace@navy.mil\"}",
+      "submissions": 3,
+      "status": "Submitted"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Step 0: initial state (empty state, nothing submitted)",
+      "input": "initial state (empty state, nothing submitted)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"No payload yet\",\"submissions\":0,\"status\":\"Waiting for input\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Waiting for input"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 1: submit the blank form (failure: both fields blocked)",
+      "input": "submit the blank form (failure: both fields blocked)",
+      "expected": "{\"nameError\":\"Name is required\",\"emailError\":\"Email is required\",\"payload\":\"No payload yet\",\"submissions\":0,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "Name is required",
+        "emailError": "Email is required",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 2: type a name (its error clears while typing)",
+      "input": "type a name (its error clears while typing)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"Email is required\",\"payload\":\"No payload yet\",\"submissions\":0,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "Email is required",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 3: type a malformed email (its error is re-checked)",
+      "input": "type a malformed email (its error is re-checked)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"Enter a valid email address\",\"payload\":\"No payload yet\",\"submissions\":0,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "Enter a valid email address",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 4: submit with the malformed email (still blocked)",
+      "input": "submit with the malformed email (still blocked)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"Enter a valid email address\",\"payload\":\"No payload yet\",\"submissions\":0,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "Enter a valid email address",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 5: type a valid email (error clears)",
+      "input": "type a valid email (error clears)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"No payload yet\",\"submissions\":0,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 0,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 6: submit (recovery: one normalized payload, no restart)",
+      "input": "submit (recovery: one normalized payload, no restart)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"{\\\"name\\\":\\\"Ada Lovelace\\\",\\\"email\\\":\\\"ada@example.com\\\"}\",\"submissions\":1,\"status\":\"Submitted\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 1,
+        "status": "Submitted"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 7: blank the name (no error is shown before a submit)",
+      "input": "blank the name (no error is shown before a submit)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"{\\\"name\\\":\\\"Ada Lovelace\\\",\\\"email\\\":\\\"ada@example.com\\\"}\",\"submissions\":1,\"status\":\"Submitted\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 1,
+        "status": "Submitted"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 8: submit with a blank name (blocked again, payload cleared)",
+      "input": "submit with a blank name (blocked again, payload cleared)",
+      "expected": "{\"nameError\":\"Name is required\",\"emailError\":\"\",\"payload\":\"No payload yet\",\"submissions\":1,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "Name is required",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 1,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 9: type a valid name (error clears)",
+      "input": "type a valid name (error clears)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"No payload yet\",\"submissions\":1,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 1,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 10: type another valid email",
+      "input": "type another valid email",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"No payload yet\",\"submissions\":1,\"status\":\"Blocked: fix the marked fields\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 1,
+        "status": "Blocked: fix the marked fields"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 11: submit (second recovery: a new normalized payload)",
+      "input": "submit (second recovery: a new normalized payload)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"{\\\"name\\\":\\\"Grace Hopper\\\",\\\"email\\\":\\\"grace@navy.mil\\\"}\",\"submissions\":2,\"status\":\"Submitted\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Grace Hopper\",\"email\":\"grace@navy.mil\"}",
+        "submissions": 2,
+        "status": "Submitted"
+      },
+      "pass": true
+    },
+    {
+      "name": "Step 12: press Enter in the email field (exactly one more submission)",
+      "input": "press Enter in the email field (exactly one more submission)",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"{\\\"name\\\":\\\"Grace Hopper\\\",\\\"email\\\":\\\"grace@navy.mil\\\"}\",\"submissions\":3,\"status\":\"Submitted\"}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Grace Hopper\",\"email\":\"grace@navy.mil\"}",
+        "submissions": 3,
+        "status": "Submitted"
+      },
+      "pass": true
+    },
+    {
+      "name": "The page never reloaded: failure and recovery happened in one session",
+      "input": "marker set before step 0",
+      "expected": "marker still present, one navigation, URL unchanged",
+      "actual": "one navigation",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "whole run",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}

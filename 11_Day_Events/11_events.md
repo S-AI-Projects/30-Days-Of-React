@@ -234,6 +234,16 @@ Implement the following using onMouseEnter event
 
 Coming
 
+## Added activity: form validation failure and recovery (R19-T028)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t028](./applied-labs/r19-t028/README.md)
+- Inputs: a blank form, a blank name, a malformed email, and then valid name and email values, in one session.
+- Expected result: a blank name or an invalid email blocks the submit with an inline error, and valid data produces one normalized payload.
+- Recovery: after a blocked submit, the next valid input succeeds without restarting the example.
+- Check: `node 11_Day_Events/applied-labs/r19-t028/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 10](../10_React_Project_Folder_Structure/10_react_project_folder_structure.md) | [Day 12 >>](../12_Day_Forms/12_forms.md)
