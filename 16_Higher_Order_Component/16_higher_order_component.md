@@ -207,6 +207,16 @@ The is above example is one use case of Higher Order Component. However, its use
 
 coming
 
+## Added activity: list and detail with explicit state ownership (R19-T027)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t027](./applied-labs/r19-t027/README.md)
+- Inputs: selecting record B, selecting another record, repeating a selection, and clearing the selection.
+- Expected result: selecting record B updates only the detail panel (the list does not re-render), and clearing the selection shows the empty state, "No record selected".
+- Worked explanation: the click sets `App`'s `selectedId` (intermediate state), `App` passes the matching record to the detail panel (output), and the list receives identical props. The README holds this as a step table that the check executes.
+- Check: `node 16_Higher_Order_Component/applied-labs/r19-t027/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 15](../15_Third_Party_Packages/15_third_party_packages.md) | [Day 17 >>](../17_React_Router/17_react_router.md)
