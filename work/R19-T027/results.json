@@ -1,0 +1,282 @@
+{
+  "task": "R19-T027",
+  "publishedExample": "json block in README.md, executed by this check",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "expected": [
+    {
+      "action": "none",
+      "label": "initial render",
+      "state": {
+        "selectedId": null
+      },
+      "output": "No record selected",
+      "renders": {
+        "list": 1,
+        "detail": 1
+      }
+    },
+    {
+      "action": "select",
+      "id": "B",
+      "label": "select record B",
+      "state": {
+        "selectedId": "B"
+      },
+      "output": "Record B",
+      "renders": {
+        "list": 1,
+        "detail": 2
+      }
+    },
+    {
+      "action": "select",
+      "id": "C",
+      "label": "select record C",
+      "state": {
+        "selectedId": "C"
+      },
+      "output": "Record C",
+      "renders": {
+        "list": 1,
+        "detail": 3
+      }
+    },
+    {
+      "action": "select",
+      "id": "C",
+      "label": "select record C again",
+      "state": {
+        "selectedId": "C"
+      },
+      "output": "Record C",
+      "renders": {
+        "list": 1,
+        "detail": 3
+      }
+    },
+    {
+      "action": "clear",
+      "label": "clear the selection",
+      "state": {
+        "selectedId": null
+      },
+      "output": "No record selected",
+      "renders": {
+        "list": 1,
+        "detail": 4
+      }
+    },
+    {
+      "action": "clear",
+      "label": "clear again",
+      "state": {
+        "selectedId": null
+      },
+      "output": "No record selected",
+      "renders": {
+        "list": 1,
+        "detail": 4
+      }
+    },
+    {
+      "action": "select",
+      "id": "B",
+      "label": "select record B after clearing",
+      "state": {
+        "selectedId": "B"
+      },
+      "output": "Record B",
+      "renders": {
+        "list": 1,
+        "detail": 5
+      }
+    }
+  ],
+  "actual": [
+    {
+      "state": "{\"selectedId\":null}",
+      "output": "No record selected",
+      "renders": {
+        "list": 1,
+        "detail": 1
+      }
+    },
+    {
+      "state": "{\"selectedId\":\"B\"}",
+      "output": "Record B",
+      "renders": {
+        "list": 1,
+        "detail": 2
+      }
+    },
+    {
+      "state": "{\"selectedId\":\"C\"}",
+      "output": "Record C",
+      "renders": {
+        "list": 1,
+        "detail": 3
+      }
+    },
+    {
+      "state": "{\"selectedId\":\"C\"}",
+      "output": "Record C",
+      "renders": {
+        "list": 1,
+        "detail": 3
+      }
+    },
+    {
+      "state": "{\"selectedId\":null}",
+      "output": "No record selected",
+      "renders": {
+        "list": 1,
+        "detail": 4
+      }
+    },
+    {
+      "state": "{\"selectedId\":null}",
+      "output": "No record selected",
+      "renders": {
+        "list": 1,
+        "detail": 4
+      }
+    },
+    {
+      "state": "{\"selectedId\":\"B\"}",
+      "output": "Record B",
+      "renders": {
+        "list": 1,
+        "detail": 5
+      }
+    }
+  ],
+  "steps": [
+    {
+      "name": "The published example in README.md is present and covers selecting B and clearing",
+      "input": "parse the json block in README.md",
+      "expected": "initial render, select B, clear, and no extra detail render for repeated actions",
+      "actual": "7 steps",
+      "pass": true
+    },
+    {
+      "name": "Published example step 1: initial render",
+      "input": "none",
+      "expected": "state {\"selectedId\":null}; output \"No record selected\"; renders list 1, detail 1",
+      "actual": {
+        "state": "{\"selectedId\":null}",
+        "output": "No record selected",
+        "renders": {
+          "list": 1,
+          "detail": 1
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Published example step 2: select record B",
+      "input": "select B",
+      "expected": "state {\"selectedId\":\"B\"}; output \"Record B\"; renders list 1, detail 2",
+      "actual": {
+        "state": "{\"selectedId\":\"B\"}",
+        "output": "Record B",
+        "renders": {
+          "list": 1,
+          "detail": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Published example step 3: select record C",
+      "input": "select C",
+      "expected": "state {\"selectedId\":\"C\"}; output \"Record C\"; renders list 1, detail 3",
+      "actual": {
+        "state": "{\"selectedId\":\"C\"}",
+        "output": "Record C",
+        "renders": {
+          "list": 1,
+          "detail": 3
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Published example step 4: select record C again",
+      "input": "select C",
+      "expected": "state {\"selectedId\":\"C\"}; output \"Record C\"; renders list 1, detail 3",
+      "actual": {
+        "state": "{\"selectedId\":\"C\"}",
+        "output": "Record C",
+        "renders": {
+          "list": 1,
+          "detail": 3
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Published example step 5: clear the selection",
+      "input": "clear",
+      "expected": "state {\"selectedId\":null}; output \"No record selected\"; renders list 1, detail 4",
+      "actual": {
+        "state": "{\"selectedId\":null}",
+        "output": "No record selected",
+        "renders": {
+          "list": 1,
+          "detail": 4
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Published example step 6: clear again",
+      "input": "clear",
+      "expected": "state {\"selectedId\":null}; output \"No record selected\"; renders list 1, detail 4",
+      "actual": {
+        "state": "{\"selectedId\":null}",
+        "output": "No record selected",
+        "renders": {
+          "list": 1,
+          "detail": 4
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Published example step 7: select record B after clearing",
+      "input": "select B",
+      "expected": "state {\"selectedId\":\"B\"}; output \"Record B\"; renders list 1, detail 5",
+      "actual": {
+        "state": "{\"selectedId\":\"B\"}",
+        "output": "Record B",
+        "renders": {
+          "list": 1,
+          "detail": 5
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "The list content never changed across the whole sequence",
+      "input": "compare the list before and after",
+      "expected": "identical",
+      "actual": "Renders: 1 | Record A | Record B | Record C",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "whole run",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}
