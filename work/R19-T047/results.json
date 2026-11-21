@@ -1,0 +1,111 @@
+{
+  "taskId": "R19-T047",
+  "timestamp": "2026-11-21T16:37:54.997Z",
+  "passed": true,
+  "command": "node 26_Context/applied-labs/r19-t047/check.mjs",
+  "exitCode": 0,
+  "contract": {
+    "themeContextWithToggle": "ThemeProvider propagates theme through Context to direct and nested consumers",
+    "nestedConsumer": "Intermediate components do not prop-drill theme",
+    "independentSubtree": "Nested/independent ThemeProvider maintains isolated theme state"
+  },
+  "contributionFocus": {
+    "description": "Demonstrate the stated error or empty state, then a successful recovery on the next valid input without restarting the example.",
+    "emptyStateDemonstrated": true,
+    "invalidInputErrorDemonstrated": true,
+    "inPlaceRecoveryVerified": true
+  },
+  "versions": {
+    "node": "v24.18.0",
+    "react": "18.3.1",
+    "reactDom": "18.3.1",
+    "vite": "5.4.8",
+    "playwright": "1.49.1",
+    "chromium": "131.0.6778.33"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "scenario": "Initial Mount State",
+      "action": "Mount",
+      "expected": "main=light (direct & nested), independent=dark (direct & nested), orphan=fallback, errors=0",
+      "actual": "main=light, independent=dark, orphan=fallback, errors=0",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "scenario": "Main Provider Toggle to Dark",
+      "action": "Click [data-testid=\"toggle-main-theme\"]",
+      "expected": "main consumers (direct & nested) become \"dark\"; independent subtree retains \"dark\"",
+      "actual": "mainDirect=dark, mainNested=dark, indepDirect=dark",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "scenario": "Independent Subtree Toggle to Light",
+      "action": "Click [data-testid=\"toggle-independent-theme\"]",
+      "expected": "independent subtree consumers become \"light\"; main consumers remain \"dark\"",
+      "actual": "indepDirect=light, indepNested=light, mainDirect=dark",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "scenario": "Main Provider Toggle Back to Light",
+      "action": "Click [data-testid=\"toggle-main-theme\"]",
+      "expected": "main consumers become \"light\"; independent subtree remains \"light\"",
+      "actual": "mainDirect=light, mainNested=light, indepDirect=light",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "scenario": "Demonstrate Stated Empty State",
+      "action": "Click [data-testid=\"clear-theme-btn\"]",
+      "expected": "error banner displayed with empty error text, empty state view active, consumers show \"fallback-empty\"",
+      "actual": "bannerText=\"Error: Theme name cannot be empty. Enter a valid theme (light, dark, solarized, ocean).\", theme=fallback-empty",
+      "passed": true
+    },
+    {
+      "step": 6,
+      "scenario": "Demonstrate Stated Invalid Input Error",
+      "action": "Enter \"cyberpunk-neon-invalid\" -> Click Apply",
+      "expected": "error banner displays unknown theme error message",
+      "actual": "bannerText=\"Error: Unknown theme 'cyberpunk-neon-invalid'. Supported themes: light, dark, solarized, ocean.\"",
+      "passed": true
+    },
+    {
+      "step": 7,
+      "scenario": "Successful In-Place Recovery on Valid Input",
+      "action": "Enter \"solarized\" -> Click Apply (without restarting app)",
+      "expected": "error banner removed, empty state removed, consumers updated to \"solarized\", state=healthy",
+      "actual": "errorBannerCount=0, mainDirect=solarized, mainNested=solarized, status=\"Active theme: solarized (Solarized Sand) | State: healthy\"",
+      "passed": true
+    },
+    {
+      "step": 8,
+      "scenario": "Second Error & Recovery Cycle (Ocean)",
+      "action": "Trigger invalid state -> Enter \"ocean\" -> Click Apply",
+      "expected": "error cleared, consumers updated to \"ocean\"",
+      "actual": "error cleared, mainDirect=ocean, mainNested=ocean",
+      "passed": true
+    },
+    {
+      "step": 9,
+      "scenario": "Post-Recovery Main Toggle",
+      "action": "Click [data-testid=\"toggle-main-theme\"] after recovery",
+      "expected": "main consumers toggle to \"dark\"",
+      "actual": "mainDirect=dark, mainNested=dark",
+      "passed": true
+    },
+    {
+      "step": 10,
+      "scenario": "Error Log Cleanliness",
+      "action": "Inspect console, pageerror, requestfailed events",
+      "expected": "consoleErrors=0, pageErrors=0, requestFailures=0",
+      "actual": "consoleErrors=0, pageErrors=0, requestFailures=0",
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": []
+}
