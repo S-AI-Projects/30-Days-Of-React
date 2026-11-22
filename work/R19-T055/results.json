@@ -1,0 +1,106 @@
+{
+  "task": "R19-T055",
+  "title": "Day 8: state updates — deterministic fixture lab",
+  "passed": true,
+  "timestamp": "2026-11-22T14:06:00.721Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "vite": "5.4.10"
+  },
+  "fixtureStepsCount": 7,
+  "run1": [
+    {
+      "step": 1,
+      "action": "initial_render",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "step": 2,
+      "action": "decrement_at_zero",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "step": 3,
+      "action": "increment_first",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "step": 4,
+      "action": "increment_second",
+      "observed": 2,
+      "expected": 2
+    },
+    {
+      "step": 5,
+      "action": "decrement_once",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "step": 6,
+      "action": "decrement_to_zero",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "step": 7,
+      "action": "decrement_below_zero_attempt",
+      "observed": 0,
+      "expected": 0
+    }
+  ],
+  "run2": [
+    {
+      "step": 1,
+      "action": "initial_render",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "step": 2,
+      "action": "decrement_at_zero",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "step": 3,
+      "action": "increment_first",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "step": 4,
+      "action": "increment_second",
+      "observed": 2,
+      "expected": 2
+    },
+    {
+      "step": 5,
+      "action": "decrement_once",
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "step": 6,
+      "action": "decrement_to_zero",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "step": 7,
+      "action": "decrement_below_zero_attempt",
+      "observed": 0,
+      "expected": 0
+    }
+  ],
+  "runsAgree": true,
+  "errors": {
+    "pageErrors": [],
+    "consoleErrors": []
+  }
+}
