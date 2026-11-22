@@ -1,0 +1,45 @@
+{
+  "task": "R19-T056",
+  "title": "Day 6: stable list keys — refactor an applied example",
+  "passed": true,
+  "timestamp": "2026-11-22T14:14:09.444Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "vite": "5.4.10"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "initial_render",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "action": "edit_rec_2",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "action": "reverse_and_verify_state_persistence",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "action": "move_up_and_verify",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "action": "verify_zero_warnings_or_errors",
+      "passed": true
+    }
+  ],
+  "contractChecks": {
+    "editedValueRetainedAfterReorder": true,
+    "zeroKeyWarnings": true,
+    "zeroPageErrors": true,
+    "zeroConsoleErrors": true
+  }
+}
