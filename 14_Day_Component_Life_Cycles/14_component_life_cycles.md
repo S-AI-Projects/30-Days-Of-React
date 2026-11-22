@@ -614,6 +614,16 @@ Coming
 
 Coming
 
+## Added activity: injected fetch adapter at three input sizes (R19-T029)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t029](./applied-labs/r19-t029/README.md)
+- Inputs: fixtures for a 200 response with 1, 10 and 100 items, and for a rejected request followed by a successful retry.
+- Expected result: each size renders the right number of rows with 1 adapter call and 2 renders; the rejected request shows an error and a Retry button, and the retry succeeds with 2 adapter calls and 4 renders.
+- Counts, not speed: the check reports operation and render counts and sets no timing threshold.
+- Check: `node 14_Day_Component_Life_Cycles/applied-labs/r19-t029/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 13](../13_Day_Controlled_Versus_Uncontrolled_Input/13_uncontrolled_input.md) | [Day 15 >>](../15_Third_Party_Packages/15_third_party_packages.md)

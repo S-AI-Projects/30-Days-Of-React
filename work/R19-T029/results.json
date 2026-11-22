@@ -1,0 +1,167 @@
+{
+  "task": "R19-T029",
+  "note": "correctness plus operation and render counts; no speed threshold",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "operationCounts": [
+    {
+      "scenario": "size-1",
+      "status": "Loaded",
+      "rows": 1,
+      "first": "Item 1",
+      "last": "Item 1",
+      "calls": 1,
+      "renders": 2
+    },
+    {
+      "scenario": "size-10",
+      "status": "Loaded",
+      "rows": 10,
+      "first": "Item 1",
+      "last": "Item 10",
+      "calls": 1,
+      "renders": 2
+    },
+    {
+      "scenario": "size-100",
+      "status": "Loaded",
+      "rows": 100,
+      "first": "Item 1",
+      "last": "Item 100",
+      "calls": 1,
+      "renders": 2
+    },
+    {
+      "scenario": "reject-retry (rejected)",
+      "status": "Error: Network down",
+      "rows": 0,
+      "first": null,
+      "last": null,
+      "calls": 1,
+      "renders": 2
+    },
+    {
+      "scenario": "reject-retry (after retry)",
+      "status": "Loaded",
+      "rows": 3,
+      "first": "Item 1",
+      "last": "Item 3",
+      "calls": 2,
+      "renders": 4
+    }
+  ],
+  "steps": [
+    {
+      "name": "Size 1: 200 response renders 1 row (1 adapter call, 2 renders)",
+      "input": "select the 1-item fixture",
+      "expected": "rows 1, calls 1, renders 2",
+      "actual": {
+        "status": "Loaded",
+        "rows": 1,
+        "first": "Item 1",
+        "last": "Item 1",
+        "calls": 1,
+        "renders": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "Size 10: 200 response renders 10 rows (1 adapter call, 2 renders)",
+      "input": "select the 10-item fixture",
+      "expected": "rows 10, calls 1, renders 2",
+      "actual": {
+        "status": "Loaded",
+        "rows": 10,
+        "first": "Item 1",
+        "last": "Item 10",
+        "calls": 1,
+        "renders": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "Size 100: 200 response renders 100 rows (1 adapter call, 2 renders)",
+      "input": "select the 100-item fixture",
+      "expected": "rows 100, calls 1, renders 2",
+      "actual": {
+        "status": "Loaded",
+        "rows": 100,
+        "first": "Item 1",
+        "last": "Item 100",
+        "calls": 1,
+        "renders": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "Rejected request shows the error state with a Retry button",
+      "input": "select the reject-then-retry fixture",
+      "expected": "Error: Network down, rows 0, calls 1, renders 2",
+      "actual": {
+        "status": "Error: Network down",
+        "rows": 0,
+        "first": null,
+        "last": null,
+        "calls": 1,
+        "renders": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "Retry succeeds: 3 rows, 2 adapter calls, 4 renders",
+      "input": "click Retry",
+      "expected": "Loaded, rows 3, calls 2, renders 4",
+      "actual": {
+        "status": "Loaded",
+        "rows": 3,
+        "first": "Item 1",
+        "last": "Item 3",
+        "calls": 2,
+        "renders": 4
+      },
+      "pass": true
+    },
+    {
+      "name": "Operation counts do not grow with input size (rows grow 1, 10, 100)",
+      "input": "compare the three sizes",
+      "expected": "same adapter calls and renders, rows 1, 10, 100",
+      "actual": "1 rows: 1 call, 2 renders; 10 rows: 1 call, 2 renders; 100 rows: 1 call, 2 renders",
+      "pass": true
+    },
+    {
+      "name": "Repeating a size remounts the Loader and gives identical counts",
+      "input": "select the 10-item fixture again",
+      "expected": "rows 10, calls 1, renders 2",
+      "actual": {
+        "status": "Loaded",
+        "rows": 10,
+        "first": "Item 1",
+        "last": "Item 10",
+        "calls": 1,
+        "renders": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "No live API call: no external request and no network call in the source",
+      "input": "requests and example.jsx",
+      "expected": "none",
+      "actual": "none",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "whole run",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}
