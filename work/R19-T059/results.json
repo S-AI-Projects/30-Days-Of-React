@@ -1,0 +1,52 @@
+{
+  "task": "R19-T059",
+  "title": "Day 26: context scope — input-scale experiment",
+  "passed": true,
+  "timestamp": "2026-11-22T15:57:30.742Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "vite": "5.4.10"
+  },
+  "subtreeIsolationVerified": true,
+  "experiments": [
+    {
+      "scaleSize": 1,
+      "consumersVerified": 1,
+      "operationsExecuted": 2,
+      "observedRenders": [
+        11
+      ],
+      "correctnessAsserted": true
+    },
+    {
+      "scaleSize": 3,
+      "consumersVerified": 3,
+      "operationsExecuted": 2,
+      "observedRenders": [
+        17,
+        5,
+        5
+      ],
+      "correctnessAsserted": true
+    },
+    {
+      "scaleSize": 5,
+      "consumersVerified": 5,
+      "operationsExecuted": 2,
+      "observedRenders": [
+        23,
+        11,
+        11,
+        5,
+        5
+      ],
+      "correctnessAsserted": true
+    }
+  ],
+  "errors": {
+    "pageErrors": [],
+    "consoleErrors": []
+  }
+}

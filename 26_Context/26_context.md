@@ -34,5 +34,14 @@ It seems the react documentation has pretty good information about context, you 
 
 # Exercises
 
+## Added activity: context scope — input-scale experiment (R19-T059)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t059](./applied-labs/r19-t059/README.md)
+- Inputs: root theme toggles, independent subtree theme toggles, and three bounded input sizes (1, 3, 5 consumers).
+- Expected result: toggling changes all consumers inside the provider; an independently provided subtree keeps its own state. Operation and render counts are reported.
+- Check: `node 26_Context/applied-labs/r19-t059/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 [<< Day 25](../25_Custom_Hooks/25_custom_hooks.md) | [Day 27>>](../27_Ref/27_ref.md)
