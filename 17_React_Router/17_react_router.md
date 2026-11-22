@@ -1731,6 +1731,15 @@ Now, you know about React router. Build your portfolio with React and implement 
 
 coming
 
+## Added activity: route behavior — executable lesson example (R19-T057)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t057](./applied-labs/r19-t057/README.md)
+- Inputs: accessible navigation links, known IDs, unknown IDs, and browser history events.
+- Expected result: navigating to a known ID shows its detail; an unknown ID shows Not found; browser Back restores the prior view.
+- Check: `node 17_React_Router/applied-labs/r19-t057/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 16](../16_Higher_Order_Component/16_higher_order_component.md) | [Day 18 >>](../18_projects/18_projects.md)

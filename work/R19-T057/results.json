@@ -1,0 +1,47 @@
+{
+  "task": "R19-T057",
+  "title": "Day 17: route behavior — executable lesson example",
+  "passed": true,
+  "timestamp": "2026-11-22T14:28:15.028Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "reactRouter": "6.26.2",
+    "vite": "5.4.10"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "initial_home_route",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "action": "navigate_known_id_shows_detail",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "action": "navigate_unknown_id_shows_not_found",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "action": "browser_back_restores_detail_view",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "action": "browser_back_restores_home_view",
+      "passed": true
+    }
+  ],
+  "contractChecks": {
+    "knownIdShowsDetail": true,
+    "unknownIdShowsNotFound": true,
+    "browserBackRestoresPriorView": true,
+    "zeroConsoleErrors": true,
+    "zeroPageErrors": true
+  }
+}
