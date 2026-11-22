@@ -508,6 +508,15 @@ I believe that now you have a very good understanding of state. After this, we w
 
 Coming
 
+## Added activity: state updates — deterministic fixture lab (R19-T055)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t055](./applied-labs/r19-t055/README.md)
+- Inputs: a deterministic sequence of increment and decrement actions with a zero lower bound.
+- Expected result: two increments followed by one decrement yields 1; decrement at zero stays zero. Two isolated runs agree.
+- Check: `node 08_Day_States/applied-labs/r19-t055/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 7](../07_Day_Class_Components/07_class_components.md) | [Day 9 >>](../09_Day_Conditional_Rendering/09_conditional_rendering.md)
