@@ -207,6 +207,15 @@ The is above example is one use case of Higher Order Component. However, its use
 
 coming
 
+## Added activity: class example integration — reference comparison lab (R19-T053)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t053](./applied-labs/r19-t053/README.md)
+- Inputs: record selection and clearing actions evaluated against a reference table.
+- Expected result: selecting record B updates only the detail panel; clearing selection displays its empty state.
+- Check: `node 16_Higher_Order_Component/applied-labs/r19-t053/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 15](../15_Third_Party_Packages/15_third_party_packages.md) | [Day 17 >>](../17_React_Router/17_react_router.md)
