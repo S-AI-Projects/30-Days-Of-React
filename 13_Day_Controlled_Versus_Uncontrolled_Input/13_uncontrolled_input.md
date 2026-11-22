@@ -172,6 +172,15 @@ Most of the time we use controlled input instead of uncontrolled input. In case 
 9. When do you use controlled input?
 10. Do you use a controlled or uncontrolled input to validate form input fields?
 
+## Added activity: lifecycle request cleanup — boundary-focused lab (R19-T052)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t052](./applied-labs/r19-t052/README.md)
+- Inputs: delayed requests with variable latency and empty/whitespace inputs.
+- Expected result: a slow response for A cannot overwrite a newer response for B; no state update occurs after unmount. Empty queries are handled safely at the boundary.
+- Check: `node 13_Day_Controlled_Versus_Uncontrolled_Input/applied-labs/r19-t052/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 12](../12_Day_Forms/12_forms.md) | [Day 14 >>]()

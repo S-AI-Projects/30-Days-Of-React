@@ -1,0 +1,19 @@
+{
+  "name": "r19-t052",
+  "version": "1.0.0",
+  "description": "Day 13: lifecycle request cleanup — boundary-focused lab (R19-T052)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.2",
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
+}
