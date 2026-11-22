@@ -283,6 +283,15 @@ ReactDOM.render(<App />, rootElement)
 
 ![Ten most highest populations](../images/day_6_ten_highest_populations_exercise.png)
 
+## Added activity: stable list keys — refactor an applied example (R19-T056)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t056](./applied-labs/r19-t056/README.md)
+- Inputs: an editable list of records with stable IDs.
+- Expected result: after reordering, edited values stay with their record; no key warning is logged.
+- Check: `node 06_Day_Map_List_Keys/applied-labs/r19-t056/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 5](./../05_Day_Props/05_props.md) | [Day 7 >>](../07_Day_Class_Components/07_class_components.md)
