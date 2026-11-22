@@ -31,6 +31,15 @@ In this section, you and I will develop an old version of twitter post.
 
 1. Develop the following application, [twitter tweets](https://www.30daysofreact.com/day-28/twitter-clone). The application has all the CRUD operations. 
 
+## Added activity: deployment base paths — regression-focused lab (R19-T060)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t060](./applied-labs/r19-t060/README.md)
+- Inputs: non-root base path (`/course/`), route navigation, page refresh, and a one-line mutant.
+- Expected result: serving beneath `/course/` loads assets and known routes; a page refresh preserves the route. The focused test passes on the correct example and fails on the mutant.
+- Check: `node 28_project/applied-labs/r19-t060/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 27](../27_Ref/27_ref.md) | [Day 29>>]()
