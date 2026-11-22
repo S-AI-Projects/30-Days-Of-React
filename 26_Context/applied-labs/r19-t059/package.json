@@ -1,0 +1,19 @@
+{
+  "name": "r19-t059",
+  "version": "1.0.0",
+  "description": "Day 26: context scope — input-scale experiment (R19-T059)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.2",
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
+}
