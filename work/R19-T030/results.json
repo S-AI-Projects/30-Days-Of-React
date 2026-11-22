@@ -1,0 +1,167 @@
+{
+  "task": "R19-T030",
+  "passed": true,
+  "versions": {
+    "node": "v26.12.1",
+    "vite": "8.3.8",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "playwrightTest": "1.65.1",
+    "chromium": "159.0.8154.6"
+  },
+  "mutant": "name.trim() === '' changed to name === ''",
+  "focusedOnCorrect": "passed",
+  "contractOnMutant": "passed (the mutant survives)",
+  "focusedOnMutant": "failed: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+  "expectedContractTable": [
+    {
+      "step": "initial state",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 0
+      }
+    },
+    {
+      "step": "blank form is blocked",
+      "expected": {
+        "nameError": "Name is required",
+        "emailError": "Email is required",
+        "payload": "No payload yet",
+        "submissions": 0
+      }
+    },
+    {
+      "step": "invalid email is blocked",
+      "expected": {
+        "nameError": "",
+        "emailError": "Enter a valid email address",
+        "payload": "No payload yet",
+        "submissions": 0
+      }
+    },
+    {
+      "step": "valid data produces one normalized payload",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 1
+      }
+    },
+    {
+      "step": "Enter in the email field submits exactly once more",
+      "expected": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 2
+      }
+    }
+  ],
+  "steps": [
+    {
+      "name": "Contract: initial state",
+      "input": "initial state",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"No payload yet\",\"submissions\":0}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "No payload yet",
+        "submissions": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "Contract: blank form is blocked",
+      "input": "blank form is blocked",
+      "expected": "{\"nameError\":\"Name is required\",\"emailError\":\"Email is required\",\"payload\":\"No payload yet\",\"submissions\":0}",
+      "actual": {
+        "nameError": "Name is required",
+        "emailError": "Email is required",
+        "payload": "No payload yet",
+        "submissions": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "Contract: invalid email is blocked",
+      "input": "invalid email is blocked",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"Enter a valid email address\",\"payload\":\"No payload yet\",\"submissions\":0}",
+      "actual": {
+        "nameError": "",
+        "emailError": "Enter a valid email address",
+        "payload": "No payload yet",
+        "submissions": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "Contract: valid data produces one normalized payload",
+      "input": "valid data produces one normalized payload",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"{\\\"name\\\":\\\"Ada Lovelace\\\",\\\"email\\\":\\\"ada@example.com\\\"}\",\"submissions\":1}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 1
+      },
+      "pass": true
+    },
+    {
+      "name": "Contract: Enter in the email field submits exactly once more",
+      "input": "Enter in the email field submits exactly once more",
+      "expected": "{\"nameError\":\"\",\"emailError\":\"\",\"payload\":\"{\\\"name\\\":\\\"Ada Lovelace\\\",\\\"email\\\":\\\"ada@example.com\\\"}\",\"submissions\":2}",
+      "actual": {
+        "nameError": "",
+        "emailError": "",
+        "payload": "{\"name\":\"Ada Lovelace\",\"email\":\"ada@example.com\"}",
+        "submissions": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "Focused test PASSES on the correct example (a name of only spaces is blocked)",
+      "input": "name \"   \", valid email",
+      "expected": "Name is required, no payload, 0 submissions",
+      "actual": "passed",
+      "pass": true
+    },
+    {
+      "name": "The one-line mutant is applied to the served example",
+      "input": "serve a copy with the mutant",
+      "expected": "mutant applied in memory",
+      "actual": "applied",
+      "pass": true
+    },
+    {
+      "name": "The general contract session alone does NOT catch the mutant (it survives)",
+      "input": "run the contract session on the mutant",
+      "expected": "all five contract steps still pass",
+      "actual": "survives",
+      "pass": true
+    },
+    {
+      "name": "Focused test FAILS on the mutant (the mutant is killed)",
+      "input": "name \"   \", valid email, on the mutant",
+      "expected": "the focused test throws",
+      "actual": "failed: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "pass": true
+    },
+    {
+      "name": "The mutant never touched the file on disk",
+      "input": "read example.jsx",
+      "expected": "still contains name.trim() === ''",
+      "actual": "unchanged",
+      "pass": true
+    },
+    {
+      "name": "No console or page errors",
+      "input": "all pages",
+      "expected": "no errors collected",
+      "actual": [],
+      "pass": true
+    }
+  ]
+}

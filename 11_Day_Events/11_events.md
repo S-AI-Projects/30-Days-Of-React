@@ -234,6 +234,16 @@ Implement the following using onMouseEnter event
 
 Coming
 
+## Added activity: regression test with a one-line mutant (R19-T030)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t030](./applied-labs/r19-t030/README.md)
+- Inputs: a blank form, an invalid email, valid data, and a name made only of spaces.
+- Expected result: a blank name or an invalid email blocks the submit, valid data produces one normalized payload, and a name of only spaces is blocked.
+- Mutant: the decisive condition `name.trim() === ''` is mutated in memory to `name === ''`. The focused test passes on the correct example and fails on the mutant, while the general session passes on both.
+- Check: `node 11_Day_Events/applied-labs/r19-t030/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 10](../10_React_Project_Folder_Structure/10_react_project_folder_structure.md) | [Day 12 >>](../12_Day_Forms/12_forms.md)
