@@ -777,6 +777,15 @@ Now it is time to express your thoughts about the Author and 30DaysOfReact. You 
 
 1. Fetching data takes some amount of time. A user has to wait until the data get loaded. Implement a loading functionality of a data is not fetched yet. You can simulate the delay using setTimeout.
 
+## Added activity: conditional display — explicit state views (R19-T051)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t051](./applied-labs/r19-t051/README.md)
+- Inputs: explicit status values ('loading', 'empty', 'success', 'error') with corresponding payload data.
+- Expected result: each supplied state renders exactly one corresponding message or result list with no overlapping views.
+- Check: `node 09_Day_Conditional_Rendering/applied-labs/r19-t051/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 8](../08_Day_States/08_states.md) | [Day 10 >>](../10_React_Project_Folder_Structure/10_react_project_folder_structure.md)

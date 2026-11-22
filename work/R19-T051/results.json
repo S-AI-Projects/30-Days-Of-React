@@ -1,0 +1,38 @@
+{
+  "task": "R19-T051",
+  "title": "Day 9: conditional display — implement the applied example",
+  "passed": true,
+  "timestamp": "2026-11-22T13:53:31.602Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "vite": "5.4.10"
+  },
+  "steps": [
+    {
+      "state": "loading",
+      "expected": "view-loading visible only",
+      "passed": true
+    },
+    {
+      "state": "empty",
+      "expected": "view-empty visible only",
+      "passed": true
+    },
+    {
+      "state": "success",
+      "expected": "view-success with items visible only",
+      "passed": true
+    },
+    {
+      "state": "error",
+      "expected": "view-error with message visible only",
+      "passed": true
+    }
+  ],
+  "errors": {
+    "pageErrors": [],
+    "consoleErrors": []
+  }
+}
