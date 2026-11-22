@@ -1,0 +1,53 @@
+{
+  "task": "R19-T060",
+  "title": "Day 28: deployment base paths — regression-focused lab",
+  "passed": true,
+  "timestamp": "2026-11-22T16:01:26.338Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "reactRouter": "6.26.2",
+    "vite": "5.4.10"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "home_and_asset_loaded_under_base_path",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "action": "navigate_to_lessons_under_base_path",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "action": "page_refresh_preserves_route",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "action": "unknown_route_renders_not_found",
+      "passed": true
+    },
+    {
+      "step": 5,
+      "action": "focused_mutant_test_kills_mutant",
+      "passed": true
+    }
+  ],
+  "mutantEvaluation": {
+    "decisiveCondition": "basename='/course'",
+    "mutantCondition": "basename=''",
+    "correctRunPasses": true,
+    "mutantKilled": true
+  },
+  "contractChecks": {
+    "servedBeneathCourse": true,
+    "assetLoaded": true,
+    "refreshPreservesRoute": true,
+    "zeroConsoleErrors": true,
+    "zeroPageErrors": true
+  }
+}
