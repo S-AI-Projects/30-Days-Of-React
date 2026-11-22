@@ -33,6 +33,15 @@ Congratulations for making it to this far. Now, you have a solid understanding o
 Use the following two APIs, [all cats](https://api.thecatapi.com/v1/breeds) and [a single cat][https://api.thecatapi.com/v1/images/search?breed_id=abys]. In the single cat API, you can get url property which is the image of the cat.
 Your result should look like this [demo](https://www.30daysofreact.com/day-20/cats).
 
+## Added activity: cat-gallery failure recovery — failure-and-recovery lab (R19-T058)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t058](./applied-labs/r19-t058/README.md)
+- Inputs: multi-page cat gallery navigation with injected page 2 network failure and retry action.
+- Expected result: changing page replaces records; a failed page can retry; stale page responses cannot overwrite the latest page.
+- Check: `node 20_projects/applied-labs/r19-t058/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 19](../19_projects/19_projects.md) | [Day 21>>]()

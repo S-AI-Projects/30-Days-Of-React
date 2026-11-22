@@ -1,0 +1,40 @@
+{
+  "task": "R19-T058",
+  "title": "Day 20: cat-gallery failure recovery — failure-and-recovery lab",
+  "passed": true,
+  "timestamp": "2026-11-22T14:31:54.286Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "vite": "5.4.10"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "initial_page_1_load_success",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "action": "page_2_error_state_displayed",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "action": "page_2_retry_recovery_success",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "action": "stale_response_dropped_latest_page_preserved",
+      "passed": true
+    }
+  ],
+  "contractChecks": {
+    "pageReplacedOnNavigation": true,
+    "failedPageRecoversOnRetry": true,
+    "staleResponseDropped": true,
+    "zeroErrors": true
+  }
+}
