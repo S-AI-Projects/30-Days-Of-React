@@ -968,6 +968,15 @@ ReactDOM.render(<App />, rootElement)
 
 Coming ..
 
+## Added activity: effect cleanup — state/invariant lab (R19-T054)
+
+This is an added activity, not an original numbered exercise.
+
+- Lab: [applied-labs/r19-t054](./applied-labs/r19-t054/README.md)
+- Inputs: channel switching and mount/unmount operations on an event subscription hook.
+- Expected result: a dependency change removes the old subscription; unmount leaves zero active listeners. System invariant holds across operations.
+- Check: `node 22_Form_Using_Hooks/applied-labs/r19-t054/check.mjs`
+
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 21](../21_Introducing_Hooks/21_introducing_hooks.md) | [Day 23>>](../23_Fetching_Data_Using_Hooks/23_fetching_data_using_hooks.md)

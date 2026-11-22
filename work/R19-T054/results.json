@@ -1,0 +1,41 @@
+{
+  "task": "R19-T054",
+  "title": "Day 22: effect cleanup — state/invariant lab",
+  "passed": true,
+  "timestamp": "2026-11-22T15:52:38.200Z",
+  "toolVersions": {
+    "node": "v26.12.1",
+    "playwright": "1.48.2",
+    "react": "18.3.1",
+    "vite": "5.4.10"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "initial_mount_active_listeners_1",
+      "passed": true
+    },
+    {
+      "step": 2,
+      "action": "dependency_change_old_subscription_removed_count_1",
+      "passed": true
+    },
+    {
+      "step": 3,
+      "action": "unmount_leaves_zero_active_listeners",
+      "passed": true
+    },
+    {
+      "step": 4,
+      "action": "remount_restores_active_listeners_1",
+      "passed": true
+    }
+  ],
+  "invariantChecks": {
+    "mountedActiveListenersCountIs1": true,
+    "unmountedActiveListenersCountIs0": true,
+    "dependencyChangeRemovesOldSubscription": true,
+    "zeroConsoleErrors": true,
+    "zeroPageErrors": true
+  }
+}
