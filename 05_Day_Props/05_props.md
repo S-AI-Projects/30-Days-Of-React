@@ -1097,3 +1097,7 @@ We will cover propTypes in detail in other sections.
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 4](../04_Day_Component/04_components.md) | [Day 6 >>](../06_Day_Map_List_Keys/06_map_list_keys.md)
+
+## Added activity: Rating props contract lab (R19-T017)
+
+This is an added applied lab, not an original numbered exercise. A `Rating` component accepts `value` and `max` props. Inputs: value=3 with max=5, a missing value, and invalid values or bounds. Expected: value=3, max=5 shows 3/5; a missing value shows Not rated; invalid bounds show an explicit "Invalid rating" message. The lab includes a worked explanation from input through intermediate state to output, and the check runs it. See [applied-labs/r19-t017](applied-labs/r19-t017/README.md).

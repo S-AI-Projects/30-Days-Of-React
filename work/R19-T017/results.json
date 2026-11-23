@@ -1,0 +1,123 @@
+{
+  "inputs": [
+    "value=3, max=5",
+    "value missing, max=5",
+    "value=0, max=5",
+    "value=5, max=5",
+    "value=6, max=5",
+    "value=-1, max=5",
+    "value=3, max=0",
+    "value=3, max=2.5",
+    "value=3, max missing (defaults to 5)",
+    "value=\"abc\", max=5"
+  ],
+  "expected": [
+    {
+      "input": "value=3, max=5",
+      "state": "status=rated",
+      "output": "3/5"
+    },
+    {
+      "input": "value missing, max=5",
+      "state": "status=empty",
+      "output": "Not rated"
+    },
+    {
+      "input": "value=0, max=5",
+      "state": "status=rated",
+      "output": "0/5"
+    },
+    {
+      "input": "value=5, max=5",
+      "state": "status=rated",
+      "output": "5/5"
+    },
+    {
+      "input": "value=6, max=5",
+      "state": "status=invalid",
+      "output": "Invalid rating: value must be between 0 and max"
+    },
+    {
+      "input": "value=-1, max=5",
+      "state": "status=invalid",
+      "output": "Invalid rating: value must be between 0 and max"
+    },
+    {
+      "input": "value=3, max=0",
+      "state": "status=invalid",
+      "output": "Invalid rating: max must be a whole number of at least 1"
+    },
+    {
+      "input": "value=3, max=2.5",
+      "state": "status=invalid",
+      "output": "Invalid rating: max must be a whole number of at least 1"
+    },
+    {
+      "input": "value=3, max missing (defaults to 5)",
+      "state": "status=rated",
+      "output": "3/5"
+    },
+    {
+      "input": "value=\"abc\", max=5",
+      "state": "status=invalid",
+      "output": "Invalid rating: value must be a number"
+    }
+  ],
+  "actual": [
+    {
+      "input": "value=3, max=5",
+      "state": "status=rated",
+      "output": "3/5"
+    },
+    {
+      "input": "value missing, max=5",
+      "state": "status=empty",
+      "output": "Not rated"
+    },
+    {
+      "input": "value=0, max=5",
+      "state": "status=rated",
+      "output": "0/5"
+    },
+    {
+      "input": "value=5, max=5",
+      "state": "status=rated",
+      "output": "5/5"
+    },
+    {
+      "input": "value=6, max=5",
+      "state": "status=invalid",
+      "output": "Invalid rating: value must be between 0 and max"
+    },
+    {
+      "input": "value=-1, max=5",
+      "state": "status=invalid",
+      "output": "Invalid rating: value must be between 0 and max"
+    },
+    {
+      "input": "value=3, max=0",
+      "state": "status=invalid",
+      "output": "Invalid rating: max must be a whole number of at least 1"
+    },
+    {
+      "input": "value=3, max=2.5",
+      "state": "status=invalid",
+      "output": "Invalid rating: max must be a whole number of at least 1"
+    },
+    {
+      "input": "value=3, max missing (defaults to 5)",
+      "state": "status=rated",
+      "output": "3/5"
+    },
+    {
+      "input": "value=\"abc\", max=5",
+      "state": "status=invalid",
+      "output": "Invalid rating: value must be a number"
+    }
+  ],
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
