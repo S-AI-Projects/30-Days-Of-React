@@ -28,3 +28,7 @@
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 23](../23_Fetching_Data_Using_Hooks/23_fetching_data_using_hooks.md) | [Day 25>>](../25_Custom_Hooks/25_custom_hooks.md)
+
+## Added activity: Hook composition refactor lab (R19-T016)
+
+This is an added applied lab, not an original numbered exercise. Form validity is derived from field values, never stored separately. Starting from a working version, validation is extracted into its own hook without changing the contract. Inputs: name Ada, email ada then ada@x.com, whitespace-only name, Reset, email a@b. Expected: changing a field updates its validity, derived values are not stale after Reset, and the original and refactored versions behave identically. See [applied-labs/r19-t016](applied-labs/r19-t016/README.md).

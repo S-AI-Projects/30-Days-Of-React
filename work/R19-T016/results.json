@@ -1,0 +1,260 @@
+{
+  "inputs": [
+    null,
+    [
+      "Name",
+      "Ada"
+    ],
+    [
+      "Email",
+      "ada"
+    ],
+    [
+      "Email",
+      "ada@x.com"
+    ],
+    [
+      "Name",
+      "   "
+    ],
+    [
+      "Name",
+      "Ada"
+    ],
+    "Reset",
+    [
+      "Email",
+      "a@b"
+    ]
+  ],
+  "expected": [
+    {
+      "step": "initial",
+      "name": "invalid",
+      "email": "invalid",
+      "form": "invalid",
+      "nameValue": "",
+      "emailValue": ""
+    },
+    {
+      "step": "name = Ada",
+      "fill": [
+        "Name",
+        "Ada"
+      ],
+      "name": "valid",
+      "email": "invalid",
+      "form": "invalid",
+      "nameValue": "Ada",
+      "emailValue": ""
+    },
+    {
+      "step": "email = ada (no @)",
+      "fill": [
+        "Email",
+        "ada"
+      ],
+      "name": "valid",
+      "email": "invalid",
+      "form": "invalid",
+      "nameValue": "Ada",
+      "emailValue": "ada"
+    },
+    {
+      "step": "email = ada@x.com",
+      "fill": [
+        "Email",
+        "ada@x.com"
+      ],
+      "name": "valid",
+      "email": "valid",
+      "form": "valid",
+      "nameValue": "Ada",
+      "emailValue": "ada@x.com"
+    },
+    {
+      "step": "name = spaces only",
+      "fill": [
+        "Name",
+        "   "
+      ],
+      "name": "invalid",
+      "email": "valid",
+      "form": "invalid",
+      "nameValue": "   ",
+      "emailValue": "ada@x.com"
+    },
+    {
+      "step": "name = Ada again",
+      "fill": [
+        "Name",
+        "Ada"
+      ],
+      "name": "valid",
+      "email": "valid",
+      "form": "valid",
+      "nameValue": "Ada",
+      "emailValue": "ada@x.com"
+    },
+    {
+      "step": "reset (derived values must not be stale)",
+      "click": "Reset",
+      "name": "invalid",
+      "email": "invalid",
+      "form": "invalid",
+      "nameValue": "",
+      "emailValue": ""
+    },
+    {
+      "step": "email = a@b after reset",
+      "fill": [
+        "Email",
+        "a@b"
+      ],
+      "name": "invalid",
+      "email": "valid",
+      "form": "invalid",
+      "nameValue": "",
+      "emailValue": "a@b"
+    }
+  ],
+  "actual": {
+    "original": [
+      {
+        "step": "initial",
+        "name": "invalid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "",
+        "emailValue": ""
+      },
+      {
+        "step": "name = Ada",
+        "name": "valid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "Ada",
+        "emailValue": ""
+      },
+      {
+        "step": "email = ada (no @)",
+        "name": "valid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "Ada",
+        "emailValue": "ada"
+      },
+      {
+        "step": "email = ada@x.com",
+        "name": "valid",
+        "email": "valid",
+        "form": "valid",
+        "nameValue": "Ada",
+        "emailValue": "ada@x.com"
+      },
+      {
+        "step": "name = spaces only",
+        "name": "invalid",
+        "email": "valid",
+        "form": "invalid",
+        "nameValue": "   ",
+        "emailValue": "ada@x.com"
+      },
+      {
+        "step": "name = Ada again",
+        "name": "valid",
+        "email": "valid",
+        "form": "valid",
+        "nameValue": "Ada",
+        "emailValue": "ada@x.com"
+      },
+      {
+        "step": "reset (derived values must not be stale)",
+        "name": "invalid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "",
+        "emailValue": ""
+      },
+      {
+        "step": "email = a@b after reset",
+        "name": "invalid",
+        "email": "valid",
+        "form": "invalid",
+        "nameValue": "",
+        "emailValue": "a@b"
+      }
+    ],
+    "refactored": [
+      {
+        "step": "initial",
+        "name": "invalid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "",
+        "emailValue": ""
+      },
+      {
+        "step": "name = Ada",
+        "name": "valid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "Ada",
+        "emailValue": ""
+      },
+      {
+        "step": "email = ada (no @)",
+        "name": "valid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "Ada",
+        "emailValue": "ada"
+      },
+      {
+        "step": "email = ada@x.com",
+        "name": "valid",
+        "email": "valid",
+        "form": "valid",
+        "nameValue": "Ada",
+        "emailValue": "ada@x.com"
+      },
+      {
+        "step": "name = spaces only",
+        "name": "invalid",
+        "email": "valid",
+        "form": "invalid",
+        "nameValue": "   ",
+        "emailValue": "ada@x.com"
+      },
+      {
+        "step": "name = Ada again",
+        "name": "valid",
+        "email": "valid",
+        "form": "valid",
+        "nameValue": "Ada",
+        "emailValue": "ada@x.com"
+      },
+      {
+        "step": "reset (derived values must not be stale)",
+        "name": "invalid",
+        "email": "invalid",
+        "form": "invalid",
+        "nameValue": "",
+        "emailValue": ""
+      },
+      {
+        "step": "email = a@b after reset",
+        "name": "invalid",
+        "email": "valid",
+        "form": "invalid",
+        "nameValue": "",
+        "emailValue": "a@b"
+      }
+    ]
+  },
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
