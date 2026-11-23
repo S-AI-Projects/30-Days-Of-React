@@ -1,0 +1,119 @@
+{
+  "inputs": [
+    {
+      "step": "initial state",
+      "field": null,
+      "value": null
+    },
+    {
+      "step": "set biography",
+      "field": "Biography",
+      "value": "Loves compilers"
+    },
+    {
+      "step": "biography becomes whitespace only",
+      "field": "Biography",
+      "value": "   "
+    },
+    {
+      "step": "set biography again",
+      "field": "Biography",
+      "value": "Loves compilers"
+    },
+    {
+      "step": "clear biography",
+      "field": "Biography",
+      "value": ""
+    },
+    {
+      "step": "change name to Grace",
+      "field": "Name",
+      "value": "Grace"
+    },
+    {
+      "step": "change role to Mentor",
+      "field": "Role",
+      "value": "Mentor"
+    }
+  ],
+  "invariant": "name once, role once, bio only if non-blank, no \"undefined\"/\"null\"",
+  "expected": [
+    {
+      "step": "initial state",
+      "name": "Ada",
+      "role": "Role: Student",
+      "bio": null
+    },
+    {
+      "step": "set biography",
+      "name": "Ada",
+      "role": "Role: Student",
+      "bio": "Loves compilers"
+    },
+    {
+      "step": "biography becomes whitespace only",
+      "name": "Ada",
+      "role": "Role: Student",
+      "bio": null
+    },
+    {
+      "step": "set biography again",
+      "name": "Ada",
+      "role": "Role: Student",
+      "bio": "Loves compilers"
+    },
+    {
+      "step": "clear biography",
+      "name": "Ada",
+      "role": "Role: Student",
+      "bio": null
+    },
+    {
+      "step": "change name to Grace",
+      "name": "Grace",
+      "role": "Role: Student",
+      "bio": null
+    },
+    {
+      "step": "change role to Mentor",
+      "name": "Grace",
+      "role": "Role: Mentor",
+      "bio": null
+    }
+  ],
+  "actual": [
+    {
+      "step": "initial state",
+      "profileText": "Ada\n\nRole: Student"
+    },
+    {
+      "step": "set biography",
+      "profileText": "Ada\n\nRole: Student\n\nLoves compilers"
+    },
+    {
+      "step": "biography becomes whitespace only",
+      "profileText": "Ada\n\nRole: Student"
+    },
+    {
+      "step": "set biography again",
+      "profileText": "Ada\n\nRole: Student\n\nLoves compilers"
+    },
+    {
+      "step": "clear biography",
+      "profileText": "Ada\n\nRole: Student"
+    },
+    {
+      "step": "change name to Grace",
+      "profileText": "Grace\n\nRole: Student"
+    },
+    {
+      "step": "change role to Mentor",
+      "profileText": "Grace\n\nRole: Mentor"
+    }
+  ],
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
