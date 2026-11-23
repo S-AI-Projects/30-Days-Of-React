@@ -1,0 +1,188 @@
+{
+  "inputs": [
+    null,
+    [
+      "Email",
+      "ada"
+    ],
+    [
+      "Name",
+      "Ada"
+    ],
+    [
+      "Email",
+      "ada@x.com"
+    ],
+    [
+      "Name",
+      "   "
+    ],
+    [
+      "Name",
+      "Ada"
+    ],
+    "Reset",
+    [
+      [
+        "Name",
+        "Ada"
+      ],
+      [
+        "Email",
+        "a@b"
+      ]
+    ]
+  ],
+  "expected": [
+    {
+      "step": "initial: EMPTY state",
+      "status": "Empty: fill in the form",
+      "nameMsg": "Name is required",
+      "emailMsg": "Email is required",
+      "nameValue": "",
+      "emailValue": ""
+    },
+    {
+      "step": "email = ada: ERROR state",
+      "fill": [
+        "Email",
+        "ada"
+      ],
+      "status": "Error: fix the fields below",
+      "nameMsg": "Name is required",
+      "emailMsg": "Email must look like name@host",
+      "nameValue": "",
+      "emailValue": "ada"
+    },
+    {
+      "step": "name = Ada (email still bad)",
+      "fill": [
+        "Name",
+        "Ada"
+      ],
+      "status": "Error: fix the fields below",
+      "nameMsg": "OK",
+      "emailMsg": "Email must look like name@host",
+      "nameValue": "Ada",
+      "emailValue": "ada"
+    },
+    {
+      "step": "email = ada@x.com: RECOVERY to valid",
+      "fill": [
+        "Email",
+        "ada@x.com"
+      ],
+      "status": "Valid: ready to submit",
+      "nameMsg": "OK",
+      "emailMsg": "OK",
+      "nameValue": "Ada",
+      "emailValue": "ada@x.com"
+    },
+    {
+      "step": "name = spaces only: ERROR again",
+      "fill": [
+        "Name",
+        "   "
+      ],
+      "status": "Error: fix the fields below",
+      "nameMsg": "Name is required",
+      "emailMsg": "OK",
+      "nameValue": "   ",
+      "emailValue": "ada@x.com"
+    },
+    {
+      "step": "name = Ada: RECOVERY again",
+      "fill": [
+        "Name",
+        "Ada"
+      ],
+      "status": "Valid: ready to submit",
+      "nameMsg": "OK",
+      "emailMsg": "OK",
+      "nameValue": "Ada",
+      "emailValue": "ada@x.com"
+    },
+    {
+      "step": "reset: EMPTY again (not stale)",
+      "click": "Reset",
+      "status": "Empty: fill in the form",
+      "nameMsg": "Name is required",
+      "emailMsg": "Email is required",
+      "nameValue": "",
+      "emailValue": ""
+    },
+    {
+      "step": "name = Ada, email = a@b: RECOVERY after reset",
+      "fill": [
+        [
+          "Name",
+          "Ada"
+        ],
+        [
+          "Email",
+          "a@b"
+        ]
+      ],
+      "status": "Valid: ready to submit",
+      "nameMsg": "OK",
+      "emailMsg": "OK",
+      "nameValue": "Ada",
+      "emailValue": "a@b"
+    }
+  ],
+  "actual": [
+    {
+      "step": "initial: EMPTY state",
+      "status": "Empty: fill in the form",
+      "nameMsg": "Name is required",
+      "emailMsg": "Email is required"
+    },
+    {
+      "step": "email = ada: ERROR state",
+      "status": "Error: fix the fields below",
+      "nameMsg": "Name is required",
+      "emailMsg": "Email must look like name@host"
+    },
+    {
+      "step": "name = Ada (email still bad)",
+      "status": "Error: fix the fields below",
+      "nameMsg": "OK",
+      "emailMsg": "Email must look like name@host"
+    },
+    {
+      "step": "email = ada@x.com: RECOVERY to valid",
+      "status": "Valid: ready to submit",
+      "nameMsg": "OK",
+      "emailMsg": "OK"
+    },
+    {
+      "step": "name = spaces only: ERROR again",
+      "status": "Error: fix the fields below",
+      "nameMsg": "Name is required",
+      "emailMsg": "OK"
+    },
+    {
+      "step": "name = Ada: RECOVERY again",
+      "status": "Valid: ready to submit",
+      "nameMsg": "OK",
+      "emailMsg": "OK"
+    },
+    {
+      "step": "reset: EMPTY again (not stale)",
+      "status": "Empty: fill in the form",
+      "nameMsg": "Name is required",
+      "emailMsg": "Email is required"
+    },
+    {
+      "step": "name = Ada, email = a@b: RECOVERY after reset",
+      "status": "Valid: ready to submit",
+      "nameMsg": "OK",
+      "emailMsg": "OK"
+    }
+  ],
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}

@@ -28,3 +28,7 @@
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 23](../23_Fetching_Data_Using_Hooks/23_fetching_data_using_hooks.md) | [Day 25>>](../25_Custom_Hooks/25_custom_hooks.md)
+
+## Added activity: Hook composition failure-and-recovery lab (R19-T018)
+
+This is an added applied lab, not an original numbered exercise. A form's field values are the only source of truth, and the errors and status are derived from them. Inputs: an invalid email, a valid email, a whitespace-only name, Reset, then valid values again. Expected: the example shows the empty state and the error state, then recovers to valid on the next valid input without restarting, and nothing is stale after Reset. See [applied-labs/r19-t018](applied-labs/r19-t018/README.md).
