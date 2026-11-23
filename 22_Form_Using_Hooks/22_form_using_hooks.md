@@ -971,3 +971,7 @@ Coming ..
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 21](../21_Introducing_Hooks/21_introducing_hooks.md) | [Day 23>>](../23_Fetching_Data_Using_Hooks/23_fetching_data_using_hooks.md)
+
+## Added activity: Effect cleanup reference comparison (R19-T013)
+
+This is an added applied lab, not an original numbered exercise. A component subscribes to a local event source with `useEffect` and a cleanup function. Inputs: publish to A and B, switch the subscription to B, unmount and mount the subscriber. Expected: a dependency change removes the old subscription, and unmounting leaves zero active listeners. The check compares the app against an independent expected-result table. See [applied-labs/r19-t013](applied-labs/r19-t013/README.md).

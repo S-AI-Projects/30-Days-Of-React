@@ -1,0 +1,175 @@
+{
+  "inputs": [
+    null,
+    "Publish to A",
+    "Publish to B",
+    "Subscribe to B",
+    "Publish to A",
+    "Publish to B",
+    "Unmount subscriber",
+    "Mount subscriber",
+    "Unmount subscriber"
+  ],
+  "expected": [
+    {
+      "step": "initial (subscribed to A)",
+      "action": null,
+      "counts": {
+        "A": 1,
+        "B": 0
+      },
+      "last": "none"
+    },
+    {
+      "step": "publish to A",
+      "action": "Publish to A",
+      "counts": {
+        "A": 1,
+        "B": 0
+      },
+      "last": "msg-A"
+    },
+    {
+      "step": "publish to B (not subscribed)",
+      "action": "Publish to B",
+      "counts": {
+        "A": 1,
+        "B": 0
+      },
+      "last": "msg-A"
+    },
+    {
+      "step": "dependency change: switch to B",
+      "action": "Subscribe to B",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "none"
+    },
+    {
+      "step": "publish to A (old subscription gone)",
+      "action": "Publish to A",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "none"
+    },
+    {
+      "step": "publish to B",
+      "action": "Publish to B",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "msg-B"
+    },
+    {
+      "step": "unmount",
+      "action": "Unmount subscriber",
+      "counts": {
+        "A": 0,
+        "B": 0
+      },
+      "last": null
+    },
+    {
+      "step": "mount again",
+      "action": "Mount subscriber",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "none"
+    },
+    {
+      "step": "unmount again",
+      "action": "Unmount subscriber",
+      "counts": {
+        "A": 0,
+        "B": 0
+      },
+      "last": null
+    }
+  ],
+  "actual": [
+    {
+      "step": "initial (subscribed to A)",
+      "counts": {
+        "A": 1,
+        "B": 0
+      },
+      "last": "Last message: none"
+    },
+    {
+      "step": "publish to A",
+      "counts": {
+        "A": 1,
+        "B": 0
+      },
+      "last": "Last message: msg-A"
+    },
+    {
+      "step": "publish to B (not subscribed)",
+      "counts": {
+        "A": 1,
+        "B": 0
+      },
+      "last": "Last message: msg-A"
+    },
+    {
+      "step": "dependency change: switch to B",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "Last message: none"
+    },
+    {
+      "step": "publish to A (old subscription gone)",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "Last message: none"
+    },
+    {
+      "step": "publish to B",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "Last message: msg-B"
+    },
+    {
+      "step": "unmount",
+      "counts": {
+        "A": 0,
+        "B": 0
+      },
+      "last": null
+    },
+    {
+      "step": "mount again",
+      "counts": {
+        "A": 0,
+        "B": 1
+      },
+      "last": "Last message: none"
+    },
+    {
+      "step": "unmount again",
+      "counts": {
+        "A": 0,
+        "B": 0
+      },
+      "last": null
+    }
+  ],
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
