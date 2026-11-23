@@ -210,3 +210,7 @@ coming
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 15](../15_Third_Party_Packages/15_third_party_packages.md) | [Day 17 >>](../17_React_Router/17_react_router.md)
+
+## Added activity: Class list/detail boundary lab (R19-T012)
+
+This is an added applied lab, not an original numbered exercise. The parent class component owns the selection state. Boundary condition: valid record ids are whole numbers from 1 to 3; anything else (empty, text, 0, 4, 1.5) is invalid and shows the empty state. Inputs: select Record B, then try ids 1, 3, 0, 4, abc. Expected: B updates only the detail panel, and invalid ids show "No record selected." See [applied-labs/r19-t012](applied-labs/r19-t012/README.md)
