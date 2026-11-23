@@ -1,0 +1,147 @@
+{
+  "inputs": [
+    null,
+    "event-1",
+    "Unmount notifier",
+    "event-2",
+    "Mount notifier",
+    "event-3",
+    "Unmount notifier"
+  ],
+  "expected": [
+    {
+      "step": "initial (mounted)",
+      "listeners": 1,
+      "received": []
+    },
+    {
+      "step": "emit event-1",
+      "emit": "event-1",
+      "listeners": 1,
+      "received": [
+        "event-1"
+      ]
+    },
+    {
+      "step": "unmount",
+      "click": "Unmount notifier",
+      "listeners": 0,
+      "received": null
+    },
+    {
+      "step": "emit event-2 while unmounted",
+      "emit": "event-2",
+      "listeners": 0,
+      "received": null
+    },
+    {
+      "step": "remount",
+      "click": "Mount notifier",
+      "listeners": 1,
+      "received": []
+    },
+    {
+      "step": "emit event-3 (must arrive once, not twice)",
+      "emit": "event-3",
+      "listeners": 1,
+      "received": [
+        "event-3"
+      ]
+    },
+    {
+      "step": "unmount again",
+      "click": "Unmount notifier",
+      "listeners": 0,
+      "received": null
+    }
+  ],
+  "runs": [
+    [
+      {
+        "step": "initial (mounted)",
+        "listeners": 1,
+        "received": []
+      },
+      {
+        "step": "emit event-1",
+        "listeners": 1,
+        "received": [
+          "event-1"
+        ]
+      },
+      {
+        "step": "unmount",
+        "listeners": 0,
+        "received": null
+      },
+      {
+        "step": "emit event-2 while unmounted",
+        "listeners": 0,
+        "received": null
+      },
+      {
+        "step": "remount",
+        "listeners": 1,
+        "received": []
+      },
+      {
+        "step": "emit event-3 (must arrive once, not twice)",
+        "listeners": 1,
+        "received": [
+          "event-3"
+        ]
+      },
+      {
+        "step": "unmount again",
+        "listeners": 0,
+        "received": null
+      }
+    ],
+    [
+      {
+        "step": "initial (mounted)",
+        "listeners": 1,
+        "received": []
+      },
+      {
+        "step": "emit event-1",
+        "listeners": 1,
+        "received": [
+          "event-1"
+        ]
+      },
+      {
+        "step": "unmount",
+        "listeners": 0,
+        "received": null
+      },
+      {
+        "step": "emit event-2 while unmounted",
+        "listeners": 0,
+        "received": null
+      },
+      {
+        "step": "remount",
+        "listeners": 1,
+        "received": []
+      },
+      {
+        "step": "emit event-3 (must arrive once, not twice)",
+        "listeners": 1,
+        "received": [
+          "event-3"
+        ]
+      },
+      {
+        "step": "unmount again",
+        "listeners": 0,
+        "received": null
+      }
+    ]
+  ],
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}

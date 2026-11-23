@@ -843,3 +843,7 @@ Coming ...
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 6](../06_Day_Map_List_Keys/06_map_list_keys.md) | [Day 8 >>](../08_Day_States/08_states.md)
+
+## Added activity: Class lifecycle cleanup fixture lab (R19-T015)
+
+This is an added applied lab, not an original numbered exercise. A class component subscribes to an injected event source on mount and unsubscribes on unmount. Inputs: emit event-1, unmount, emit event-2, remount, emit event-3. Expected: mount adds one listener, unmount removes it, and remount does not double notifications. The lab uses a fixed local fixture, and two isolated runs produce the same results. See [applied-labs/r19-t015](applied-labs/r19-t015/README.md).
