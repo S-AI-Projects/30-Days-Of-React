@@ -36,3 +36,6 @@ Your result should look like this [demo](https://www.30daysofreact.com/day-19/ca
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 18](../18_Fetch_And_Axios/18_fetch_axios.md) | [Day 20>>]()
+ ## Added activity: Cat gallery filtering (R19-T011)
+
+This is an added applied lab, not an original exercise. Inputs: filter `Egypt`, then `Brazil`. Expected: 2 cats for Egypt, and an empty-result message for Brazil. See [applied-labs/r19-t011](applied-labs/r19-t011/README.md).

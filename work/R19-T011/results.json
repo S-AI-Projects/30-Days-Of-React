@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    "Egypt",
+    "Brazil"
+  ],
+  "expected": {
+    "egyptCount": 2,
+    "emptyMessage": "No cats found for this origin."
+  },
+  "actual": {
+    "egyptCount": 2,
+    "emptyMessage": "No cats found for this origin."
+  },
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
