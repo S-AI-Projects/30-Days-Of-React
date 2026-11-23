@@ -4521,3 +4521,7 @@ Check out there result on [codepen](https://codepen.io/Asabeneh/full/vYGqQxP)
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 0](../readMe.md) | [Day 2 >>](../02_Day_Introduction_to_React/02_introduction_to_react.md)
+
+## Added activity: Component composition state/invariant lab (R19-T014)
+
+This is an added applied lab, not an original numbered exercise. A profile is built from three small components with explicit props. Inputs: a short sequence of edits (set biography, whitespace-only biography, clear biography, change name, change role). Expected: Ada with role Student appears once, a missing biography leaves no "undefined" text, and the invariant (current name and role once each, biography only when non-blank) holds after every edit. See [applied-labs/r19-t014](applied-labs/r19-t014/README.md).
