@@ -947,3 +947,7 @@ Coming ..
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 11](../11_Day_Events/11_events.md) | [Day 13 >>](../13_Day_Controlled_Versus_Uncontrolled_Input/13_uncontrolled_input.md)
+
+## Added activity: Price calculator input-scale lab (R19-T019)
+
+This is an added applied lab, not an original numbered exercise. A price calculator takes quantity, unit price and discount. Inputs: quantity 2, price 50, discount 10%, then invalid values, then 1, 10 and 50 repeated "+1 quantity" interactions. Expected: the default displays 90, invalid input shows a labelled error, and the totals are correct at each size. The check reports render and calculation counts rather than imposing a speed threshold. See [applied-labs/r19-t019](applied-labs/r19-t019/README.md).

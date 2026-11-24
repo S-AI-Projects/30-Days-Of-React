@@ -1,0 +1,123 @@
+{
+  "inputs": {
+    "default": {
+      "quantity": 2,
+      "price": 50,
+      "discount": 10
+    },
+    "invalidCases": [
+      {
+        "field": "Quantity",
+        "value": "abc",
+        "testid": "quantity-error",
+        "message": "Quantity: must be a whole number from 1 to 1000"
+      },
+      {
+        "field": "Quantity",
+        "value": "0",
+        "testid": "quantity-error",
+        "message": "Quantity: must be a whole number from 1 to 1000"
+      },
+      {
+        "field": "Quantity",
+        "value": "1.5",
+        "testid": "quantity-error",
+        "message": "Quantity: must be a whole number from 1 to 1000"
+      },
+      {
+        "field": "Price",
+        "value": "-5",
+        "testid": "price-error",
+        "message": "Price: must be a number of 0 or more"
+      },
+      {
+        "field": "Discount",
+        "value": "150",
+        "testid": "discount-error",
+        "message": "Discount: must be a number from 0 to 100"
+      }
+    ],
+    "sizes": [
+      1,
+      10,
+      50
+    ]
+  },
+  "expected": {
+    "defaultTotal": 90,
+    "sizes": [
+      {
+        "clicks": 1,
+        "total": 135,
+        "renderDelta": 1,
+        "calcDelta": 1
+      },
+      {
+        "clicks": 10,
+        "total": 540,
+        "renderDelta": 10,
+        "calcDelta": 10
+      },
+      {
+        "clicks": 50,
+        "total": 2340,
+        "renderDelta": 50,
+        "calcDelta": 50
+      }
+    ]
+  },
+  "actual": {
+    "invalid": [
+      {
+        "field": "Quantity",
+        "value": "abc",
+        "error": "Quantity: must be a whole number from 1 to 1000"
+      },
+      {
+        "field": "Quantity",
+        "value": "0",
+        "error": "Quantity: must be a whole number from 1 to 1000"
+      },
+      {
+        "field": "Quantity",
+        "value": "1.5",
+        "error": "Quantity: must be a whole number from 1 to 1000"
+      },
+      {
+        "field": "Price",
+        "value": "-5",
+        "error": "Price: must be a number of 0 or more"
+      },
+      {
+        "field": "Discount",
+        "value": "150",
+        "error": "Discount: must be a number from 0 to 100"
+      }
+    ],
+    "sizes": [
+      {
+        "clicks": 1,
+        "total": 135,
+        "renderDelta": 2,
+        "calcDelta": 1
+      },
+      {
+        "clicks": 10,
+        "total": 540,
+        "renderDelta": 10,
+        "calcDelta": 10
+      },
+      {
+        "clicks": 50,
+        "total": 2340,
+        "renderDelta": 50,
+        "calcDelta": 50
+      }
+    ]
+  },
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
