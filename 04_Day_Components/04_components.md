@@ -518,3 +518,7 @@ ReactDOM.render(<HexaColor />, rootElement)
 🎉 CONGRATULATIONS ! 🎉
 
 [<< Day 3](../30-Days-Of-React/03_Day_Setting_Up/03_setting_up.md) | [Day 5 >>](../05_Day_Props/05_props.md)
+
+## Added activity: Status badge regression lab (R19-T020)
+
+This is an added applied lab, not an original numbered exercise. One reusable status badge shows visible text for pending, success and error, and an explicit fallback for an unknown status. Inputs: pending, success, error, banana, constructor, toString and a missing status. Expected: Pending, Success and Error, and "Unknown status" for everything else. The check also applies a temporary one-line mutant of the decisive condition and requires the focused test to fail on it. See [applied-labs/r19-t020](applied-labs/r19-t020/README.md).
