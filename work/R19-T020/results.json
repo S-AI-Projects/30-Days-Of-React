@@ -1,0 +1,140 @@
+{
+  "inputs": [
+    "pending",
+    "success",
+    "error",
+    "banana",
+    "constructor",
+    "toString",
+    "(missing)"
+  ],
+  "expected": [
+    {
+      "label": "pending",
+      "text": "Pending",
+      "known": true
+    },
+    {
+      "label": "success",
+      "text": "Success",
+      "known": true
+    },
+    {
+      "label": "error",
+      "text": "Error",
+      "known": true
+    },
+    {
+      "label": "banana",
+      "text": "Unknown status",
+      "known": false
+    },
+    {
+      "label": "constructor",
+      "text": "Unknown status",
+      "known": false
+    },
+    {
+      "label": "toString",
+      "text": "Unknown status",
+      "known": false
+    },
+    {
+      "label": "(missing)",
+      "text": "Unknown status",
+      "known": false
+    }
+  ],
+  "decisive": "const known = Object.hasOwn(BADGES, status)",
+  "mutant": "const known = status in BADGES",
+  "correct": {
+    "failures": [],
+    "actual": [
+      {
+        "label": "pending",
+        "text": "Pending",
+        "known": "true"
+      },
+      {
+        "label": "success",
+        "text": "Success",
+        "known": "true"
+      },
+      {
+        "label": "error",
+        "text": "Error",
+        "known": "true"
+      },
+      {
+        "label": "banana",
+        "text": "Unknown status",
+        "known": "false"
+      },
+      {
+        "label": "constructor",
+        "text": "Unknown status",
+        "known": "false"
+      },
+      {
+        "label": "toString",
+        "text": "Unknown status",
+        "known": "false"
+      },
+      {
+        "label": "(missing)",
+        "text": "Unknown status",
+        "known": "false"
+      }
+    ],
+    "pageErrors": []
+  },
+  "mutant_run": {
+    "failures": [
+      "constructor",
+      "toString"
+    ],
+    "actual": [
+      {
+        "label": "pending",
+        "text": "Pending",
+        "known": "true"
+      },
+      {
+        "label": "success",
+        "text": "Success",
+        "known": "true"
+      },
+      {
+        "label": "error",
+        "text": "Error",
+        "known": "true"
+      },
+      {
+        "label": "banana",
+        "text": "Unknown status",
+        "known": "false"
+      },
+      {
+        "label": "constructor",
+        "text": "",
+        "known": "true"
+      },
+      {
+        "label": "toString",
+        "text": "",
+        "known": "true"
+      },
+      {
+        "label": "(missing)",
+        "text": "Unknown status",
+        "known": "false"
+      }
+    ],
+    "pageErrors": []
+  },
+  "status": "PASS",
+  "versions": {
+    "node": "v26.13.1",
+    "chromium": "159.0.8154.6"
+  }
+}
